@@ -22,6 +22,10 @@ Soldier >> removeItem: item [
     items remove: item
 ]
 
+Soldier >> hasItem: item [
+    ^ self items include: item
+]
+
 Soldier >> createInfo [
     | info |
     info := super createInfo,

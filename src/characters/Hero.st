@@ -24,6 +24,10 @@ Hero >> removeItem: item [
     items remove: item
 ]
 
+Hero >> hasItem: item [
+    ^ self items include: item
+]
+
 Hero >> uniform [
     ^ uniform
 ]

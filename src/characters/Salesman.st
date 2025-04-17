@@ -23,6 +23,10 @@ Salesman >> removeItem: item [
     items remove: item
 ]
 
+Salesman >> hasItem: item [
+    ^ self items include: item
+]
+
 Salesman >> money [
     ^ money
 ]
