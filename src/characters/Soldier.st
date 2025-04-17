@@ -6,10 +6,18 @@ Soldier >> initialize: [
     items := #(helmet)
 ]
 
+Soldier >> items [
+    ^ items
+]
+
 Soldier >> items: newItems [
     items := newItems
 ]
 
 Soldier >> addItem: newItem [
     items add: newItem
+]
+
+Soldier >> removeItem: item [
+    items remove: item
 ]
