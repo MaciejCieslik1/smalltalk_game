@@ -39,3 +39,12 @@ Character >> isKillable [
 Character >> isKillable: newKillable [
     isKillable := newKillable
 ]
+
+Character >> createInfo [
+    | info |
+    info := 'Name: ', self name asString, String cr,
+            'Alive status: ', self isAlive asString, String cr,
+            'Location: ', self location asString, String cr,
+            'Killable status: ', self isKillable asString, String cr.
+    ^ info
+]

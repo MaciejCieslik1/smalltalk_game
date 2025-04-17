@@ -13,3 +13,10 @@ Npc >> rank [
 Npc >> rank: newRank [
     rank := newRank
 ]
+
+Npc >> createInfo [
+    | info |
+    info := super createInfo, 
+            'Rank: ', self rank, String cr.
+    ^ info
+]

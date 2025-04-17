@@ -21,3 +21,10 @@ Soldier >> addItem: newItem [
 Soldier >> removeItem: item [
     items remove: item
 ]
+
+Soldier >> createInfo [
+    | info |
+    info := super createInfo,
+            'Items: ', (items joinSeparatedBy: ', '), String cr.
+    ^ info
+]
