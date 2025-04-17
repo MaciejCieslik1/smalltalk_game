@@ -38,6 +38,6 @@ Salesman >> createInfo [
     | info |
     info := super createInfo,
             'Money: ', self money, String cr,
-            'Items: ', (items joinSeparatedBy: ', '), String cr.
+            'Items: ', (self items joinSeparatedBy: ', '), String cr.
     ^ info
 ]

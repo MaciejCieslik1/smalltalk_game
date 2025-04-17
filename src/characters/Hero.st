@@ -48,6 +48,6 @@ Hero >> createInfo [
     info := super createInfo,
             'Uniform: ', self uniform, String cr,
             'Money: ', self money, String cr,
-            'Items: ', (items joinSeparatedBy: ', '), String cr.
+            'Items: ', (self items joinSeparatedBy: ', '), String cr.
     ^ info
 ]

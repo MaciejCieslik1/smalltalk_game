@@ -25,6 +25,6 @@ Soldier >> removeItem: item [
 Soldier >> createInfo [
     | info |
     info := super createInfo,
-            'Items: ', (items joinSeparatedBy: ', '), String cr.
+            'Items: ', (self items joinSeparatedBy: ', '), String cr.
     ^ info
 ]
