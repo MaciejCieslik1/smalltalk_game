@@ -2,7 +2,7 @@ NpcRoom subclass: #Kitchen
 
 Kitchen >> initialize [
     super initialize: 'kitchen'
-        isAccessible: true
+        isAccessible: false
         hasItem: true
         itemsList: (OrderedCollection new)
     itemsList add: money2

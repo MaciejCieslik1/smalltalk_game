@@ -1,7 +1,7 @@
-NoneNpcRoom subclass: #EmptyRoomA
+NoneNpcRoom subclass: #SecretExit
 
-EmptyRoomA >> initialize [
-    super initialize: 'empty room A'
+SecretExit >> initialize [
+    super initialize: 'secret exit'
         isAccessible: false
         hasItem: false
         itemsList: (OrderedCollection new).

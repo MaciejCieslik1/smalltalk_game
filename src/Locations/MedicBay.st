@@ -2,7 +2,7 @@ NoneNpcRoom subclass: #MedicBay
 
 MedicBay >> initialize [
     super initialize: 'medic bay'
-        isAccessible: true
+        isAccessible: false
         hasItem: true
         itemsList: (OrderedCollection new).
     itemsList add: bandage
