@@ -65,15 +65,23 @@ CommunicatesService >> talkToBandit_16 [
 ]
 
 CommunicatesService >> talkToBandit_17 [
-    Transcript show: 'Me: Damn! I guess I need a weapon to best that guy. Maybe a baton will do?'; cr
+    Transcript show: '<I wake up in the Medic Bay>'; cr
 ]
 
 CommunicatesService >> talkToBandit_18 [
-    Transcript show: '<The bandit''s strike rendered me unconscious>'; cr
+    Transcript show: 'Me: Damn! I guess I need a weapon to best that guy. Maybe a baton will do?'; cr
 ]
 
 CommunicatesService >> talkToBandit_19 [
+    Transcript show: '<The bandit''s strike rendered me unconscious>'; cr
+]
+
+CommunicatesService >> talkToBandit_20 [
     Transcript show: 'Me: Damn! I guess having a baton isn''t enough. I need some protection. Myabe a helmet will do?'; cr
+]
+
+CommunicatesService >> talkToBandit_21 [
+    Transcript show: 'Me: Damn! He easliy overpowered me! I need a weapon to match him. Maybe a baton will do?'; cr
 ]
 
 "============================================================================================================"
