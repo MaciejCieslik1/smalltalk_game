@@ -83,3 +83,7 @@ Chef >> cOptionHandling: [
     communicatesService talkToChef_wayEastAcessible
     roomService openMiddlePassRooms
 ]
+
+Chef >> openedRoomsInteraction: [
+    communicatesService authorized
+]
