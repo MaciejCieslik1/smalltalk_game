@@ -482,11 +482,11 @@ CommunicatesService >> talkToGuard4_13 [
     Transcript show: 'Me: Both guards down, means I can finally face my target.'; cr
 ]
 
-CommunicatesService >> talkToGuard4_15 [
+CommunicatesService >> talkToGuard4_14 [
     Transcript show: 'Me: One bullet left. Good God lend me thy strength.'; cr
 ]
 
-CommunicatesService >> talkToGuard4_16 [
+CommunicatesService >> talkToGuard4_15 [
     Transcript show: '<Guard4 shot me in the stomach. I am heavily wounded.>'; cr
 ]
 
