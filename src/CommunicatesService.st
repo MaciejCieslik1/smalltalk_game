@@ -685,3 +685,29 @@ CommunicatesService >> talkToSoldier_13 [
 CommunicatesService >> talkToWaiter_1 [
     Transcript show: 'Waiter: Good day to you sir!'; cr
 ]
+
+"============================================================================================================"
+
+CommunicatesService >> hitlerShot [
+    Transcript show: 'You killed Hitler. (shot him in the heart)'; cr
+]
+
+CommunicatesService >> hitlerPoisoned [
+    Transcript show: 'You killed Hitler. (he died of poisoning)'; cr
+]
+
+CommunicatesService >> thanks [
+    Transcript show: 'Thanks!'; cr
+]
+
+CommunicatesService >> hitlerPoisoned [
+    Transcript show: 'Oh and for playing the game we thank you as well!'; cr
+]
+
+CommunicatesService >> hitlerPoisoned [
+    Transcript show: '<GAME OVER>'; cr
+]
+
+CommunicatesService >> hitlerPoisoned [
+    Transcript show: '<type ''quit'' to quit>'; cr
+]
