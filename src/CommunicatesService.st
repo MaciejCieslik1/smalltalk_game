@@ -228,10 +228,6 @@ CommunicatesService >> talkToGuard_wayNorthAccessible [
     Transcript show: '<A way north is now accesible.>'; cr
 ]
 
-CommunicatesService >> talkToGuard1_9 [
-    Transcript show: 'Guard: Guten Tag, Herr Gollmer!'; cr
-]
-
 "============================================================================================================"
 
 CommunicatesService >> talkToGuard2_1 [
@@ -710,4 +706,10 @@ CommunicatesService >> hitlerPoisoned [
 
 CommunicatesService >> hitlerPoisoned [
     Transcript show: '<type ''quit'' to quit>'; cr
+]
+
+"============================================================================================================"
+
+CommunicatesService >> authorized [
+    Transcript show: 'Guard: Guten Tag, Herr Gollmer!'; cr
 ]
