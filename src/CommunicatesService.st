@@ -95,30 +95,34 @@ CommunicatesService >> talkToChef_2 [
 ]
 
 CommunicatesService >> talkToChef_3 [
-    Transcript show: 'Me: I don''t have one.'; cr
+    Transcript show: '   a. I don''t have one.'; cr
 ]
 
 CommunicatesService >> talkToChef_4 [
-    Transcript show: 'Chef: Oh, that''s most unfortunate. Come back when you have a pass.'; cr
+    Transcript show: 'Me: I don''t have one.'; cr
 ]
 
 CommunicatesService >> talkToChef_5 [
-    Transcript show: '   b. Here it is. (id)'; cr
+    Transcript show: 'Chef: Oh, that''s most unfortunate. Come back when you have a pass.'; cr
 ]
 
 CommunicatesService >> talkToChef_6 [
-    Transcript show: 'Chef: That pass won''t do here. You need at least a mid-rank pass.'; cr
+    Transcript show: '   b. Here it is. (id)'; cr
 ]
 
 CommunicatesService >> talkToChef_7 [
-    Transcript show: '   c. Here it is. (mid-rank pass)'; cr
+    Transcript show: 'Chef: That pass won''t do here. You need at least a mid-rank pass.'; cr
 ]
 
 CommunicatesService >> talkToChef_8 [
-    Transcript show: 'Me: Here it is.'; cr
+    Transcript show: '   c. Here it is. (mid-rank pass)'; cr
 ]
 
 CommunicatesService >> talkToChef_9 [
+    Transcript show: 'Me: Here it is.'; cr
+]
+
+CommunicatesService >> talkToChef_10 [
     Transcript show: 'Chef: You may pass.'; cr
 ]
 
