@@ -2,7 +2,9 @@ Character subclass: #Npc
     instanceVariableNames: 'rank'
 
 Npc >> initialize: newName newRank newLocation newIsKillable [
-    super initialize newName newLocation newIsKillable
+    super initialize: newName 
+        location: newLocation
+        isKillable: newIsKillable
     rank := newRank
 ]
 
