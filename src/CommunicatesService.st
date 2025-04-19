@@ -290,6 +290,10 @@ CommunicatesService >> talkToGuard2_14 [
     Transcript show: 'Guard: Hmmm, alright. But be quick with it!'; cr
 ]
 
+CommunicatesService >> talkToGuard2_15 [
+    Transcript show: 'Me: Here it is.'; cr
+]
+
 "============================================================================================================"
 
 CommunicatesService >> talkToGuard3_1 [
