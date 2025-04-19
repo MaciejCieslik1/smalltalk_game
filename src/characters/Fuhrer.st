@@ -46,3 +46,7 @@ Fuhrer >> endingDialogue: [
     inputService inputCharacter: ('a').
     communicatesService talkToFuhrer_13s
 ]
+
+Fuhrer >> fuhrerKilled: [
+    self isAlive: false
+]
