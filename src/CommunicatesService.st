@@ -162,34 +162,30 @@ CommunicatesService >> talkToFuhrer_6 [
 ]
 
 CommunicatesService >> talkToFuhrer_7 [
-    Transcript show: '   c. Here it is. (mid-rank pass)'; cr
-]
-
-CommunicatesService >> talkToFuhrer_8 [
     Transcript show: 'Me: I am not one of your soldier. I am an American spy and came here to kill you.'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_9 [
-    Transcript show: 'I am here to end this war, by putting a bullet in your skull.'; cr
+CommunicatesService >> talkToFuhrer_8 [
+    Transcript show: 'Me: I am here to end this war, by putting a bullet in your skull.'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_10 [
+CommunicatesService >> talkToFuhrer_9 [
     Transcript show: 'Adolf Hitler: Oh NEIN! Why would you do such a thing? Please do not kill me!'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_11 [
+CommunicatesService >> talkToFuhrer_10 [
     Transcript show: 'Me: Too late, you monster. Now, pay for your sins!'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_12 [
+CommunicatesService >> talkToFuhrer_11 [
     Transcript show: '(Choose action)'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_13 [
+CommunicatesService >> talkToFuhrer_12 [
     Transcript show: '   a. Shoot Hitler'; cr
 ]
 
-CommunicatesService >> talkToFuhrer_14 [
+CommunicatesService >> talkToFuhrer_13 [
     Transcript show: '<I shot Adolf Hitler dead>'; cr
 ]
 
