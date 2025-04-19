@@ -4,7 +4,7 @@ Chef >> initialize: [
     super initialize 'chef' civil cafateria false
 ]
 
-Chef >> conversationWithHero: [
+Chef >> interaction: [
     self introductionDialogue
     self showDialogueOptions
     self dialogueOptionHandling 

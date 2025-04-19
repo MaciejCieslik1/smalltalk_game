@@ -7,7 +7,7 @@ Bandit >> initialize: [
         isKillable: true
 ]
 
-Bandit >> attackHero: [
+Bandit >> interaction: [
     bandit introductionDialogue
     (hero hasItem: helmet)
     ifTrue: [
