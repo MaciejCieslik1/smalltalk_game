@@ -81,7 +81,7 @@ Chef >> cOptionHandling: [
     communicatesService talkToChef_9
     communicatesService talkToBandit_10
     communicatesService talkToChef_wayEastAcessible
-    roomService openMiddlePassRooms
+    roomService openKitchen
 ]
 
 Chef >> openedRoomsInteraction: [
