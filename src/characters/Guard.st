@@ -1,8 +1,11 @@
 Npc subclass: #Guard
     instanceVariableNames: 'hasPermission'
 
-Guard >> initialize: newName newLocation [
-    super initialize newName private newLocation true
+Guard >> initialize: newName newLocation isKillable[
+    super initialize: newName 
+        rank: private 
+        location: newLocation 
+        isKillable: isKillable
     hasPermission := false
 ]
 

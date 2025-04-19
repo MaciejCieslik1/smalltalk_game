@@ -1,7 +1,9 @@
 Guard subclass: #Guard1
 
 Guard1 >> initialize: [
-    super initialize 'guard1' private securityCheckEntry true
+    super initialize: 'guard1' 
+        location: securityCheckEntry 
+        isKillable: true
 ]
 
 Guard1 >> interaction: [
@@ -40,17 +42,17 @@ Guard1 >> hasIdDialogueOptionHandling: [
     ]
 ]
 
-Guard >> aOptionHandling: [
+Guard1 >> aOptionHandling: [
     communicatesService talkToGuard1_5
 ]
 
-Guard >> bOptionHandling: [
+Guard1 >> bOptionHandling: [
     communicatesService talkToGuard_HereItIs
     communicatesService talkToGuard1_8
     communicatesService talkToGuard_wayNorthAccessible
     roomService openIdRooms
 ]
 
-Guard >> openedRoomsInteraction: [
+Guard1 >> openedRoomsInteraction: [
     communicatesService authorized
 ]
