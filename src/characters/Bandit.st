@@ -71,7 +71,7 @@ Bandit >> figthUsingFists: [
     communicatesService talkToBandit_16
     communicatesService talkToBandit_17
     communicatesService talkToBandit_18
-    hero heroKilled
+    hero getWounded
 ]
 
 Bandit >> banditKilled: [
