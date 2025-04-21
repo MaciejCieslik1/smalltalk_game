@@ -55,3 +55,17 @@ Hero >> createInfo [
             'Items: ', (self items joinSeparatedBy: ', '), String cr.
     ^ info
 ]
+
+Hero >> hasEnoughMoney: moneyAmount [
+    self money amount >= moneyAmount
+    ifTrue: [
+        ^ true
+    ]
+    ifFalse: [
+        ^ false
+    ]
+]
+
+Hero >> subtractMoney: moneyAmount [
+    self money: (self money - moneyAmount)
+]
