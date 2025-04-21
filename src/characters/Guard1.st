@@ -7,6 +7,16 @@ Guard1 >> initialize: [
 ]
 
 Guard1 >> interaction: [
+    (self hasPermission)
+    ifTrue: [
+        communicatesService authorized
+    ]
+    ifFalse: [
+        self conversation
+    ]
+]
+
+Guard1 >> conversation [
     self introductionDialogue
     self showDialogueOptions
 ]

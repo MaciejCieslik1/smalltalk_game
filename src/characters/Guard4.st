@@ -7,6 +7,16 @@ Guard4 >> initialize: [
 ]
 
 Guard4 >> interaction: [
+    (self hasPermission)
+    ifTrue: [
+        communicatesService authorized
+    ]
+    ifFalse: [
+        self conversation
+    ]
+]
+
+Guard4 >> conversation [
     self introductionDialogue
     self chooseDialogueOption
 ]

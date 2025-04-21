@@ -1,12 +1,24 @@
 Guard subclass: #Guard2
+    instanceVariableNames: 'hasHigherPermission'
 
 Guard2 >> initialize: [
     super initialize: 'guard2'
         location: securityCheckOffices 
         isKillable: false
+    hasHigherPermission: false
 ]
 
-Guard2 >> interaction: [
+Guard2 >> interaction [
+    (self hasPermission and self hasHigherPermission)
+    ifTrue: [
+        communicatesService authorized
+    ]
+    ifFalse: [
+        self conversation
+    ]
+]
+
+Guard3 conversation: [
     self introductionDialogue
     self showDialogueOptions
 ]
