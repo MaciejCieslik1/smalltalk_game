@@ -44,7 +44,7 @@ Fuhrer >> endingDialogue: [
     communicatesService talkToFuhrer_11
     communicatesService talkToFuhrer_12
     inputService inputCharacter: ('a').
-    communicatesService talkToFuhrer_13s
+    communicatesService talkToFuhrer_13
 ]
 
 Fuhrer >> fuhrerKilled: [
