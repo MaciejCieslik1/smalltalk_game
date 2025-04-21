@@ -496,22 +496,6 @@ CommunicatesService >> talkToYourself_1 [
     Transcript show: '<I cannot talk to a corpse, now can I?>'; cr
 ]
 
-CommunicatesService >> talkToYourself_2 [
-    Transcript show: '<I pulled the lever>'; cr
-]
-
-CommunicatesService >> talkToYourself_3 [
-    Transcript show: '<I hear rumbling. I think this might have opened a secret door>'; cr
-]
-
-CommunicatesService >> talkToYourself_4 [
-    Transcript show: '<I already pulled this lever>'; cr
-]
-
-CommunicatesService >> talkToYourself_5 [
-    Transcript show: '<I cannot interact with this>'; cr
-]
-
 CommunicatesService >> talkToYourself_6 [
     Transcript show: 'You killed Hitler. (shot him in the heart)'; cr
 ]
@@ -547,82 +531,98 @@ CommunicatesService >> talkToSalesman_2 [
 ]
 
 CommunicatesService >> talkToSalesman_3 [
-    Transcript show: '   b. A bulletproof vest'; cr
+    Transcript show: '   a. A gun'; cr
 ]
 
 CommunicatesService >> talkToSalesman_4 [
-    Transcript show: '   c. I am not looking for anything'; cr
+    Transcript show: '   b. A bulletproof vest'; cr
 ]
 
 CommunicatesService >> talkToSalesman_5 [
-    Transcript show: 'Me: A gun'; cr
+    Transcript show: '   c. I am not looking for anything'; cr
 ]
 
 CommunicatesService >> talkToSalesman_6 [
-    Transcript show: 'Me: A bulletproof vest'; cr
+    Transcript show: '   a. A bulletproof vest'; cr
 ]
 
 CommunicatesService >> talkToSalesman_7 [
-    Transcript show: 'Me: I am not looking for anything'; cr
+    Transcript show: '   b. I am not looking for anything'; cr
 ]
 
 CommunicatesService >> talkToSalesman_8 [
-    Transcript show: 'Salesman: Ho ho, this is a premium product. Give me amber, and I''ll hand you this gun.'; cr
+    Transcript show: '   a. I am not looking for anything'; cr
 ]
 
 CommunicatesService >> talkToSalesman_9 [
-    Transcript show: '   a) It''s a deal!'; cr
+    Transcript show: 'Me: A gun'; cr
 ]
 
 CommunicatesService >> talkToSalesman_10 [
-    Transcript show: '   b) I changed my mind.'; cr
+    Transcript show: 'Me: A bulletproof vest'; cr
 ]
 
 CommunicatesService >> talkToSalesman_11 [
-    Transcript show: 'Me: It''s a deal!'; cr
+    Transcript show: 'Me: I am not looking for anything'; cr
 ]
 
 CommunicatesService >> talkToSalesman_12 [
-    Transcript show: 'Me: Only three bullets. I have to make each one count.'; cr
+    Transcript show: 'Salesman: Ho ho, this is a premium product. Give me amber, and I''ll hand you this gun.'; cr
 ]
 
 CommunicatesService >> talkToSalesman_13 [
-    Transcript show: 'Me: I changed my mind.'; cr
+    Transcript show: '   a) It''s a deal!'; cr
 ]
 
 CommunicatesService >> talkToSalesman_14 [
-    Transcript show: '   a. I don''t have an amber.'; cr
+    Transcript show: '   b) I changed my mind.'; cr
 ]
 
 CommunicatesService >> talkToSalesman_15 [
-    Transcript show: 'Me: I don''t have an amber'; cr
+    Transcript show: 'Me: It''s a deal!'; cr
 ]
 
 CommunicatesService >> talkToSalesman_16 [
-    Transcript show: 'Salesman: This amazing bulletproof vest can be yours for only 1000 Reichmarks. A bargain!'; cr
+    Transcript show: 'Me: Only three bullets. I have to make each one count.'; cr
 ]
 
 CommunicatesService >> talkToSalesman_17 [
-    Transcript show: '<I just purchased a bulletproof vest for a 1000 Reichmarks>'; cr
+    Transcript show: 'Me: I changed my mind.'; cr
 ]
 
 CommunicatesService >> talkToSalesman_18 [
-    Transcript show: '   a. I don''t have that much money.'; cr
+    Transcript show: '   a. I don''t have an amber.'; cr
 ]
 
 CommunicatesService >> talkToSalesman_19 [
-    Transcript show: 'Me: I don''t have that much money.'; cr
+    Transcript show: 'Me: I don''t have an amber'; cr
 ]
 
 CommunicatesService >> talkToSalesman_20 [
-    Transcript show: 'Salesman: Here you go, hope it serves you well.'; cr
+    Transcript show: 'Salesman: This amazing bulletproof vest can be yours for only 1000 Reichmarks. A bargain!'; cr
 ]
 
 CommunicatesService >> talkToSalesman_21 [
-    Transcript show: 'Salesman: I''m not running a charity, come back with amber!'; cr
+    Transcript show: '<I just purchased a bulletproof vest for a 1000 Reichmarks>'; cr
 ]
 
 CommunicatesService >> talkToSalesman_22 [
+    Transcript show: '   a. I don''t have that much money.'; cr
+]
+
+CommunicatesService >> talkToSalesman_23 [
+    Transcript show: 'Me: I don''t have that much money.'; cr
+]
+
+CommunicatesService >> talkToSalesman_24 [
+    Transcript show: 'Salesman: Here you go, hope it serves you well.'; cr
+]
+
+CommunicatesService >> talkToSalesman_25 [
+    Transcript show: 'Salesman: I''m not running a charity, come back with amber!'; cr
+]
+
+CommunicatesService >> talkToSalesman_26 [
     Transcript show: 'Salesman: I''m not running a charity, come back with money!'; cr
 ]
 
