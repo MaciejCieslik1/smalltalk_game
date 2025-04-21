@@ -5,7 +5,11 @@ Barracs >> initialize [
         isAccessible: false
         hasItem: true
         itemsList: (OrderedCollection new)
-    itemsList add: baton
         npcList: (OrderedCollection new).
+        adjacentWest: nullRoom
+        adjacentSouth: socialRoom
+        adjacentEast: nullRoom
+        adjacentNorth: nullRoom
+    itemsList add: baton
     npcList add: soldier.
 ]

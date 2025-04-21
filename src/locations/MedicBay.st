@@ -5,6 +5,10 @@ MedicBay >> initialize [
         isAccessible: false
         hasItem: true
         itemsList: (OrderedCollection new).
+        adjacentWest: nullRoom
+        adjacentSouth: nullRoom
+        adjacentEast: nullRoom
+        adjacentNorth: cafeteria
     itemsList add: bandage
     itemsList add: vitamins.
     itemsList add: chloroform

@@ -5,7 +5,11 @@ Kitchen >> initialize [
         isAccessible: false
         hasItem: true
         itemsList: (OrderedCollection new)
-    itemsList add: money2
         npcList: (OrderedCollection new)
+        adjacentWest: cafeteria
+        adjacentSouth: nullRoom
+        adjacentEast: nullRoom
+        adjacentNorth: foodStorage
+    itemsList add: money2
     npcList add: waiter.
 ]
