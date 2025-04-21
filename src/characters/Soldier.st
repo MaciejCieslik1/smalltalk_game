@@ -1,5 +1,5 @@
 Npc subclass: #Soldier
-    instanceVariableNames: 'items'
+    instanceVariableNames: 'items hasPlayedCards'
 
 Soldier >> initialize: [
     super initialize 'soldier' private barracks false
