@@ -62,6 +62,7 @@ Guard2 >> bOptionWaiter: [
     communicatesService talkToGuard2_13
     communicatesService talkToGuard2_14
     communicatesService talkToGuard2_wayWestAccessible
+    roomService openOffices
 ]
 
 Guard2 >> usedMilitaryUniform: [
