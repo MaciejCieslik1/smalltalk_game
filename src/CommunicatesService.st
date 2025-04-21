@@ -490,38 +490,6 @@ CommunicatesService >> talkToGuard4_15 [
     Transcript show: '<Guard4 shot me in the stomach. I am heavily wounded.>'; cr
 ]
 
-"============================================================================================================"
-
-CommunicatesService >> talkToYourself_1 [
-    Transcript show: '<I cannot talk to a corpse, now can I?>'; cr
-]
-
-CommunicatesService >> talkToYourself_6 [
-    Transcript show: 'You killed Hitler. (shot him in the heart)'; cr
-]
-
-CommunicatesService >> talkToYourself_7 [
-    Transcript show: 'You killed Hitler. (he died of poisoning)'; cr
-]
-
-CommunicatesService >> talkToYourself_8 [
-    Transcript show: 'Thanks!'; cr
-]
-
-CommunicatesService >> talkToYourself_9 [
-    Transcript show: 'Oh and for playing the game we thank you as well!'; cr
-]
-
-CommunicatesService >> talkToYourself_10 [
-    Transcript show: '<GAME OVER>'; cr
-]
-
-CommunicatesService >> talkToYourself_11 [
-    Transcript show: '<type ''quit'' to quit>'; cr
-]
-
-"============================================================================================================"
-
 CommunicatesService >> talkToSalesman_1 [
     Transcript show: 'Salesman: Greetings, soldier. What are you looking for?'; cr
 ]
@@ -624,6 +592,10 @@ CommunicatesService >> talkToSalesman_25 [
 
 CommunicatesService >> talkToSalesman_26 [
     Transcript show: 'Salesman: I''m not running a charity, come back with money!'; cr
+]
+
+CommunicatesService >> talkToSalesman_27 [
+    Transcript show: '<I just traded for a gun>'; cr
 ]
 
 "============================================================================================================"
