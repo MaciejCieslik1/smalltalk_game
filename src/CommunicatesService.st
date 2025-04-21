@@ -717,3 +717,17 @@ CommunicatesService >> hitlerPoisoned [
 CommunicatesService >> authorized [
     Transcript show: 'Guard: Guten Tag, Herr Gollmer!'; cr
 ]
+
+"============================================================================================================"
+
+CommunicatesService >> leverPulled [
+    Transcript show: '<I pulled the lever>'; cr
+]
+
+CommunicatesService >> leverRumbling [
+    Transcript show: '<I hear rumbling. I think this might have opened a secret door>'; cr
+]
+
+CommunicatesService >> leverAlreadyPulled [
+    Transcript show: '<I already pulled this lever>'; cr
+]
