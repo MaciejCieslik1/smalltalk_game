@@ -660,6 +660,13 @@ CommunicatesService >> talkToWaiter_1 [
 
 "============================================================================================================"
 
+CommunicatesService >> authorized [
+    Transcript show: 'Guard: Guten Tag, Herr Gollmer!'; cr
+]
+
+"============================================================================================================"
+
+
 CommunicatesService >> hitlerShot [
     Transcript show: 'You killed Hitler. (shot him in the heart)'; cr
 ]
@@ -686,12 +693,6 @@ CommunicatesService >> hitlerPoisoned [
 
 "============================================================================================================"
 
-CommunicatesService >> authorized [
-    Transcript show: 'Guard: Guten Tag, Herr Gollmer!'; cr
-]
-
-"============================================================================================================"
-
 CommunicatesService >> leverPulled [
     Transcript show: '<I pulled the lever>'; cr
 ]
@@ -702,4 +703,10 @@ CommunicatesService >> leverRumbling [
 
 CommunicatesService >> leverAlreadyPulled [
     Transcript show: '<I already pulled this lever>'; cr
+]
+
+"============================================================================================================"
+
+CommunicatesService >> roomLocked [
+    Transcript show: '<That way is locked! (for now)>'; cr
 ]
