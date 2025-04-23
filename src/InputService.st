@@ -23,7 +23,7 @@ InputService >> inputCommand
 
     parts := inputString substrings: ' '.
     parts size = 2 ifFalse: [ 
-        communicatesService incorrectInput.
+        communicatesService invalidCommand.
         ^ Array with: '0' with: '0'
     ].
 
@@ -35,6 +35,6 @@ InputService >> inputCommand
          ^ Array with: command with: argument 
     ]
     ifFalse: [
-        communicatesService incorrectInput.
+        communicatesService invalidCommand.
         ^ Array with: '0' with: '0'
     ].
