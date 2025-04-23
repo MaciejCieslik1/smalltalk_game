@@ -56,7 +56,7 @@ Movement >> checkAdjacentRoom: adjacentRoom [
 Movement >> checkIfAccessible: adjacentRoom [
     (adjacentRoom isAccessible = true)
     ifTrue: [
-        hero moveToheRoom: adjacentRoom
+        hero moveTotheRoom: adjacentRoom
     ]
     ifFalse: [
         communicatesService roomLocked
