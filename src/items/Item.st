@@ -21,3 +21,8 @@ Item >> location [
 Item >> location: newLocation [
     location := newLocation
 ]
+
+Item >> pickUp [
+    hero addItem: self
+    self location removeItem: self
+]
