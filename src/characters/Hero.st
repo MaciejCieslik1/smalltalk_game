@@ -82,3 +82,48 @@ Hero >> moveTotheRoom: room [
 Hero >> getWounded [
     self moveTotheRoom: medicBay
 ]
+
+Hero >> attack: target [
+    (target = 'guard1')
+    ifTrue: [
+        self attackGuard1
+    ]
+    (target = 'guard3')
+    ifTrue: [
+        self attackGuard3
+    ]
+    (target = 'guard4')
+    ifTrue: [
+        self attackGuard4
+    ]
+]
+
+Hero >> attackGuard1 [
+    (hero hasItem: baton)
+    ifTrue: [
+        guard1 attacked
+    ]
+    ifFalse: [
+        communicatesService attackNoBaton
+    ]
+]
+
+Hero >> attackGuard3 [
+    (hero hasItem: gun)
+    ifTrue: [
+        guard3 attacked
+    ]
+    ifFalse: [
+        communicatesService attackNoGun
+    ]
+]
+
+Hero >> attackGuard4 [
+    (hero hasItem: gun)
+    ifTrue: [
+        guard4 attacked
+    ]
+    ifFalse: [
+        communicatesService attackNoGun
+    ]
+]
