@@ -711,6 +711,10 @@ CommunicatesService >> roomLocked [
     Transcript show: '<That way is locked! (for now)>'; cr
 ]
 
+CommunicatesService >> noRoom [
+    Transcript show: '<There is no room>'; cr
+] 
+
 CommunicatesService >> wrongNpcName [
     Transcript show: '<No NPC with this name>'; cr
 ]
@@ -757,4 +761,10 @@ CommunicatesService >> printItems: itemsList [
     ].
 ]
 
-"============================================================================================================"
+CommunicatesService >> chooseAction [
+    Transcript show: 'Choose action: ';
+]
+
+CommunicatesService >> incorrectInput [
+    Transcript show: 'Incorect input'; cr
+]
