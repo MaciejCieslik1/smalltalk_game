@@ -710,3 +710,47 @@ CommunicatesService >> leverAlreadyPulled [
 CommunicatesService >> roomLocked [
     Transcript show: '<That way is locked! (for now)>'; cr
 ]
+
+CommunicatesService >> wrongNpcName [
+    Transcript show: '<No NPC with this name>'; cr
+]
+
+CommunicatesService >> wrongItemName [
+    Transcript show: '<No item with this name>'; cr
+]
+
+CommunicatesService >> npcDead [
+    Transcript show: '<I cannot talk to a corpse, now can I?>'; cr
+]
+
+CommunicatesService >> pickItem: itemName [
+    Transcript show: '<I picked up: (' , itemName , ')>'; cr.
+]
+
+CommunicatesService >> cannotPickItem [
+    Transcript show: '<I cannot pick that item>'; cr
+]
+
+CommunicatesService >> printString: string [
+    Transcript show: string.
+]
+
+CommunicatesService >> printStringNewLine: string [
+    Transcript show: string; cr.
+]
+
+CommunicatesService >> printNpcs: npcLIst [
+    Transcript show: 'Npcs: '.
+    self npcList do: [:npc |
+        Transcript show: npc name , ' '.
+    ].
+]
+
+CommunicatesService >> printItems: itemsList [
+    Transcript show: 'Items: '.
+    self itemsList do: [:item |
+        Transcript show: item name , ' '.
+    ].
+]
+
+"============================================================================================================"
