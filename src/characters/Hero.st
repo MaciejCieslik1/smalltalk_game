@@ -73,3 +73,12 @@ Hero >> addMoney: moneyAmount [
 Hero >> subtractMoney: moneyAmount [
     self money: (self money - moneyAmount)
 ]
+
+Hero >> moveTotheRoom: room [
+    self location: room
+    room heroWalkedIn
+]
+
+Hero >> getWounded [
+    self moveTotheRoom: medicBay
+]
