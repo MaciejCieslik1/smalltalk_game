@@ -15,6 +15,10 @@ Lever >> isPulled: newIsPulled [
     isPulled := newIsPulled
 ]
 
+Lever pickUp [
+    communicatesService cannotPickUpItem
+]
+
 Lever >> interact [
     (self isPulled)
     ifTrue: [
