@@ -23,6 +23,41 @@ NpcRoom >> npcList: newNpcList [
     npcList := newNpcList
 ]
 
-NpcRoom >> hasNpc: npc [
+NpcRoom >> hasNpcObject: npc [
     ^ self npcList include: npc
+]
+
+NpcRoom >> hasNpcName: npcName [
+    ^ self npcList anySatisfy: [:npc | npc name = npcName].
+]
+
+NpcRoom >> findNpcByName: npcName [
+    ^ self npcList detect: [:npc | npc name = npcName]
+]
+
+NpcRoom >> roomInfo [
+    super roomInfo
+    communicatesService printNpcs
+]
+
+NpcRoom >> talkToNpc: npcName [
+    (self hasNpcName: npcName)
+    ifTrue: [
+        self correctNpcName: npcName
+    ]
+    ifFalse: [
+        communicatesService wrongNpcName
+    ]
+]
+
+NpcRoom >> correctNpcName: npcName [
+    | npc |
+    npc := self findNpcByName: npcName
+    (npc isAlive)
+    ifTrue: [
+        npc interaction
+    ]
+    ifFalse: [
+        communicatesService npcDead
+    ]
 ]

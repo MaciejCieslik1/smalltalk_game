@@ -85,3 +85,42 @@ Room >> adjacentSouth [
 Room >> adjacentSouth: newAdjacentSouth [
     adjacentSouth := newAdjacentSouth
 ]
+
+Room >> hasItemName: itemName [
+    ^ self itemsList anySatisfy: [:item | item name = itemName].
+]
+
+Room >> findItemByName: itemName [
+    ^ self itemsList detect: [:item | item name = itemName]
+]
+
+Room >> removeItem: item [
+    itemsList remove: item
+]
+
+Room >> roomInfo [
+    communicatesService printStringNewLine: self name
+    communicatesService printItems
+]
+
+Room >> pickUpItem: itemName [
+    (self hasItemName: itemName)
+    ifTrue: [
+        self correctItemName: itemName
+    ]
+    ifFalse: [
+        communicatesService wrongItemName
+    ]
+]
+
+Room >> correctItemName: itemName [
+    | item |
+    item := self findItemByName: itemName
+    (itemName = 'lever')
+    ifTrue: [
+        item interact
+    ]
+    ifFalse: [
+        item pickUp
+    ]
+]
