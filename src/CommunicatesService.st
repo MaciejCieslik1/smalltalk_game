@@ -727,8 +727,12 @@ CommunicatesService >> pickItem: itemName [
     Transcript show: '<I picked up: (' , itemName , ')>'; cr.
 ]
 
-CommunicatesService >> cannotPickItem [
+CommunicatesService >> cannotPickUpItem [
     Transcript show: '<I cannot pick that item>'; cr
+]
+
+CommunicatesService >> cannotInteractWithItem [
+    Transcript show: '<I cannot interact with this item>'; cr
 ]
 
 CommunicatesService >> printString: string [
