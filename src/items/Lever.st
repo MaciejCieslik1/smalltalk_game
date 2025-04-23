@@ -1,8 +1,9 @@
 Item subclass: #Lever
     instanceVariableNames: 'isPulled'
 
-Lever >> initialize: newName [
-    super initialize: 'lever'
+Lever >> initialize: newName newLocation[
+    super initialize: 'lever' 
+        location: archives
     isPulled := false
 ]
 

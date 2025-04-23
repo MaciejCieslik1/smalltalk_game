@@ -1,8 +1,8 @@
 Item subclass: #Money
     instanceVariableNames: 'amount'
 
-Money >> initialize: newName newAmount [
-    super initialize: newName
+Money >> initialize: newName newLocation newAmount [
+    super initialize: newName newLocation
     amount := newAmount
 ]
 

@@ -1,8 +1,9 @@
 Object subclass: #Item
-    instanceVariableNames: 'name'
+    instanceVariableNames: 'name location'
 
-Item >> initialize: newName [
+Item >> initialize: newName newLocation [
     name := newName.
+    location := newLocation.
 ]
 
 Item >> name [
@@ -11,4 +12,12 @@ Item >> name [
 
 Item >> name: newName [
     name := newName
+]
+
+Item >> location [
+    ^ location
+]
+
+Item >> location: newLocation [
+    location := newLocation
 ]

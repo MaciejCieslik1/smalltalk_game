@@ -1,8 +1,8 @@
 Item subclass: #Juice
     instanceVariableNames: 'isPoisoned'
 
-Juice >> initialize: newName newIsPoisoned [
-    super initialize: newName
+Juice >> initialize: newName newLocation newIsPoisoned [
+    super initialize: newName newLocation
     isPoisoned := newIsPoisoned
 ]
 
