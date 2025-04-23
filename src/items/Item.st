@@ -26,3 +26,7 @@ Item >> pickUp [
     hero addItem: self
     self location removeItem: self
 ]
+
+Item >> interact [
+    communicatesService cannotInteractWithItem
+]
