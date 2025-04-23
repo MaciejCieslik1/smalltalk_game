@@ -13,3 +13,8 @@ Money >> amount [
 Money >> amount: newAmount [
     amount := newAmount
 ]
+
+Money >> pickUp [
+    hero addMoney: self amount
+    self location removeItem: self
+]
