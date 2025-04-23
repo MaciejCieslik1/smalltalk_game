@@ -66,6 +66,10 @@ Hero >> hasEnoughMoney: moneyAmount [
     ]
 ]
 
+Hero >> addMoney: moneyAmount [
+    self money: (self money + moneyAmount)
+]
+
 Hero >> subtractMoney: moneyAmount [
     self money: (self money - moneyAmount)
 ]
