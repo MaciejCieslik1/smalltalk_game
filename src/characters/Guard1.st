@@ -66,3 +66,14 @@ Guard1 >> bOptionHandling: [
 Guard1 >> openedRoomsInteraction: [
     communicatesService authorized
 ]
+
+Guard1 >> attacked [
+    self guardKilled
+    communicatesService killedGuard1
+    communicatesService stealMidRankPass
+    communicatesService accessToArmory
+]
+
+Guard3 >> guardKilled: [
+    self isAlive: false
+]

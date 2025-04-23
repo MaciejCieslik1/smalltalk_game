@@ -85,7 +85,12 @@ Guard3 >> deliverDrink: [
     roomService openKitchenExit
 ]
 
+Guard3 >> attacked [
+    self guardKilled
+    communicatesService killedGuard3
+    guard4 interactionShooting
+]
+
 Guard3 >> guardKilled: [
     self isAlive: false
 ]
-

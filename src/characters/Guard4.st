@@ -99,6 +99,12 @@ Guard4 >> notUsedVest: [
     hero getWounded
 ]
 
+Guard3 >> attacked [
+    self guardKilled
+    communicatesService killedGuard4
+    guard3 interactionShooting
+]
+
 Guard4 >> guardKilled: [
     self isAlive: false
 ]
