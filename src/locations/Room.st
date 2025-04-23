@@ -106,21 +106,22 @@ Room >> roomInfo [
 Room >> pickUpItem: itemName [
     (self hasItemName: itemName)
     ifTrue: [
-        self correctItemName: itemName
+        item := self findItemByName: itemName
+        item pickUp
     ]
     ifFalse: [
         communicatesService wrongItemName
     ]
 ]
 
-Room >> correctItemName: itemName [
+Room >> interactWithItem: itemName [
     | item |
-    item := self findItemByName: itemName
-    (itemName = 'lever')
+    (self hasItemName: itemName)
     ifTrue: [
+        item := self findItemByName: itemName
         item interact
     ]
     ifFalse: [
-        item pickUp
+        communicatesService wrongItemName
     ]
 ]
