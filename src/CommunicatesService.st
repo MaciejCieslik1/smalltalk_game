@@ -707,6 +707,28 @@ CommunicatesService >> leverAlreadyPulled [
 
 "============================================================================================================"
 
+CommunicatesService >> killedGuard1 [
+    Transcript show: '<I just killed guard1>'; cr
+]
+
+CommunicatesService >> stealMidRankPass [
+    Transcript show: 'Me: OH! He has a mid-rank pass on his belt. He now does not need it, but me...'; cr
+]
+
+CommunicatesService >> accessToArmory [
+    Transcript show: 'Me: And I think he won''t now mind me entering the armory.'; cr
+]
+
+CommunicatesService >> killedGuard3 [
+    Transcript show: '<I just killed guard3>'; cr
+]
+
+CommunicatesService >> killedGuard4 [
+    Transcript show: '<I just killed guard4>'; cr
+]
+
+"============================================================================================================"
+
 CommunicatesService >> roomLocked [
     Transcript show: '<That way is locked! (for now)>'; cr
 ]
@@ -767,4 +789,24 @@ CommunicatesService >> chooseAction [
 
 CommunicatesService >> incorrectInput [
     Transcript show: 'Incorect input'; cr
+]
+
+CommunicatesService >> invalidCommand [
+    Transcript show: 'Invalid command'; cr
+]
+
+CommunicatesService >> invalidArgument [
+    Transcript show: 'Invalid argument'; cr
+]
+
+CommunicatesService >> cannotAttackPerson [
+    Transcript show: '<I cannot attack this person>'; cr
+]
+
+CommunicatesService >> attackNoBaton [
+    Transcript show: '<Cannot attack guard, you haven''t got baton>'; cr
+]
+
+CommunicatesService >> attackNoGun [
+    Transcript show: '<Cannot attack guard, you haven''t got gun>'; cr
 ]
