@@ -924,3 +924,15 @@ CommunicatesService >> cannotDisplayInfo [
 CommunicatesService >> cannotDisplayDescription [
     Transcript show: '<I have no information about that item>'; cr
 ]
+
+CommunicatesService >> waiterKilled [
+    Transcript show: '<You killed the waiter>'; cr
+]
+
+CommunicatesService >> waiterStealUniformOption [
+    Transcript show: '   a. Steal his service uniform'; cr
+]
+
+CommunicatesService >> waiterStealUniform [
+    Transcript show: '<You stole waiter''s uniform and put it on>'; cr
+]
