@@ -96,6 +96,10 @@ Hero >> attack: target [
     ifTrue: [
         self attackGuard4
     ]
+    (target = 'waiter')
+    ifTrue: [
+        self attackWaiter
+    ]
 ]
 
 Hero >> attackGuard1 [
@@ -126,4 +130,18 @@ Hero >> attackGuard4 [
     ifFalse: [
         communicatesService attackNoGun
     ]
+]
+
+Hero >> attackWaiter [
+    (hero hasItem: baton)
+    ifTrue: [
+        waiter attacked
+    ]
+    ifFalse: [
+        communicatesService attackNoBaton
+    ]
+]
+
+Hero changeUniform: newUniform [
+    self uniform: newUniform
 ]
