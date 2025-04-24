@@ -30,3 +30,7 @@ Item >> pickUp [
 Item >> interact [
     communicatesService cannotInteractWithItem
 ]
+
+Item >> description [
+    " This method is overwritten by subclass "
+]

@@ -30,3 +30,7 @@ Lever >> interact [
         self isPulled: true
     ]
 ]
+
+Lever >> description [
+    communicatesService leverDescription
+]

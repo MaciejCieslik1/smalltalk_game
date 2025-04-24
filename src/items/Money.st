@@ -18,3 +18,7 @@ Money >> pickUp [
     hero addMoney: self amount
     self location removeItem: self
 ]
+
+Money >> description [
+    communicatesService moneyDescription: self amount
+]

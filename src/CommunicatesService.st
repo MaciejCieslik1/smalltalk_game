@@ -797,8 +797,8 @@ CommunicatesService >> amberDescription [
     Transcript show: 'A piece of amber. It is a rare stone, maybe I can trade it for something.'; cr
 ]
 
-CommunicatesService >> moneyDescription [
-    Transcript show: 'A pile of money. It can be used to buy something.'; cr
+CommunicatesService >> moneyDescription: amount [
+    Transcript show: 'A pile of money(' , amount asString , ') Reichmarks. It can be used to buy something.'; cr.
 ]
 
 CommunicatesService >> ragDescription [

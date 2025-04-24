@@ -13,3 +13,7 @@ Juice >> isPoisoned [
 Juice >> isPoisoned: newIsPoisoned [
     isPoisoned := newIsPoisoned
 ]
+
+Juice >> addPoison [
+
+]
