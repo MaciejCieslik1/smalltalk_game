@@ -24,6 +24,14 @@ ActionListener >> chooseAction [
     ifTrue: [
         self checkArgumentAttack: argument
     ]
+    (command = 'info')
+    ifTrue: [
+        self checkArgumentInfo: argument
+    ]
+    (command = 'description')
+    ifTrue: [
+        self checkArgumentDescription: argument
+    ]
 ]
 
 self >> checkArgumentGo: argument [
@@ -76,4 +84,25 @@ self >> checkArgumentAttack: argument [
     ifFalse: [
         communicatesService cannotAttackPerson
     ]
+]
+
+self >> checkArgumentInfo: argument [
+    | validArguments |
+    validArguments := #('bandit' 'chef' 'adolf' 'guard1' 'guard2' 'guard3' 'guard4' 'Johannes_Golmer' 'salesman' 'soldier' 'waiter').
+    (validArguments includes: argument)
+    ifTrue: [
+        npc := hero location findNpcByName: argument 
+        npcInfo := npc createInfo 
+        communicatesService printStringNewLine: npcInfo
+    ]
+    ifFalse: [
+        communicatesService cannotDisplayInfo
+    ]
+]
+
+self >> dipslayNpcInfo: npcName [
+    | npc npcInfo|
+    npc := hero location findNpcByName: argument 
+    npcInfo := npc createInfo 
+    communicatesService printStringNewLine: npcInfo
 ]
