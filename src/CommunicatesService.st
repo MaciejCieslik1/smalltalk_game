@@ -729,6 +729,112 @@ CommunicatesService >> killedGuard4 [
 
 "============================================================================================================"
 
+CommunicatesService >> leverDescription [
+    Transcript show: 'A lever. It seems to be used to open a door.'; cr
+]
+
+CommunicatesService >> appleJuiceDescription [
+    Transcript show: 'A bottle of apple juice. Can be poisoned.'; cr
+]
+
+CommunicatesService >> orangeJuiceDescription [
+    Transcript show: 'A bottle of orange juice. Can be poisoned.'; cr
+]
+
+CommunicatesService >> multivitaminaJuiceDescription [
+    Transcript show: 'A bottle of multivitamina juice. Can be poisoned.'; cr
+]
+
+CommunicatesService >> poisonDescription [
+    Transcript show: 'A bottle of poison. Can I add it to something?'; cr
+]
+
+CommunicatesService >> vitaminsDescription [
+    Transcript show: 'A bottle of vitamins. Most probably vit. C (Good for immune system).'; cr
+]
+
+CommunicatesService >> bandageDescription [
+    Transcript show: 'A bandage. It can be used to heal wounds.'; cr
+]
+
+CommunicatesService >> gunDescription [
+    Transcript show: 'A gun. It can be used to shoot at something (or someone).'; cr
+]
+
+CommunicatesService >> batonDescription [
+    Transcript show: 'A baton. It can be used to hit something (or someone).'; cr
+]
+
+CommunicatesService >> chloroformDescription [
+    Transcript show: 'A bottle of chloroform. Maybe I can combine it with something?'; cr
+]
+
+CommunicatesService >> vestDescription [
+    Transcript show: 'A bulletproof vest. It can be used to protect me from bullets.'; cr
+]
+
+CommunicatesService >> helmetDescription [
+    Transcript show: 'A helmet, sturdy protection for your head.'; cr
+]
+
+CommunicatesService >> umbrellaDescription [
+    Transcript show: 'An umbrella. It can be used to protect me from rain. Were I not in shielded bunker of course...'; cr
+]
+
+CommunicatesService >> idDescription [
+    Transcript show: 'An ID. It can be used at security checks.'; cr
+]
+
+CommunicatesService >> midRankPassDescription [
+    Transcript show: 'A pass. It can be used to enter mid-rank areas.'; cr
+]
+
+CommunicatesService >> redKeyDescription [
+    Transcript show: 'A red key. Grants highest security clearance.'; cr
+]
+
+CommunicatesService >> amberDescription [
+    Transcript show: 'A piece of amber. It is a rare stone, maybe I can trade it for something.'; cr
+]
+
+CommunicatesService >> moneyDescription [
+    Transcript show: 'A pile of money. It can be used to buy something.'; cr
+]
+
+CommunicatesService >> ragDescription [
+    Transcript show: 'A dirty rag. Maybe I can soak it with something.'; cr
+]
+
+CommunicatesService >> chloroformRagDescription [
+    Transcript show: 'A rag soaked with chloroform. It can be used to knock out someone.'; cr
+]
+
+CommunicatesService >> serviceUniformDescription [
+    Transcript show: 'A service uniform. It can be used as a disguise.'; cr
+]
+
+CommunicatesService >> militaryUniformDescription [
+    Transcript show: 'A military uniform. Standard clothing amongst soldiers.'; cr
+]
+
+CommunicatesService >> letterDescription [
+    Transcript show: '"[...] Ich fahre nach Polen, um mir die Hinrichtung von Juden anzusehen. Ich muss in Grojec anhalten und ein paar Aepfel fuer den Fuehrer kaufen – er mag sie sehr..."'; cr
+]
+
+CommunicatesService >> poisonedAppleJuiceDescription [
+    Transcript show: 'A bottle of poisoned apple juice. Will Fuhrer like it?.'; cr
+]
+
+CommunicatesService >> poisonedOrangeJuiceDescription [
+    Transcript show: 'A bottle of poisoned orange juice. Will Fuhrer like it?.'; cr
+]
+
+CommunicatesService >> poisonedMultivitaminaJuiceDescription [
+    Transcript show: 'A bottle of poisoned multivitamina juice. Will Fuhrer like it?.'; cr
+]
+
+"============================================================================================================"
+
 CommunicatesService >> roomLocked [
     Transcript show: '<That way is locked! (for now)>'; cr
 ]
