@@ -810,3 +810,11 @@ CommunicatesService >> attackNoBaton [
 CommunicatesService >> attackNoGun [
     Transcript show: '<Cannot attack guard, you haven''t got gun>'; cr
 ]
+
+CommunicatesService >> cannotDisplayInfo [
+    Transcript show: '<I have no information about that person>'; cr
+]
+
+CommunicatesService >> cannotDisplayDescription [
+    Transcript show: '<I have no information about that item>'; cr
+]
