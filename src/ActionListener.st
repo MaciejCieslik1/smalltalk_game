@@ -76,7 +76,7 @@ self >> checkArgumentInteract: argument [
 
 self >> checkArgumentAttack: argument [
     | validArguments |
-    validArguments := #('guard1' 'guard3' 'guard4').
+    validArguments := #('guard1' 'guard3' 'guard4' 'waiter').
     (validArguments includes: argument)
     ifTrue: [
         hero attack: argument
