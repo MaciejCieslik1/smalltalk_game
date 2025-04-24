@@ -17,7 +17,7 @@ InputService >> inputCharacter: charList
 
 InputService >> inputCommand
     | parts command argument validCommands inputString |
-    validCommands := #('go' 'pick' 'interact' 'attack').
+    validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description').
     communicatesService chooseAction.
     inputString := FileStream stdin nextLine.
 
