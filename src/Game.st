@@ -53,3 +53,28 @@ Game >> initializeLocations [
     initializedSocialRoom := SocialRoom new
     Smalltalk at: #socialRoom put: initializedSocialRoom.
 ]
+
+Game >> initializeCharacters [
+    initializedBandit := Bandit new
+    Smalltalk at: #bandit put: initializedBandit.
+    initializedChef := Chef new
+    Smalltalk at: #chef put: initializedChef.
+    initializedFuhrer := Fuhrer new
+    Smalltalk at: #fuhrer put: initializedFuhrer.
+    initializedGuard1 := Guard1 new
+    Smalltalk at: #guard1 put: initializedGuard1.
+    initializedGuard2 := Guard2 new
+    Smalltalk at: #guard2 put: initializedGuard2.
+    initializedGuard3 := Guard3 new
+    Smalltalk at: #guard3 put: initializedGuard3.
+    initializedGuard4 := Guard4 new
+    Smalltalk at: #guard4 put: initializedGuard4.
+    initializedHero := Hero new
+    Smalltalk at: #hero put: initializedHero.
+    initializedSalesman := Salesman new
+    Smalltalk at: #salesman put: initializedSalesman.
+    initializedSoldier := Soldier new
+    Smalltalk at: #soldier put: initializedSoldier.
+    initializedWaiter := Waiter new
+    Smalltalk at: #waiter put: initializedWaiter.
+]
