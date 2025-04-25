@@ -32,6 +32,18 @@ ActionListener >> chooseAction [
     ifTrue: [
         self checkArgumentDescription: argument
     ]
+    (command = 'poison')
+    ifTrue: [
+        self checkArgumentPoison: argument
+    ]
+    (command = 'chloroform')
+    ifTrue: [
+        self checkArgumentChloroform: argument
+    ]
+    (command = 'help')
+    ifTrue: [
+        communicateService help
+    ]
 ]
 
 self >> checkArgumentGo: argument [
@@ -166,4 +178,28 @@ self >> dipslayNpcInfo: npcName [
     npc := hero location findNpcByName: argument 
     npcInfo := npc createInfo 
     communicatesService printStringNewLine: npcInfo
+]
+
+self >> checkArgumentPoison: argument [
+    | validArguments |
+    validArguments := #('appleJuice' 'orangeJuice' 'multivitaminaJuice').
+    (validArguments includes: argument)
+    ifTrue: [
+        hero addPoison: argument
+    ]
+    ifFalse: [
+        communicatesService cannotPoisonItem
+    ]
+]
+
+self >> checkArgumentChloroform: argument [
+    | validArguments |
+    validArguments := 'rag'.
+    (validArguments = rag)
+    ifTrue: [
+        hero addChloroform: rag
+    ]
+    ifFalse: [
+        communicatesService cannotChlorofomItem
+    ]
 ]
