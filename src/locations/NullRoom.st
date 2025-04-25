@@ -1,4 +1,4 @@
-Room subclass: #NullRoom
+NoneNpcRoom subclass: #NullRoom
 
 SecretExit >> initialize [
     super initialize: 'null room'

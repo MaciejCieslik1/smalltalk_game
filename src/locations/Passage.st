@@ -1,4 +1,4 @@
-Room subclass: #Passage
+NoneNpcRoom subclass: #Passage
 
 SecretExit >> initialize [
     super initialize: 'passage'
