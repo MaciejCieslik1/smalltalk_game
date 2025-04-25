@@ -936,3 +936,7 @@ CommunicatesService >> waiterStealUniformOption [
 CommunicatesService >> waiterStealUniform [
     Transcript show: '<You stole waiter''s uniform and put it on>'; cr
 ]
+
+CommunicatesService >> roomHasNoNpc [
+    Transcript show: 'Room has no Npc''s'; cr
+]
