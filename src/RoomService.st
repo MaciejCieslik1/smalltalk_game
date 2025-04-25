@@ -27,6 +27,7 @@ RoomService >> openKitchen [
 
 RoomService >> openEmptyRoomB [
     emptyRoomB isAccessible: true
+    passage isAccessible: true
 ]
 
 RoomService >> openArchives [
