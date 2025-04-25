@@ -125,3 +125,7 @@ Room >> interactWithItem: itemName [
         communicatesService wrongItemName
     ]
 ]
+
+Room >> heroWalkedIn [
+    actionListener chooseAction 
+]
