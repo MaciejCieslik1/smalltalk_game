@@ -54,6 +54,56 @@ Game >> initializeLocations [
     Smalltalk at: #socialRoom put: initializedSocialRoom.
 ]
 
+Game >> initializeItems [
+    initializedAppleJuice := AppleJuice new
+    Smalltalk at: #appleJuice put: initializedAppleJuice.
+    initializedOrangeJuice := OrangeJuice new
+    Smalltalk at: #orangeJuice put: initializedOrangeJuice.
+    initializedMultivitaminaJuice := MultivitaminaJuice new
+    Smalltalk at: #multivitaminaJuice put: initializedMultivitaminaJuice.
+    initializedBandage := Bandage new
+    Smalltalk at: #bandage put: initializedBandage.
+    initializedBaton := Baton new
+    Smalltalk at: #baton put: initializedBaton.
+    initializedBulletproofVest := BulletproofVest new
+    Smalltalk at: #bulletproofVest put: initializedBulletproofVest.
+    initializedChloroform := Chloroform new
+    Smalltalk at: #chloroform put: initializedChloroform.
+    initializedGun := Gun new
+    Smalltalk at: #gun put: initializedGun.
+    initializedHelmet := Helmet new
+    Smalltalk at: #helmet put: initializedHelmet.
+    initializedLetter := Letter new
+    Smalltalk at: #letter put: initializedLetter.
+    initializedLever := Lever new
+    Smalltalk at: #lever put: initializedLever
+    initializedMoney := Money name: 'money' location: nil amount: 0.
+    Smalltalk at: #money put: initializedMoney
+    initializedMoneyMedicBay := Money name: 'money' location: medicBay amount: 250.
+    Smalltalk at: #money1 put: initializedMoneyMedicBay
+    initializedMoneyKitchen := Money name: 'money' location: kitchens amount: 250.
+    Smalltalk at: #money2 put: initializedMoneyKitchen
+    initializedMoneySocialRoom := Money name: 'money' location: socialRoom amount: 250.
+    Smalltalk at: #money3 put: initializedMoneySocialRoom
+    initializedMoneyLobby := Money name: 'money' location: lobby amount: 250.
+    Smalltalk at: #money4 put: initializedMoneyLobby
+    initializedPoison := Poison new
+    Smalltalk at: #poison put: initializedPoison.
+    initializedRag := Rag new
+    Smalltalk at: #rag put: initializedRag.
+    initializedUmbrella := Umbrella new
+    Smalltalk at: #umbrella put: initializedUmbrella.
+    initializedVitamins := Vitamins new
+    Smalltalk at: #vitamins put: initializedVitamins.
+]
+
+Game >> initializeUniforms [
+    initializedMilitaryUniform := MilitaryUniform new
+    Smalltalk at: #militaryUniform put: initializedMilitaryUniform.
+    initializedServiceUniform := ServiceUniform new
+    Smalltalk at: #serviceUniform put: initializedServiceUniform.
+]
+
 Game >> initializeCharacters [
     initializedBandit := Bandit new
     Smalltalk at: #bandit put: initializedBandit.
