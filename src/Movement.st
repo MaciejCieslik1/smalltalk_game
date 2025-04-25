@@ -22,25 +22,25 @@ Movement >> go: direction [
 Movement >> goNorth [
     | adjacentRoom |
     adjacentRoom := hero location adjacentNorth
-    self checkAdjacentRoom: adjacentRoom
+    self checkAdjacentRoom: adjacentRoom 'n'
 ]
 
 Movement >> goWest [
     | adjacentRoom |
     adjacentRoom := hero location adjacentWest
-    self checkAdjacentRoom: adjacentRoom
+    self checkAdjacentRoom: adjacentRoom 'w'
 ]
 
 Movement >> goSouth [
     | adjacentRoom |
     adjacentRoom := hero location adjacentSouth
-    self checkAdjacentRoom: adjacentRoom
+    self checkAdjacentRoom: adjacentRoom 's'
 ]
 
 Movement >> goEast [
     | adjacentRoom |
     adjacentRoom := hero location adjacentEast
-    self checkAdjacentRoom: adjacentRoom
+    self checkAdjacentRoom: adjacentRoom 'e'
 ]
 
 Movement >> checkAdjacentRoom: adjacentRoom [
@@ -53,12 +53,24 @@ Movement >> checkAdjacentRoom: adjacentRoom [
     ]
 ]
 
-Movement >> checkIfAccessible: adjacentRoom [
+Movement >> checkIfAccessible: adjacentRoom direction[
     (adjacentRoom isAccessible = true)
     ifTrue: [
-        hero moveTotheRoom: adjacentRoom
+        self checkIfPassage
     ]
     ifFalse: [
         communicatesService roomLocked
+    ]
+]
+
+Movement >> checkIfPassage: room [
+    (room == passage)
+    ifTrue: [
+        hero location: passage
+        passage wasVisited: true
+        self go: direction
+    ]
+    ifFalse: [
+        hero moveTotheRoom: room
     ]
 ]
