@@ -40,6 +40,14 @@ NpcRoom >> removeNpc: npc [
     newNpcList := self npcList
     newNpcList remove: npc
     self npcList: newNpcList
+    self checkIfNpcListEmpty
+]
+
+NpcRoom >> checkIfNpcListEmpty [
+    (self npcList isEmpty)
+    ifTrue: [
+        self hasNpc: false 
+    ]
 ]
 
 NpcRoom >> roomInfo [
