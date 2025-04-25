@@ -1,5 +1,5 @@
 Object subclass: #Room
-    instanceVariableNames: 'name isAccessible hasItem itemsList hasNpc adjacentWest adjacentSouth adjacentEast adjacentNorth'
+    instanceVariableNames: 'name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth'
 
 Room >> initialize: newName newIsAccessible newHasItem newItemsList newHasNpc newAdjacentWest newAdjacentSouth newAdjacentEast 
                     newAdjacentNorth [
@@ -8,6 +8,7 @@ Room >> initialize: newName newIsAccessible newHasItem newItemsList newHasNpc ne
     hasItem := newHasItem
     itemsList := newItemsList
     hasNpc := newHasNpc
+    wasVisisted := false
     adjacentWest := newAdjacentWest
     adjacentSouth := newAdjacentSouth
     adjacentEast := newAdjacentEast
@@ -52,6 +53,14 @@ Room >> hasNpc [
 
 Room >> hasNpc: newHasNpc [
     hasNpc := newHasNpc
+]
+
+Room >> wasVisisted [
+    ^ wasVisisted
+]
+
+Room >> wasVisisted: newWasVisited [
+    wasVisisted := newWasVisited
 ]
 
 Room >> adjacentWest [
@@ -127,5 +136,6 @@ Room >> interactWithItem: itemName [
 ]
 
 Room >> heroWalkedIn [
+    self wasVisisted: true
     actionListener chooseAction 
 ]
