@@ -35,6 +35,13 @@ NpcRoom >> findNpcByName: npcName [
     ^ self npcList detect: [:npc | npc name = npcName]
 ]
 
+NpcRoom >> removeNpc: npc [
+    | newNpcList |
+    newNpcList := self npcList
+    newNpcList remove: npc
+    self npcList: newNpcList
+]
+
 NpcRoom >> roomInfo [
     super roomInfo
     communicatesService printNpcs
