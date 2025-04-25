@@ -925,6 +925,14 @@ CommunicatesService >> cannotDisplayDescription [
     Transcript show: '<I have no information about that item>'; cr
 ]
 
+CommunicatesService >> cannotPoisonItem [
+    Transcript show: '<I cannot poison this item>'; cr
+]
+
+CommunicatesService >> cannotChlorofomItem [
+    Transcript show: '<I cannot chloroform this item>'; cr
+]
+
 CommunicatesService >> waiterKilled [
     Transcript show: '<You killed the waiter>'; cr
 ]
@@ -939,4 +947,36 @@ CommunicatesService >> waiterStealUniform [
 
 CommunicatesService >> roomHasNoNpc [
     Transcript show: 'Room has no Npc''s'; cr
+]
+
+CommunicatesService >> help [
+    Transcript
+        show: '# Main goal #'; cr;
+        show: 'Kill Adolf Hitler'; cr;
+        show: '# Useful commands #'; cr;
+        show: 'go n - moves hero to the northern room'; cr;
+        show: 'go w - moves hero to the western room'; cr;
+        show: 'go s - moves hero to the southern room'; cr;
+        show: 'go e - moves hero to the eastern room'; cr;
+        show: 'pick <item> - pick up item'; cr;
+        show: 'interact <item> - interact with special item'; cr;
+        show: 'attack <npc> - attack npc using weapon'; cr;
+        show: 'info <character> - display information about character'; cr;
+        show: 'description <item> - display description of item'; cr;
+        show: 'poison <item> - poison drink'; cr;
+        show: 'chloroform <item> - add chloroform to item'; cr;
+        show: 'help - display instruction'; cr;
+        show: '# Room legend #'; cr;
+        show: '[X] - room in which hero is present at the moment'; cr;
+        show: '[I] - visited room with item to pick'; cr;
+        show: '[N] - visited room with item npc'; cr;
+        show: '[B] - visited room with both item to pick and npc'; cr;
+        show: '[ ] - visited empty room'; cr;
+        show: '(I) - unvisited room with item to pick, adjacent to the visited one'; cr;
+        show: '(N) - unvisited room with npc, adjacent to the visited one'; cr;
+        show: '(B) - unvisited room with both item to pick and npc, adjacent to the visited one'; cr;
+        show: '( ) - unvisited empty room, adjacent to the visited one'; cr;
+        show: '=== - long horizonal corridor'; cr;
+        show: '- - normal horizonal corridor'; cr;
+        show: '| - normal vertical corridor'; cr;
 ]
