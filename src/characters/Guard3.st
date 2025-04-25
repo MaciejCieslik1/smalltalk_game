@@ -45,21 +45,21 @@ Guard3 >> interactionBeverages: [
 ]
 
 Guard3 >> chooseJuice: [
-    (hero hasItem: poisonedAppleJuice)
+    (appleJuice isPoisoned)
     ifTrue: [
         communicatesService talkToGuard3_12
         inputService inputCharacter: ('a')
         communicatesService talkToGuard3_13
         deliverDrink
     ]
-    (hero hasItem: poisonedOrangeJuice)
+    (orangeJuice isPoisoned)
     ifTrue: [
         communicatesService talkToGuard3_22
         inputService inputCharacter: ('a')
         communicatesService talkToGuard3_23
         deliverDrink
     ]
-    (hero hasItem: poisonedMultivitaminaJuice)
+    (multivitaminaJuice isPoisoned)
     ifTrue: [
         communicatesService talkToGuard3_27
         inputService inputCharacter: ('a')

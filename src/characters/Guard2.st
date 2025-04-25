@@ -30,7 +30,7 @@ Guard2 >> introductionDialogue: [
 ]
 
 Guard2 >> showDialogueOptions: [
-    (hero uniform == serviceUniform): 
+    (hero uniform == serviceUniform and: [hero hasPoisonedJuice]): 
     ifTrue: [
         self usedServiceUniform
     ]

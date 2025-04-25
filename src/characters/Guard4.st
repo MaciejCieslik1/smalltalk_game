@@ -28,10 +28,7 @@ Guard4 >> introductionDialogue: [
 ]
 
 Guard4 >> chooseDialogueOption: [
-    ((hero uniform = serviceUniform) and: [
-    (hero hasItem: poisonedAppleJuice) 
-    or: [hero hasItem: poisonedOrangeJuice] 
-    or: [hero hasItem: poisonedMultivitaminaJuice]])
+    (hero uniform == serviceUniform and: [hero hasPoisonedJuice]) 
     ifTrue: [
         self trueWaiterCondition
     ]
