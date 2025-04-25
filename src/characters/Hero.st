@@ -145,3 +145,29 @@ Hero >> attackWaiter [
 Hero changeUniform: newUniform [
     self uniform: newUniform
 ]
+
+Hero addPoison: juice [
+    juice addPoison
+    self removeItem: poison
+]
+
+Hero addChloroform: rag [
+    rag addChloroform
+    self removeItem: chloroform
+]
+
+Hero hasPoisonedJuice [
+    (appleJuice isPoisoned)
+    ifTrue: [
+        ^ true
+    ]
+    (orangeJuice isPoisoned)
+    ifTrue: [
+        ^ true
+    ]
+    (multivitaminaJuice isPoisoned)
+    ifTrue: [
+        ^ true
+    ]
+    ^ false
+]
