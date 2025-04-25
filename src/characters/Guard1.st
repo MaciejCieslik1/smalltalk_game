@@ -68,12 +68,8 @@ Guard1 >> openedRoomsInteraction: [
 ]
 
 Guard1 >> attacked [
-    self guardKilled
+    self npcKilled
     communicatesService killedGuard1
     communicatesService stealMidRankPass
     communicatesService accessToArmory
-]
-
-Guard3 >> guardKilled: [
-    self isAlive: false
 ]

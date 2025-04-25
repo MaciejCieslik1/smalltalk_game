@@ -10,14 +10,10 @@ Waiter >> interaction: [
 
 Waiter >> attacked [
     | inputOption |
-    self waiterKilled
+    self npcKilled
     communicatesService waiterKilled
     communicatesService waiterStealUniformOption
     inputOption := inputService inputCharacter: ('a')
     communicatesService waiterStealUniform
     hero changeUniform: serviceUniform
-]
-
-Waiter >> waiterKilled [
-    self isAlive: false
 ]

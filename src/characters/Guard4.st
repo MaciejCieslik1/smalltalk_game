@@ -100,11 +100,7 @@ Guard4 >> notUsedVest: [
 ]
 
 Guard3 >> attacked [
-    self guardKilled
+    self npcKilled
     communicatesService killedGuard4
     guard3 interactionShooting
-]
-
-Guard4 >> guardKilled: [
-    self isAlive: false
 ]

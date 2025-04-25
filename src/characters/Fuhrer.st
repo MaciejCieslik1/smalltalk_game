@@ -8,7 +8,7 @@ Fuhrer >> interaction: [
     self intruductionDialogue
     self chooseDialogueOption
     self endingDialogue
-    self fuhrerKilled
+    self npcKilled
     communicatesService hitlerShot
     ending endCredits
 ]
@@ -45,8 +45,4 @@ Fuhrer >> endingDialogue: [
     communicatesService talkToFuhrer_12
     inputService inputCharacter: ('a').
     communicatesService talkToFuhrer_13
-]
-
-Fuhrer >> fuhrerKilled: [
-    self isAlive: false
 ]

@@ -86,11 +86,7 @@ Guard3 >> deliverDrink: [
 ]
 
 Guard3 >> attacked [
-    self guardKilled
+    self npcKilled
     communicatesService killedGuard3
     guard4 interactionShooting
-]
-
-Guard3 >> guardKilled: [
-    self isAlive: false
 ]

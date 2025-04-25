@@ -60,7 +60,7 @@ Bandit >> figthUsingBaton: [
     communicatesService talkToBandit_10
     communicatesService talkToBandit_11
     communicatesService talkToBandit_12
-    self banditKilled
+    self npcKilled
 ]
 
 Bandit >> figthUsingFists: [
@@ -72,8 +72,4 @@ Bandit >> figthUsingFists: [
     communicatesService talkToBandit_17
     communicatesService talkToBandit_18
     hero getWounded
-]
-
-Bandit >> banditKilled: [
-    self isAlive: false
 ]
