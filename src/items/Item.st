@@ -25,6 +25,10 @@ Item >> location: newLocation [
 Item >> pickUp [
     hero addItem: self
     self location removeItem: self
+    (self itemsList isEmpty)
+    ifTrue: [
+        self hasItem: false 
+    ]
 ]
 
 Item >> interact [
