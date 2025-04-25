@@ -53,6 +53,16 @@ self >> checkArgumentPick: argument [
                         'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
     (validArguments includes: argument)
     ifTrue: [
+        self pickCheckIfItemAccessible
+    ]
+    ifFalse: [
+        communicatesService invalidArgument
+    ]
+]
+
+self pickCheckIfItemAccessible: [
+    (hero location hasItemName: argument)
+    ifTrue: [
         hero location pickUpItem: argument
     ]
     ifFalse: [
@@ -67,6 +77,16 @@ self >> checkArgumentInteract: argument [
                         'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
     (validArguments includes: argument)
     ifTrue: [
+        self interactCheckIfItemAccessible
+    ]
+    ifFalse: [
+        communicatesService invalidArgument
+    ]
+]
+
+self interactCheckIfItemAccessible: [
+    (hero location hasItemName: argument)
+    ifTrue: [
         hero location interactWithItem: argument
     ]
     ifFalse: [
@@ -79,10 +99,30 @@ self >> checkArgumentAttack: argument [
     validArguments := #('guard1' 'guard3' 'guard4' 'waiter').
     (validArguments includes: argument)
     ifTrue: [
-        hero attack: argument
+        self attackCheckIfRoomHasNpc
     ]
     ifFalse: [
         communicatesService cannotAttackPerson
+    ]
+]
+
+self attackCheckIfRoomHasNpc: npcName [
+    (hero location hasNpc)
+    ifTrue: [
+        self attackCheckIfNpcAccessible: npcName
+    ]
+    ifFalse: [
+        communicatesService roomHasNoNpc
+    ]
+]
+
+self attackCheckIfNpcAccessible: npcName[
+    (hero location findNpcByName: npcName)
+    ifTrue: [
+        hero attack: npcName
+    ]
+    ifFalse: [
+        communicatesService invalidArgument
     ]
 ]
 
@@ -91,12 +131,33 @@ self >> checkArgumentInfo: argument [
     validArguments := #('bandit' 'chef' 'adolf' 'guard1' 'guard2' 'guard3' 'guard4' 'Johannes_Golmer' 'salesman' 'soldier' 'waiter').
     (validArguments includes: argument)
     ifTrue: [
+        self displayInfoCheckIfRoomHasNpc: argument
+    ]
+    ifFalse: [
+        communicatesService cannotDisplayInfo
+    ]
+]
+
+self displayInfoCheckIfRoomHasNpc: npcName [
+    (hero location hasNpc)
+    ifTrue: [
+        self displayInfoCheckIfNpcAccessible: npcName
+    ]
+    ifFalse: [
+        communicatesService roomHasNoNpc
+    ]
+]
+
+self displayInfoCheckIfNpcAccessible: npcName[
+    | npc npcInfo |
+    (hero location findNpcByName: npcName)
+    ifTrue: [
         npc := hero location findNpcByName: argument 
         npcInfo := npc createInfo 
         communicatesService printStringNewLine: npcInfo
     ]
     ifFalse: [
-        communicatesService cannotDisplayInfo
+        communicatesService invalidArgument
     ]
 ]
 
