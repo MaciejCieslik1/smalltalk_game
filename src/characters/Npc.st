@@ -22,3 +22,8 @@ Npc >> createInfo [
             'Rank: ', self rank, String cr.
     ^ info
 ]
+
+Npc >> npcKilled: [
+    self isAlive: false
+    self location removeNpc: self
+]
