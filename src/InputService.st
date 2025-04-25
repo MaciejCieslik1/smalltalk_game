@@ -17,10 +17,19 @@ InputService >> inputCharacter: charList
 
 InputService >> inputCommand
     | parts command argument validCommands inputString |
-    validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description').
+    validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform').
     communicatesService chooseAction.
     inputString := FileStream stdin nextLine.
 
+    (inputString = 'help')
+    ifTrue: [
+        ^ inputString
+    ]
+    ifFalse: [
+        ^ self commandNotHelp
+    ]
+
+InputService >> commandNotHelp [
     parts := inputString substrings: ' '.
     parts size = 2 ifFalse: [ 
         communicatesService invalidCommand.
@@ -38,3 +47,4 @@ InputService >> inputCommand
         communicatesService invalidCommand.
         ^ Array with: '0' with: '0'
     ].
+]
