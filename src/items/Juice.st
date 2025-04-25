@@ -15,5 +15,6 @@ Juice >> isPoisoned: newIsPoisoned [
 ]
 
 Juice >> addPoison [
-
+    self name: ('poisoned ', self name) asString.
+    self isPoisoned: true
 ]
