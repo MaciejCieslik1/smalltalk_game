@@ -20,5 +20,6 @@ Rag >> description [
 ]
 
 Rag >> addChloroform [
-
+    self name: ('chloroformed ', self name) asString.
+    self isChloroformed: true
 ]
