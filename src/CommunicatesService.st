@@ -671,6 +671,10 @@ CommunicatesService >> hitlerShot [
     Transcript show: 'You killed Hitler. (shot him in the heart)'; cr
 ]
 
+CommunicatesService >> secretExitAccessible [
+    Transcript show: '<A secret exit through the Fuhrer''s Quarters is now accessible>'; cr
+]
+
 CommunicatesService >> hitlerPoisoned [
     Transcript show: 'You killed Hitler. (he died of poisoning)'; cr
 ]
@@ -679,15 +683,15 @@ CommunicatesService >> thanks [
     Transcript show: 'Thanks!'; cr
 ]
 
-CommunicatesService >> hitlerPoisoned [
+CommunicatesService >> thanksForPlaying [
     Transcript show: 'Oh and for playing the game we thank you as well!'; cr
 ]
 
-CommunicatesService >> hitlerPoisoned [
-    Transcript show: '<GAME OVER>'; cr
+CommunicatesService >> youWon [
+    Transcript show: '<YOU WON!>'; cr
 ]
 
-CommunicatesService >> hitlerPoisoned [
+CommunicatesService >> typeQToExit [
     Transcript show: '<type ''quit'' to quit>'; cr
 ]
 
