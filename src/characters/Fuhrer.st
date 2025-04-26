@@ -10,7 +10,7 @@ Fuhrer >> interaction: [
     self endingDialogue
     self npcKilled
     communicatesService hitlerShot
-    ending endCredits
+    communicatesService secretExitAccessible
 ]
 
 Fuhrer >> intruductionDialogue: [
