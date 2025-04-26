@@ -5,6 +5,7 @@ Game >> initializeGlobalObjects [
     self initializeItems
     self initializeUniforms
     self initializeCharacters
+    self initializeServiceClasses
 ]
 
 Game >> initializeLocations [
@@ -127,4 +128,33 @@ Game >> initializeCharacters [
     Smalltalk at: #soldier put: initializedSoldier.
     initializedWaiter := Waiter new
     Smalltalk at: #waiter put: initializedWaiter.
+]
+
+Game >> initializeServiceClasses [
+    initializedActionListener := ActionListener new
+    Smalltalk at: #actionListener put: initializedActionListener.
+    initializedInputService := InputService new
+    Smalltalk at: #inputService put: initializedInputService.
+    initializedMap := Map new
+    Smalltalk at: #map put: initializedMap.
+    initializedMovement := Movement new
+    Smalltalk at: #movement put: initializedMovement.
+    initializedRoomService := RoomService new
+    Smalltalk at: #roomService put: initializedRoomService.
+]
+
+Game >> gameLoop [
+    | hasHeroEscaped |
+    hasHeroEscaped := false
+    [ hasHeroEscaped ] whileFalse: [
+        actionListener chooseAction
+    ].
+    self ending
+]
+
+Game >> ending [
+    communicatesService thanks 
+    communicatesService thanksForPlaying 
+    communicatesService youWon 
+    communicatesService typeQToExit 
 ]
