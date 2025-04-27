@@ -1,50 +1,53 @@
-Object subclass: #InputService
+Object subclass: InputService [
 
-InputService >> inputCharacter: charList
-    | character |
-    character := ''.
-    [
-        communicatesService chooseAction
-        character := FileStream stdin next.
-        (charList includes: character) 
+    inputCharacter: charList [
+        | character |
+        character := ''.
+        [
+            communicatesService chooseAction.
+            character := FileStream stdin next.
+            (charList includes: character) 
+            ifTrue: [
+                ^ character
+            ]
+            ifFalse: [
+                communicatesService incorrectInput
+            ] 
+        ] whileTrue.
+    ]
+
+    inputCommand [
+        | parts command argument validCommands inputString |
+        validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform').
+        communicatesService chooseAction.
+        inputString := FileStream stdin nextLine.
+
+        (inputString = 'help')
         ifTrue: [
-            ^ character
+            ^ inputString
         ]
         ifFalse: [
-            communicatesService incorrectInput
-        ] 
-    ] whileTrue.
-
-InputService >> inputCommand
-    | parts command argument validCommands inputString |
-    validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform').
-    communicatesService chooseAction.
-    inputString := FileStream stdin nextLine.
-
-    (inputString = 'help')
-    ifTrue: [
-        ^ inputString
-    ]
-    ifFalse: [
-        ^ self commandNotHelp
+            ^ self commandNotHelp
+        ]
     ]
 
-InputService >> commandNotHelp [
-    parts := inputString substrings: ' '.
-    parts size = 2 ifFalse: [ 
-        communicatesService invalidCommand.
-        ^ Array with: '0' with: '0'
-    ].
+    commandNotHelp [
+        parts := inputString substrings: ' '.
+        parts size = 2 ifFalse: [ 
+            communicatesService invalidCommand.
+            ^ Array with: '0' with: '0'
+        ].
 
-    command := parts first.
-    argument := parts second.
+        command := parts first.
+        argument := parts second.
 
-    (validCommands includes: command)
-    ifTrue: [
-         ^ Array with: command with: argument 
+        (validCommands includes: command)
+        ifTrue: [
+            ^ Array with: command with: argument 
+        ]
+        ifFalse: [
+            communicatesService invalidCommand.
+            ^ Array with: '0' with: '0'
+        ].
     ]
-    ifFalse: [
-        communicatesService invalidCommand.
-        ^ Array with: '0' with: '0'
-    ].
 ]

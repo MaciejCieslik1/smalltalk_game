@@ -70,4 +70,4 @@ FileStream fileIn: 'ActionListener.st'.
 FileStream fileIn: 'RoomService.st'.
 FileStream fileIn: 'Map.st'.
 FileStream fileIn: 'Movement.st'.
-FileStream fileIn: 'Game.st'."
+FileStream fileIn: 'Game.st'.
