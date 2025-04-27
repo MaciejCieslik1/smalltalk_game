@@ -1,19 +1,19 @@
 Npc subclass: Fuhrer [
 
-    initialize: [
-        super initializeWithName: 'adolf' rank: fuhrer location:fuhrersQuarters isKillable: true
+    initialize [
+        super initializeWithName: 'adolf' rank: 'fuhrer' location:fuhrersQuarters isKillable: true.
     ]
 
-    interaction: [
-        self intruductionDialogue
-        self chooseDialogueOption
-        self endingDialogue
-        self npcKilled
+    interaction [
+        self intruductionDialogue.
+        self chooseDialogueOption.
+        self endingDialogue.
+        self npcKilled.
         communicatesService hitlerShot
         communicatesService secretExitAccessible
     ]
 
-    intruductionDialogue: [
+    intruductionDialogue [
         communicatesService talkToFuhrer_1
         communicatesService talkToFuhrer_2
         communicatesService talkToFuhrer_3
@@ -21,28 +21,28 @@ Npc subclass: Fuhrer [
         communicatesService talkToFuhrer_5
     ]
 
-    chooseDialogueOption: [
+    chooseDialogueOption [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b $c).
         (inputOption = $a) 
         ifTrue: [
             communicatesService talkToFuhrer_6
-        ]
+        ].
         (inputOption = $b) 
         ifTrue: [
             communicatesService talkToFuhrer_7
-        ]
+        ].
         (inputOption = $c) 
         ifTrue: [
             communicatesService talkToFuhrer_8
-        ]
+        ].
     ]
 
-    endingDialogue: [
+    endingDialogue [
         communicatesService talkToFuhrer_9
         communicatesService talkToFuhrer_10
         communicatesService talkToFuhrer_11
-        communicatesService talkToFuhrer_12
+        communicatesService talkToFuhrer_12.
         inputService inputCharacter: ('a').
         communicatesService talkToFuhrer_13
     ]

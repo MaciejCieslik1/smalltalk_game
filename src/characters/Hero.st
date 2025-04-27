@@ -1,11 +1,11 @@
 Person subclass: Hero [
-    instanceVariableNames: 'items uniform money'
+    | items uniform money |
 
-    initialize: [
-        super initializeWithName: 'Johannes_Golmer' location: startExit isKillable: true
-        items := OrderedCollection new
-        uniform := military_uniform
-        money := 0
+    initialize [
+        super initializeWithName: 'Johannes_Golmer' location: startExit isKillable: true.
+        items := OrderedCollection new.
+        uniform := military_uniform.
+        money := 0.
     ]
 
     items [
@@ -63,7 +63,7 @@ Person subclass: Hero [
         ]
         ifFalse: [
             ^ false
-        ]
+        ].
     ]
 
     addMoney: moneyAmount [
@@ -87,19 +87,19 @@ Person subclass: Hero [
         (target = 'guard1')
         ifTrue: [
             self attackGuard1
-        ]
+        ].
         (target = 'guard3')
         ifTrue: [
             self attackGuard3
-        ]
+        ].
         (target = 'guard4')
         ifTrue: [
             self attackGuard4
-        ]
+        ].
         (target = 'waiter')
         ifTrue: [
             self attackWaiter
-        ]
+        ].
     ]
 
     attackGuard1 [
@@ -109,7 +109,7 @@ Person subclass: Hero [
         ]
         ifFalse: [
             communicatesService attackNoBaton
-        ]
+        ].
     ]
 
     attackGuard3 [
@@ -119,7 +119,7 @@ Person subclass: Hero [
         ]
         ifFalse: [
             communicatesService attackNoGun
-        ]
+        ].
     ]
 
     attackGuard4 [
@@ -129,7 +129,7 @@ Person subclass: Hero [
         ]
         ifFalse: [
             communicatesService attackNoGun
-        ]
+        ].
     ]
 
     attackWaiter [
@@ -139,7 +139,7 @@ Person subclass: Hero [
         ]
         ifFalse: [
             communicatesService attackNoBaton
-        ]
+        ].
     ]
 
     changeUniform: newUniform [
@@ -147,28 +147,28 @@ Person subclass: Hero [
     ]
 
     addPoison: juice [
-        juice addPoison
-        self removeItem: poison
+        juice addPoison.
+        self removeItem: poison.
     ]
 
     addChloroform: rag [
-        rag addChloroform
-        self removeItem: chloroform
+        rag addChloroform.
+        self removeItem: chloroform.
     ]
 
     hasPoisonedJuice [
         (appleJuice isPoisoned)
         ifTrue: [
             ^ true
-        ]
+        ].
         (orangeJuice isPoisoned)
         ifTrue: [
             ^ true
-        ]
+        ].
         (multivitaminaJuice isPoisoned)
         ifTrue: [
             ^ true
-        ]
+        ].
         ^ false
     ]
 ]

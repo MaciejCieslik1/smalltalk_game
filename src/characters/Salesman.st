@@ -1,9 +1,9 @@
 Npc subclass: Salesman [
-    instanceVariableNames: 'items'
+    | items |
 
-    initialize: [
-        super initializeWithName: 'salesman' rank: private location: armory isKillable: false
-        items := #(bulletproofVest, gun)
+    initialize [
+        super initializeWithName: 'salesman' rank: 'private' location: armory isKillable: false.
+        items := Array with: bulletproofVest with: gun.
     ]
 
     items [
@@ -34,8 +34,8 @@ Npc subclass: Salesman [
     ]
 
     interaction [
-        self introductionDialogue
-        self hasGun
+        self introductionDialogue.
+        self hasGun.
     ]
 
     introductionDialogue [
@@ -46,96 +46,96 @@ Npc subclass: Salesman [
     hasGun [
         (self hasItem: gun)
         ifTrue: [
-            communicatesService talkToSalesman_3
-            self hasVestAndGun
+            communicatesService talkToSalesman_3.
+            self hasVestAndGun.
         ]
         ifFalse: [
-            self hasVest
-        ]
+            self hasVest.
+        ].
     ]
 
     hasVestAndGun [
         (self hasItem: bulletproof)
         ifTrue: [
-            communicatesService talkToSalesman_4
-            communicatesService talkToSalesman_5
-            self abcOptionAllItems
+            communicatesService talkToSalesman_4.
+            communicatesService talkToSalesman_5.
+            self abcOptionAllItems.
         ]
         ifFalse: [
-            communicatesService talkToSalesman_7
-            self abOptionNoVest
-        ]
+            communicatesService talkToSalesman_7.
+            self abOptionNoVest.
+        ].
     ]
 
 
     hasVest [
         (self hasItem: bulletproof)
         ifTrue: [
-            communicatesService talkToSalesman_6
-            communicatesService talkToSalesman_7
-            self abOptionNoGun
+            communicatesService talkToSalesman_6.
+            communicatesService talkToSalesman_7.
+            self abOptionNoGun.
         ]
         ifFalse: [
-            communicatesService talkToSalesman_8
-            inputOption := inputService inputCharacter: ('a')
-            communicatesService talkToSalesman_11
-        ]
+            communicatesService talkToSalesman_8.
+            inputOption := inputService inputCharacter: ('a').
+            communicatesService talkToSalesman_11.
+        ].
     ]
 
     abcOptionAllItems [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b $c)
+        inputOption := inputService inputCharacter: #($a $b $c).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun
-        ]
+            self buyGun.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self buyVest
-        ]
+            self buyVest.
+        ].
         (inputOption = $c) 
         ifTrue: [
-            self dontBuy
-        ]
+            self dontBuy.
+        ].
     ]
 
     abOptionNoVest [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun
-        ]
+            self buyGun.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self dontBuy
-        ]
+            self dontBuy.
+        ].
     ]
 
     abOptionNoGun [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyVest
-        ]
+            self buyVest.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self dontBuy
-        ]
+            self dontBuy.
+        ].
     ]
 
     buyGun [
-        self preBuyGunDialogues
+        self preBuyGunDialogues.
         (hero hasItem: amber)
         ifTrue: [
-            communicatesService talkToSalesman_13
-            communicatesService talkToSalesman_14
-            self gunPaymentConfirmation
+            communicatesService talkToSalesman_13.
+            communicatesService talkToSalesman_14.
+            self gunPaymentConfirmation.
         ]
         ifFalse: [
-            self heroHasNoAmber
-        ]
+            self heroHasNoAmber.
+        ].
     ]
 
     preBuyGunDialogues [
@@ -146,45 +146,45 @@ Npc subclass: Salesman [
 
     gunPaymentConfirmation [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self proceedPaymentGun
-        ]
+            self proceedPaymentGun.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self dontBuy
-        ]
+            self dontBuy.
+        ].
     ]
 
     heroHasNoAmber [
-        communicatesService talkToSalesman_18
-        inputOption := inputService inputCharacter: ('a')
+        communicatesService talkToSalesman_18.
+        inputOption := inputService inputCharacter: ('a').
         communicatesService talkToSalesman_19
         communicatesService talkToSalesman_25
     ]
 
     proceedPaymentGun [
-        communicatesService talkToSalesman_15
-        communicatesService talkToSalesman_24
-        communicatesService talkToSalesman_27
-        communicatesService talkToSalesman_16
-        self transferGunToHero
+        communicatesService talkToSalesman_15.
+        communicatesService talkToSalesman_24.
+        communicatesService talkToSalesman_27.
+        communicatesService talkToSalesman_16.
+        self transferGunToHero.
     ]
 
     buyVest [
         | vestPrice |
-        vestPrice := 1000
-        self preBuyVestDialogues
+        vestPrice := 1000.
+        self preBuyVestDialogues.
         (hero hasEnoughMoney: vestPrice)
         ifTrue: [
-            communicatesService talkToSalesman_13
-            communicatesService talkToSalesman_14
-            self vestPaymentConfirmation
+            communicatesService talkToSalesman_13.
+            communicatesService talkToSalesman_14.
+            self vestPaymentConfirmation.
         ]
         ifFalse: [
-            self heroHasNotEnoughMoney
-        ]
+            self heroHasNotEnoughMoney.
+        ].
     ]
 
     preBuyVestDialogues [
@@ -195,20 +195,20 @@ Npc subclass: Salesman [
 
     vestPaymentConfirmation [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self proceedPaymentVest
-        ]
+            self proceedPaymentVest.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self dontBuy
-        ]
+            self dontBuy.
+        ].
     ]
 
     heroHasNotEnoughMoney [
-        communicatesService talkToSalesman_22
-        inputOption := inputService inputCharacter: ('a')
+        communicatesService talkToSalesman_22.
+        inputOption := inputService inputCharacter: ('a').
         communicatesService talkToSalesman_23
         communicatesService talkToSalesman_26
     ]
@@ -218,23 +218,23 @@ Npc subclass: Salesman [
     ]
 
     proceedPaymentVest [
-        communicatesService talkToSalesman_15
-        communicatesService talkToSalesman_24
-        communicatesService talkToSalesman_21
-        self transferVestToHero
+        communicatesService talkToSalesman_15.
+        communicatesService talkToSalesman_24.
+        communicatesService talkToSalesman_21.
+        self transferVestToHero.
     ]
 
     transferGunToHero [
-        self removeItem: gun
-        hero addItem: gun
-        hero removeItem: amber
+        self removeItem: gun.
+        hero addItem: gun.
+        hero removeItem: amber.
     ]
 
     transferVestToHero [
         | vestPrice |
-        vestPrice := 1000
-        self removeItem: bulletproofVest
-        hero addItem: bulletproofVest
-        hero subtractMoney: vestPrice
+        vestPrice := 1000.
+        self removeItem: bulletproofVest.
+        hero addItem: bulletproofVest.
+        hero subtractMoney: vestPrice.
     ]
 ]

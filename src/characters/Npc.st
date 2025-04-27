@@ -4,7 +4,7 @@ Person subclass: Npc [
     initializeWithName: newName rank: newRank location: newLocation isKillable: newIsKillable [
         super initialize: newName 
             location: newLocation
-            isKillable: newIsKillable
+            isKillable: newIsKillable.
         rank := newRank
     ]
 
@@ -23,8 +23,8 @@ Person subclass: Npc [
         ^ info
     ]
 
-    npcKilled: [
-        self isAlive: false
-        self location removeNpc: self
+    npcKilled [
+        self isAlive: false.
+        self location removeNpc: self.
     ]
 ]

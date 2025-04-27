@@ -1,10 +1,10 @@
 Npc subclass: Soldier [
     | items hasPlayedCards |
 
-    initialize: [
-        super initializeWithName: 'soldier' rank: private location: barracks isKillable: false
-        items := #(helmet)
-        hasPlayedCards := false
+    initialize [
+        super initializeWithName: 'soldier' rank: 'private' location: barracks isKillable: false.
+        items := Array with: helmet.
+        hasPlayedCards := false.
     ]
 
     items [
@@ -35,83 +35,83 @@ Npc subclass: Soldier [
         hasPlayedCards := newHasPlayedCards
     ]
 
-    createInfo: [
+    createInfo [
         | info |
         info := super createInfo,
                 'Items: ', (self items joinSeparatedBy: ', '), String cr.
         ^ info
     ]
 
-    interaction: [
+    interactions [
         (self hasPlayedCards)
         ifTrue: [
             self alreadyPlayedOption
         ]
         ifFalse: [
             self firstGameOption
-        ]
+        ].
     ]
 
-    alreadyPlayedOption: [
+    alreadyPlayedOption [
         communicatesService talkToSoldier_12
     ]
 
-    firstGameOption: [
-        self introductionDialogue
-        self hasHeroWillToPlay
+    firstGameOption [
+        self introductionDialogue.
+        self hasHeroWillToPlay.
     ]
 
-    introductionDialogue: [
+    introductionDialogue [
         communicatesService talkToSoldier_1
         communicatesService talkToSoldier_2
         communicatesService talkToSoldier_3
         communicatesService talkToSoldier_4
     ]
 
-    hasHeroWillToPlay: [
+    hasHeroWillToPlay [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self heroDoesNotWantToPlay
-        ]
+            self heroDoesNotWantToPlay.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self heroWantsToPlay
-        ]
+            self heroWantsToPlay.
+        ].
     ]
 
-    heroDoesNotWantToPlay: [
+    heroDoesNotWantToPlay [
         communicatesService talkToSoldier_5
         communicatesService talkToSoldier_6
     ]
 
-    heroWantsToPlay: [
-        communicatesService talkToSoldier_7
+    heroWantsToPlay [
+        communicatesService talkToSoldier_7.
         (hero has: umbrella)
         ifTrue: [
-            self heroHasUmbrella
+            self heroHasUmbrella.
         ]
         ifFalse: [
-            self herohasNotUmbrella
-        ]
+            self herohasNotUmbrella.
+        ].
     ]
 
-    heroHasUmbrella: [
+    heroHasUmbrella [
         communicatesService talkToSoldier_8
         communicatesService talkToSoldier_9
         communicatesService talkToSoldier_10
-        communicatesService talkToSoldier_11
-        self heroWon
+        communicatesService talkToSoldier_11.
+        self heroWon.
     ]
 
-    herohasNotUmbrella: [
+    herohasNotUmbrella [
         communicatesService talkToSoldier_13
     ]
 
-    heroWon: [
-        self hasPlayedCards: true
-        self removeItem: helmet
-        hero addItem: helmet
+    heroWon [
+        self hasPlayedCards: true.
+        self removeItem: helmet.
+        hero addItem: helmet.
     ]
 ]

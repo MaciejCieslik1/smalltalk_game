@@ -1,12 +1,12 @@
 Npc subclass: Guard [
     | hasPermission |
 
-    initializeWithName: newName newLocation isKillable[
+    initializeWithName: newName location: newLocation isKillable: isKillable[
         super initializeWithName: newName 
-            rank: private 
+            rank: 'private' 
             location: newLocation 
-            isKillable: isKillable
-        hasPermission := false
+            isKillable: isKillable.
+        hasPermission := false.
     ]
 
     hasPermission [

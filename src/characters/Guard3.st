@@ -1,79 +1,79 @@
 Guard subclass: Guard3 [
 
-    initialize: [
+    initialize [
         super initializeWithName: 'guard3' 
             location: fuhrersOffice
             isKillable: true
     ]
 
-    interaction: [
+    interaction [
         communicatesService talkToGuard3_1
     ]
 
-    interactionShooting: [
-        communicatesService talkToGuard3_2
+    interactionShooting [
+        communicatesService talkToGuard3_2.
         (hero hasItem: bulletproofVest) 
         ifTrue: [
-            self usedVest
+            self usedVest.
         ]
         ifFalse: [
-            self notUsedVest
-        ]
+            self notUsedVest.
+        ].
     ]
 
-    usedVest: [
+    usedVest [
         communicatesService talkToGuard3_3
         communicatesService talkToGuard3_4
         communicatesService talkToGuard3_5
-        inputService inputCharacter: ('a')
+        inputService inputCharacter: ('a').
         communicatesService talkToGuard3_6
         communicatesService talkToGuard3_7
         communicatesService talkToGuard3_8
         communicatesService talkToGuard_wayNorthAccessible
     ]
 
-    notUsedVest: [
+    notUsedVest [
         communicatesService talkToGuard3_9
         communicatesService talkToGuard_wakeUpInMedbay
         communicatesService talkToGuard_needVest
         hero getWounded
     ]
 
-    interactionBeverages: [
-        self introductionDialogue
-        self chooseJuice
+    interactionBeverages [
+        self introductionDialogue.
+        self chooseJuice.
     ]
 
-    chooseJuice: [
+    chooseJuice [
         (appleJuice isPoisoned)
         ifTrue: [
-            communicatesService talkToGuard3_12
-            inputService inputCharacter: ('a')
+            communicatesService talkToGuard3_12.
+            inputService inputCharacter: ('a').
             communicatesService talkToGuard3_13
             deliverDrink
-        ]
+        ].
         (orangeJuice isPoisoned)
         ifTrue: [
-            communicatesService talkToGuard3_22
-            inputService inputCharacter: ('a')
+            communicatesService talkToGuard3_22.
+            inputService inputCharacter: ('a').
             communicatesService talkToGuard3_23
             deliverDrink
-        ]
+        ].
         (multivitaminaJuice isPoisoned)
         ifTrue: [
-            communicatesService talkToGuard3_27
-            inputService inputCharacter: ('a')
+            communicatesService talkToGuard3_27.
+            inputService inputCharacter: ('a').
             communicatesService talkToGuard3_28
             deliverDrink
-        ]
+        ].
     ]
 
-    introductionDialogue: [
+    introductionDialogue [
         communicatesService talkToGuard3_10
         communicatesService talkToGuard3_11
     ]
 
-    deliverDrink: [
+    deliverDrink [
         communicatesService talkToGuard3_14
         communicatesService talkToGuard3_15
         communicatesService talkToGuard3_16
@@ -86,7 +86,7 @@ Guard subclass: Guard3 [
     ]
 
     attacked [
-        self npcKilled
+        self npcKilled.
         communicatesService killedGuard3
         guard4 interactionShooting
     ]

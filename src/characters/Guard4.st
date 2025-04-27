@@ -1,84 +1,84 @@
 Guard subclass: Guard4 [
 
-    initialize: [
+    initialize [
         super initializeWithName: 'guard4' 
             location: fuhrersOffice
             isKillable: true
     ]
 
-    interaction: [
+    interaction [
         (self hasPermission)
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
             self conversation
-        ]
+        ].
     ]
 
     conversation [
-        self introductionDialogue
-        self chooseDialogueOption
+        self introductionDialogue.
+        self chooseDialogueOption.
     ]
 
-    introductionDialogue: [
+    introductionDialogue [
         communicatesService talkToGuard4_1
         communicatesService talkToGuard4_2
         communicatesService talkToGuard4_3
     ]
 
-    chooseDialogueOption: [
+    chooseDialogueOption [
         (hero uniform == serviceUniform and: [hero hasPoisonedJuice]) 
         ifTrue: [
-            self trueWaiterCondition
+            self trueWaiterCondition.
         ]
         ifFalse: [
-            self falseWaiterCondition
-        ]
+            self falseWaiterCondition.
+        ].
     ]
 
-    trueWaiterCondition: [
-        communicatesService talkToGuard4_6
-        inputOption := inputService inputCharacter: #($a $b)
+    trueWaiterCondition [
+        communicatesService talkToGuard4_6.
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self aOptionWaiterCondition
-        ]
+            self aOptionWaiterCondition.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self bOptionWaiterCondition
-        ]
+            self bOptionWaiterCondition.
+        ].
     ]
 
-    aOptionWaiterCondition: [
+    aOptionWaiterCondition [
         communicatesService talkToGuard4_4
         communicatesService talkToGuard4_5
     ]
 
-    bOptionWaiterCondition: [
+    bOptionWaiterCondition [
         communicatesService talkToGuard4_7
         communicatesService talkToGuard4_6
         guard3 interactionBeverages
     ]
 
-    falseWaiterCondition: [
+    falseWaiterCondition [
         inputService inputCharacter: ('a')
         communicatesService talkToGuard4_4
         communicatesService talkToGuard4_5
     ]
 
-    interactionShooting: [
-        communicatesService talkToGuard4_8
+    interactionShooting [
+        communicatesService talkToGuard4_8.
         (hero hasItem: bulletproofVest) 
         ifTrue: [
-            self usedVest
+            self usedVest.
         ]
         ifFalse: [
-            self notUsedVest
-        ]
+            self notUsedVest.
+        ].
     ]
 
-    usedVest: [
+    usedVest [
         communicatesService talkToGuard4_9
         communicatesService talkToGuard4_10
         communicatesService talkToGuard4_11
@@ -89,7 +89,7 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard_wayNorthAccessible
     ]
 
-    notUsedVest: [
+    notUsedVest [
         communicatesService talkToGuard4_15
         communicatesService talkToGuard_wakeUpInMedbay
         communicatesService talkToGuard_needVest
@@ -97,7 +97,7 @@ Guard subclass: Guard4 [
     ]
 
     attacked [
-        self npcKilled
+        self npcKilled.
         communicatesService killedGuard4
         guard3 interactionShooting
     ]

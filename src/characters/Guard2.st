@@ -1,7 +1,7 @@
 Guard subclass: Guard2 [
     | hasHigherPermission | 
 
-    initialize: [
+    initialize [
         super initializeWithName: 'guard2'
             location: securityCheckOffices 
             isKillable: false
@@ -9,163 +9,163 @@ Guard subclass: Guard2 [
     ]
 
     interaction [
-        (self hasPermission and self hasHigherPermission)
+        (self hasPermission and: [self hasHigherPermission])
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
             self conversation
-        ]
+        ].
     ]
 
-    conversation: [
-        self introductionDialogue
-        self showDialogueOptions
+    conversation [
+        self introductionDialogue.
+        self showDialogueOptions.
     ]
 
-    introductionDialogue: [
+    introductionDialogue [
         communicatesService talkToGuard2_1
         communicatesService talkToGuard2_2
         communicatesService talkToGuard2_3
     ]
 
-    showDialogueOptions: [
-        (hero uniform == serviceUniform and: [hero hasPoisonedJuice]): 
+    showDialogueOptions [
+        (hero uniform == serviceUniform and: [hero hasPoisonedJuice])
         ifTrue: [
-            self usedServiceUniform
+            self usedServiceUniform.
         ]
         ifFalse: [
-            self usedMilitaryUniform
-        ]
+            self usedMilitaryUniform.
+        ].
     ]
 
-    usedServiceUniform: [
+    usedServiceUniform [
         | inputOption |
-        communicatesService talkToGuard2_13
-        inputOption := inputService inputCharacter: #($a $b)
+        communicatesService talkToGuard2_13.
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self aOptionWaiter
-        ]
+            self aOptionWaiter.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self bOptionWaiter
-        ]
+            self bOptionWaiter.
+        ].
     ]
 
-    aOptionWaiter: [
+    aOptionWaiter [
         communicatesService talkToGuard2_4
         communicatesService talkToGuard2_5
     ]
 
-    bOptionWaiter: [
+    bOptionWaiter [
         communicatesService talkToGuard2_13
         communicatesService talkToGuard2_14
         communicatesService talkToGuard2_wayWestAccessible
         roomService openOffices
     ]
 
-    usedMilitaryUniform: [
-        self dipslayDialogues
-        (hero hasItem: redKey):
+    usedMilitaryUniform [
+        self dipslayDialogues.
+        (hero hasItem: redKey)
         ifTrue: [
-            self heroHasRedKey
+            self heroHasRedKey.
         ]
         ifFalse: [
-            (hero hasItem: midRankPass):
+            (hero hasItem: midRankPass)
             ifTrue: [
-                self heroHasMidPass
+                self heroHasMidPass.
             ]
             ifFalse: [
-                self heroHasId
-            ]
-        ]
+                self heroHasId.
+            ].
+        ].
     ]
 
-    dipslayDialogues: [
-        (hero hasItem: id): 
+    dipslayDialogues [
+        (hero hasItem: id)
         ifTrue: [
             communicatesService talkToGuard2_6
-        ]
-        (hero hasItem: midRankPass): 
+        ].
+        (hero hasItem: midRankPass)
         ifTrue: [
             communicatesService talkToGuard2_8
-        ]
-        (hero hasItem: redKey): 
+        ].
+        (hero hasItem: redKey)
         ifTrue: [
             communicatesService talkToGuard2_10
-        ]
+        ].
     ]
 
-    heroHasRedKey: [
+    heroHasRedKey [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b $c $d)
+        inputOption := inputService inputCharacter: #($a $b $c $d).
         (inputOption = $a) 
         ifTrue: [
-            self aOptionMilitaryUniform
-        ]
+            self aOptionMilitaryUniform.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self bOptionMilitaryUniform
-        ]
+            self bOptionMilitaryUniform.
+        ].
         (inputOption = $c) 
         ifTrue: [
-            self cOptionMilitaryUniform
-        ]
+            self cOptionMilitaryUniform.
+        ].
         (inputOption = $d) 
         ifTrue: [
-            self dOptionMilitaryUniform
-        ]
+            self dOptionMilitaryUniform.
+        ].
     ]
 
-    heroHasMidPass: [
+    heroHasMidPass [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b $c)
+        inputOption := inputService inputCharacter: #($a $b $c).
         (inputOption = $a) 
         ifTrue: [
-            self aOptionMilitaryUniform
-        ]
+            self aOptionMilitaryUniform.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self bOptionMilitaryUniform
-        ]
+            self bOptionMilitaryUniform.
+        ].
         (inputOption = $c) 
         ifTrue: [
-            self cOptionMilitaryUniform
-        ]
+            self cOptionMilitaryUniform.
+        ].
     ]
 
-    heroHasId: [
+    heroHasId [
         | inputOption |
-        inputOption := inputService inputCharacter: #($a $b)
+        inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self aOptionMilitaryUniform
-        ]
+            self aOptionMilitaryUniform.
+        ].
         (inputOption = $b) 
         ifTrue: [
-            self bOptionMilitaryUniform
-        ]
+            self bOptionMilitaryUniform.
+        ].
     ]
 
-    aOptionMilitaryUniform: [
+    aOptionMilitaryUniform [
         communicatesService talkToGuard2_4
         communicatesService talkToGuard2_5
     ]
 
-    bOptionMilitaryUniform: [
+    bOptionMilitaryUniform [
         communicatesService talkToGuard2_15
         communicatesService talkToGuard2_7
     ]
 
-    cOptionMilitaryUniform: [
+    cOptionMilitaryUniform [
         communicatesService talkToGuard2_15
         communicatesService talkToGuard2_11
         communicatesService talkToGuard_wayNorthAccessible
         roomService openArchives
     ]
 
-    dOptionMilitaryUniform: [
+    dOptionMilitaryUniform [
         communicatesService talkToGuard2_15
         communicatesService talkToGuard2_11
         communicatesService talkToGuard2_wayWestAccessible
