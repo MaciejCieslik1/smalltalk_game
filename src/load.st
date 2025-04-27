@@ -17,9 +17,9 @@ FileStream fileIn: 'items/Poison.st'.
 FileStream fileIn: 'items/Rag.st'.
 FileStream fileIn: 'items/Umbrella.st'.
 
-FileStream fileIn: 'characters/Character.st'.
-FileStream fileIn: 'characters/Hero.st'.
+FileStream fileIn: 'characters/Person.st'.
 FileStream fileIn: 'characters/Npc.st'.
+FileStream fileIn: 'characters/Hero.st'.
 FileStream fileIn: 'characters/Salesman.st'.
 FileStream fileIn: 'characters/Soldier.st'.
 FileStream fileIn: 'characters/Waiter.st'.
