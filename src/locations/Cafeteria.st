@@ -5,7 +5,7 @@ NpcRoom subclass: Cafeteria [
             isAccessible: false
             hasItem: true
             itemsList: (OrderedCollection new)
-            npcList: (OrderedCollection new).
+            npcList: (OrderedCollection new)
             adjacentWest: emptyRoomA
             adjacentSouth: medicBay
             adjacentEast: kitchen

@@ -5,7 +5,7 @@ NpcRoom subclass: EmptyRoomB [
             isAccessible: false
             hasItem: false
             itemsList: (OrderedCollection new)
-            npcList: (OrderedCollection new).
+            npcList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: nullRoom
             adjacentEast: lobby

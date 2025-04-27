@@ -4,7 +4,7 @@ NoneNpcRoom subclass: KitchenExit [
         super initializeWithName: 'kitchen exit'
             isAccessible: false
             hasItem: false
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: foodStorage
             adjacentSouth: nullRoom
             adjacentEast: nullRoom

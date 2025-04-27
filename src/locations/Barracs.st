@@ -5,7 +5,7 @@ NpcRoom subclass: Barracs [
             isAccessible: false
             hasItem: true
             itemsList: (OrderedCollection new)
-            npcList: (OrderedCollection new).
+            npcList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: socialRoom
             adjacentEast: nullRoom

@@ -4,7 +4,7 @@ NoneNpcRoom subclass: GoebbelsOffice [
         super initializeWithName: 'goebbels''s office'
             isAccessible: false
             hasItem: false
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: conferenceRoom
             adjacentEast: nullRoom

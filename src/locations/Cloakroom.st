@@ -4,7 +4,7 @@ NoneNpcRoom subclass: Cloakroom [
         super initializeWithName: 'cloakroom'
             isAccessible: false
             hasItem: true
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: securityCheckEntry
             adjacentEast: nullRoom

@@ -4,7 +4,7 @@ NoneNpcRoom subclass: Entrance [
         super initializeWithName: 'entrance'
             isAccessible: true
             hasItem: true
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: nullRoom
             adjacentEast: securityCheckEntry

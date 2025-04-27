@@ -4,7 +4,7 @@ NoneNpcRoom subclass: ConferenceRoom [
         super initializeWithName: 'conference room'
             isAccessible: false
             hasItem: false
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: fuhrersOffice
             adjacentSouth: nullRoom
             adjacentEast: securityCheckOffices

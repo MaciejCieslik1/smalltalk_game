@@ -4,7 +4,7 @@ NoneNpcRoom subclass: Archives [
         super initializeWithName: 'archives'
             isAccessible: false
             hasItem: true
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: securityCheckOffices
             adjacentEast: nullRoom

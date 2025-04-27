@@ -4,7 +4,7 @@ NoneNpcRoom subclass: Lobby [
         super initializeWithName: 'lobby'
             isAccessible: false
             hasItem: true
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: emptyRoomB
             adjacentSouth: emptyRoomA
             adjacentEast: socialRoom

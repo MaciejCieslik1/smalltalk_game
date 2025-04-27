@@ -4,7 +4,7 @@ NoneNpcRoom subclass: EmptyRoomA [
         super initializeWithName: 'empty room A'
             isAccessible: false
             hasItem: false
-            itemsList: (OrderedCollection new).
+            itemsList: (OrderedCollection new)
             adjacentWest: nullRoom
             adjacentSouth: cloakroom
             adjacentEast: cafeteria

@@ -36,7 +36,11 @@ FileStream fileIn: 'characters/Guard4.st'."
 FileStream fileIn: 'uniforms/ServiceUniform.st'.
 FileStream fileIn: 'uniforms/MilitaryUniform.st'."
 
+
 FileStream fileIn: 'locations/Room.st'.
+FileStream fileIn: 'locations/NoneNpcRoom.st'.
+FileStream fileIn: 'locations/NpcRoom.st'.
+FileStream fileIn: 'locations/NullRoom.st'.
 FileStream fileIn: 'locations/Entrance.st'.
 FileStream fileIn: 'locations/EmptyRoomA.st'.
 FileStream fileIn: 'locations/EmptyRoomB.st'.
@@ -48,9 +52,6 @@ FileStream fileIn: 'locations/Kitchen.st'.
 FileStream fileIn: 'locations/KitchenExit.st'.
 FileStream fileIn: 'locations/Lobby.st'.
 FileStream fileIn: 'locations/MedicBay.st'.
-FileStream fileIn: 'locations/NoneNpcRoom.st'.
-FileStream fileIn: 'locations/NpcRoom.st'.
-FileStream fileIn: 'locations/NullRoom.st'.
 FileStream fileIn: 'locations/Passage.st'.
 FileStream fileIn: 'locations/SecretExit.st'.
 FileStream fileIn: 'locations/SecurityCheckEntry.st'.
