@@ -1,14 +1,15 @@
-NpcRoom subclass: #emptyRoomB
+NpcRoom subclass: EmptyRoomB [
 
-emptyRoomB >> initialize [
-    super initialize: 'empty room B'
-        isAccessible: false
-        hasItem: false
-        itemsList: (OrderedCollection new)
-        npcList: (OrderedCollection new).
-        adjacentWest: nullRoom
-        adjacentSouth: nullRoom
-        adjacentEast: lobby
-        adjacentNorth: fuhrersOffice
-    npcList add: bandit.
+    EmptyRoomB >> initialize [
+        super initializeWithName: 'empty room B'
+            isAccessible: false
+            hasItem: false
+            itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new).
+            adjacentWest: nullRoom
+            adjacentSouth: nullRoom
+            adjacentEast: lobby
+            adjacentNorth: fuhrersOffice
+        npcList add: bandit.
+    ]
 ]

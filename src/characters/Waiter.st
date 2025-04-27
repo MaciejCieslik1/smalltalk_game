@@ -1,19 +1,20 @@
-Npc subclass: #Waiter
+Npc subclass: Waiter [
 
-Waiter >> initialize: [
-    super initialize 'waiter' civil kitchen false
-]
+    initialize: [
+        super initializeWithName: 'waiter' rank: civil location: kitchen isKillable: false
+    ]
 
-Waiter >> interaction: [
-    communicatesService talkToWaiter_1
-]
+    interaction: [
+        communicatesService talkToWaiter_1
+    ]
 
-Waiter >> attacked [
-    | inputOption |
-    self npcKilled
-    communicatesService waiterKilled
-    communicatesService waiterStealUniformOption
-    inputOption := inputService inputCharacter: ('a')
-    communicatesService waiterStealUniform
-    hero changeUniform: serviceUniform
+    attacked [
+        | inputOption |
+        self npcKilled
+        communicatesService waiterKilled
+        communicatesService waiterStealUniformOption
+        inputOption := inputService inputCharacter: ('a')
+        communicatesService waiterStealUniform
+        hero changeUniform: serviceUniform
+    ]
 ]

@@ -1,12 +1,13 @@
-NoneNpcRoom subclass: #ConferenceRoom
+NoneNpcRoom subclass: ConferenceRoom [
 
-ConferenceRoom >> initialize [
-    super initialize: 'conference room'
-        isAccessible: false
-        hasItem: false
-        itemsList: (OrderedCollection new).
-        adjacentWest: fuhrersOffice
-        adjacentSouth: nullRoom
-        adjacentEast: securityCheckOffices
-        adjacentNorth: goebbelsOffice
+    initialize [
+        super initializeWithName: 'conference room'
+            isAccessible: false
+            hasItem: false
+            itemsList: (OrderedCollection new).
+            adjacentWest: fuhrersOffice
+            adjacentSouth: nullRoom
+            adjacentEast: securityCheckOffices
+            adjacentNorth: goebbelsOffice
+    ]
 ]

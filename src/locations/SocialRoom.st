@@ -1,9 +1,10 @@
-NoneNpcRoom subclass: #SocialRoom
+NoneNpcRoom subclass: SocialRoom [
 
-SocialRoom >> initialize [
-    super initialize: 'social room'
-        isAccessible: false
-        hasItem: true
-        itemsList: (OrderedCollection new).
-    itemsList add: money3.
+    initialize [
+        super initializeWithName: 'social room'
+            isAccessible: false
+            hasItem: true
+            itemsList: (OrderedCollection new).
+        itemsList add: money3.
+    ]
 ]

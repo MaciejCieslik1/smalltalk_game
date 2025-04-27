@@ -1,29 +1,30 @@
-Character subclass: #Npc
-    instanceVariableNames: 'rank'
+Character subclass: Npc [
+    | rank |
 
-Npc >> initialize: newName newRank newLocation newIsKillable [
-    super initialize: newName 
-        location: newLocation
-        isKillable: newIsKillable
-    rank := newRank
-]
+    initializeWithName: newName rank: newRank location: newLocation isKillable: newIsKillable [
+        super initialize: newName 
+            location: newLocation
+            isKillable: newIsKillable
+        rank := newRank
+    ]
 
-Npc >> rank [
-    ^ rank
-]
+    rank [
+        ^ rank
+    ]
 
-Npc >> rank: newRank [
-    rank := newRank
-]
+    rank: newRank [
+        rank := newRank
+    ]
 
-Npc >> createInfo [
-    | info |
-    info := super createInfo, 
-            'Rank: ', self rank, String cr.
-    ^ info
-]
+    createInfo [
+        | info |
+        info := super createInfo, 
+                'Rank: ', self rank, String cr.
+        ^ info
+    ]
 
-Npc >> npcKilled: [
-    self isAlive: false
-    self location removeNpc: self
+    npcKilled: [
+        self isAlive: false
+        self location removeNpc: self
+    ]
 ]

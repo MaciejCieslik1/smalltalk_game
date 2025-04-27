@@ -1,13 +1,14 @@
-NoneNpcRoom subclass: #Entrance
+NoneNpcRoom subclass: Entrance [
 
-Entrance >> initialize [
-    super initialize: 'entrance'
-        isAccessible: true
-        hasItem: true
-        itemsList: (OrderedCollection new).
-        adjacentWest: nullRoom
-        adjacentSouth: nullRoom
-        adjacentEast: securityCheckEntry
-        adjacentNorth: nullRoom
-    itemsList add: id.
+    initialize [
+        super initializeWithName: 'entrance'
+            isAccessible: true
+            hasItem: true
+            itemsList: (OrderedCollection new).
+            adjacentWest: nullRoom
+            adjacentSouth: nullRoom
+            adjacentEast: securityCheckEntry
+            adjacentNorth: nullRoom
+        itemsList add: id.
+    ]
 ]

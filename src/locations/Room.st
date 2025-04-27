@@ -1,141 +1,150 @@
-Object subclass: #Room
-    instanceVariableNames: 'name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth'
+Object subclass: Room [
+    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth | 
 
-Room >> initialize: newName newIsAccessible newHasItem newItemsList newHasNpc newAdjacentWest newAdjacentSouth newAdjacentEast 
-                    newAdjacentNorth [
-    name := newName.
-    isAccessible := newIsAccessible
-    hasItem := newHasItem
-    itemsList := newItemsList
-    hasNpc := newHasNpc
-    wasVisisted := false
-    adjacentWest := newAdjacentWest
-    adjacentSouth := newAdjacentSouth
-    adjacentEast := newAdjacentEast
-    adjacentNorth := newAdjacentNorth
-]
-
-Room >> name [
-    ^ name
-]
-
-Room >> name: newName [
-    name := newName
-]
-
-Room >> isAccessible [
-    ^ isAccessible
-]
-
-Room >> isAccessible: newIsAccessible [
-    isAccessible := newIsAccessible
-]
-
-Room >> hasItem [
-    ^ hasItem
-]
-
-Room >> hasItem: newHasItem [
-    hasItem := newHasItem
-]
-
-Room >> itemsLists [
-    ^ itemsList
-]
-
-Room >> itemsList: newItemsList [
-    itemsList := newItemsList
-]
-
-Room >> hasNpc [
-    ^ hasNpc
-]
-
-Room >> hasNpc: newHasNpc [
-    hasNpc := newHasNpc
-]
-
-Room >> wasVisisted [
-    ^ wasVisisted
-]
-
-Room >> wasVisisted: newWasVisited [
-    wasVisisted := newWasVisited
-]
-
-Room >> adjacentWest [
-    ^ adjacentWest
-]
-
-Room >> adjacentWest: newAdjacentWest [
-    adjacentWest := newAdjacentWest
-]
-
-Room >> adjacentEast [
-    ^ adjacentEast
-]
-
-Room >> adjacentEast: newAdjacentEast [
-    adjacentEast := newAdjacentEast
-]
-
-Room >> adjacentNorth [
-    ^ adjacentNorth
-]
-
-Room >> adjacentNorth: newAdjacentNorth [
-    adjacentNorth := newAdjacentNorth
-]
-
-Room >> adjacentSouth [
-    ^ adjacentSouth
-]
-
-Room >> adjacentSouth: newAdjacentSouth [
-    adjacentSouth := newAdjacentSouth
-]
-
-Room >> hasItemName: itemName [
-    ^ self itemsList anySatisfy: [:item | item name = itemName].
-]
-
-Room >> findItemByName: itemName [
-    ^ self itemsList detect: [:item | item name = itemName]
-]
-
-Room >> removeItem: item [
-    itemsList remove: item
-]
-
-Room >> roomInfo [
-    communicatesService printStringNewLine: self name
-    communicatesService printItems
-]
-
-Room >> pickUpItem: itemName [
-    (self hasItemName: itemName)
-    ifTrue: [
-        item := self findItemByName: itemName
-        item pickUp
+    initializeWithName: newName 
+        isAccessible: newIsAccessible 
+        hasItem: newHasItem 
+        itemsLists: newItemsList 
+        hasNpc: newHasNpc
+        adjacentWest: newAdjacentWest 
+        adjacentSouth: newAdjacentSouth 
+        adjacentEast: newAdjacentEast 
+        adjacentNorth: newAdjacentNorth 
+    [
+        name := newName.
+        isAccessible := newIsAccessible.
+        hasItem := newHasItem.
+        itemsList := newItemsList.
+        hasNpc := newHasNpc.
+        wasVisisted := false.
+        adjacentWest := newAdjacentWest.
+        adjacentSouth := newAdjacentSouth.
+        adjacentEast := newAdjacentEast.
+        adjacentNorth := newAdjacentNorth.
     ]
-    ifFalse: [
-        communicatesService wrongItemName
-    ]
-]
 
-Room >> interactWithItem: itemName [
-    | item |
-    (self hasItemName: itemName)
-    ifTrue: [
-        item := self findItemByName: itemName
-        item interact
+    name [
+        ^ name
     ]
-    ifFalse: [
-        communicatesService wrongItemName
-    ]
-]
 
-Room >> heroWalkedIn [
-    self wasVisisted: true
-    actionListener chooseAction 
+    name: newName [
+        name := newName
+    ]
+
+    isAccessible [
+        ^ isAccessible
+    ]
+
+    isAccessible: newIsAccessible [
+        isAccessible := newIsAccessible
+    ]
+
+    hasItem [
+        ^ hasItem
+    ]
+
+    hasItem: newHasItem [
+        hasItem := newHasItem
+    ]
+
+    itemsLists [
+        ^ itemsList
+    ]
+
+    itemsList: newItemsList [
+        itemsList := newItemsList
+    ]
+
+    hasNpc [
+        ^ hasNpc
+    ]
+
+    hasNpc: newHasNpc [
+        hasNpc := newHasNpc
+    ]
+
+    wasVisisted [
+        ^ wasVisisted
+    ]
+
+    wasVisisted: newWasVisited [
+        wasVisisted := newWasVisited
+    ]
+
+    adjacentWest [
+        ^ adjacentWest
+    ]
+
+    adjacentWest: newAdjacentWest [
+        adjacentWest := newAdjacentWest
+    ]
+
+    adjacentEast [
+        ^ adjacentEast
+    ]
+
+    adjacentEast: newAdjacentEast [
+        adjacentEast := newAdjacentEast
+    ]
+
+    adjacentNorth [
+        ^ adjacentNorth
+    ]
+
+    adjacentNorth: newAdjacentNorth [
+        adjacentNorth := newAdjacentNorth
+    ]
+
+    adjacentSouth [
+        ^ adjacentSouth
+    ]
+
+    adjacentSouth: newAdjacentSouth [
+        adjacentSouth := newAdjacentSouth
+    ]
+
+    hasItemName: itemName [
+        ^ self itemsList anySatisfy: [:item | item name = itemName].
+    ]
+
+    findItemByName: itemName [
+        ^ self itemsList detect: [:item | item name = itemName]
+    ]
+
+    removeItem: item [
+        itemsList remove: item
+    ]
+
+    roomInfo [
+        communicatesService printStringNewLine: self name
+        communicatesService printItems
+    ]
+
+    pickUpItem: itemName [
+        (self hasItemName: itemName)
+        ifTrue: [
+            item := self findItemByName: itemName
+            item pickUp
+        ]
+        ifFalse: [
+            communicatesService wrongItemName
+        ]
+    ]
+
+    interactWithItem: itemName [
+        | item |
+        (self hasItemName: itemName)
+        ifTrue: [
+            item := self findItemByName: itemName
+            item interact
+        ]
+        ifFalse: [
+            communicatesService wrongItemName
+        ]
+    ]
+
+    heroWalkedIn [
+        self wasVisisted: true
+        actionListener chooseAction 
+    ]
 ]

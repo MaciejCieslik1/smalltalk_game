@@ -1,12 +1,13 @@
-NoneNpcRoom subclass: #NullRoom
+NoneNpcRoom subclass: NullRoom [
 
-SecretExit >> initialize [
-    super initialize: 'null room'
-        isAccessible: false
-        hasItem: false
-        itemsList: (OrderedCollection new).
-        adjacentWest: false
-        adjacentSouth: false
-        adjacentEast: false
-        adjacentNorth: false
+    initialize [
+        super initializeWithName: 'null room'
+            isAccessible: false
+            hasItem: false
+            itemsList: (OrderedCollection new)
+            adjacentWest: nil
+            adjacentSouth: nil
+            adjacentEast: nil
+            adjacentNorth: nil
+    ]
 ]

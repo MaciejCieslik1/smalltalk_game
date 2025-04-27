@@ -1,116 +1,117 @@
-Npc subclass: #Soldier
-    instanceVariableNames: 'items hasPlayedCards'
+Npc subclass: Soldier [
+    | items hasPlayedCards |
 
-Soldier >> initialize: [
-    super initialize 'soldier' private barracks false
-    items := #(helmet)
-    hasPlayedCards := false
-]
-
-Soldier >> items [
-    ^ items
-]
-
-Soldier >> items: newItems [
-    items := newItems
-]
-
-Soldier >> addItem: newItem [
-    items add: newItem
-]
-
-Soldier >> removeItem: item [
-    items remove: item
-]
-
-Soldier >> hasItem: item [
-    ^ self items include: item
-]
-
-Soldier >> hasPlayedCards [
-    ^ hasPlayedCards
-]
-
-Soldier >> hasPlayedCards: newHasPlayedCards [
-    hasPlayedCards := newHasPlayedCards
-]
-
-Soldier >> createInfo: [
-    | info |
-    info := super createInfo,
-            'Items: ', (self items joinSeparatedBy: ', '), String cr.
-    ^ info
-]
-
-Soldier >> interaction: [
-    (self hasPlayedCards)
-    ifTrue: [
-        self alreadyPlayedOption
+    initialize: [
+        super initializeWithName: 'soldier' rank: private location: barracks isKillable: false
+        items := #(helmet)
+        hasPlayedCards := false
     ]
-    ifFalse: [
-        self firstGameOption
+
+    items [
+        ^ items
     ]
-]
 
-Soldier >> alreadyPlayedOption: [
-    communicatesService talkToSoldier_12
-]
-
-Soldier >> firstGameOption: [
-    self introductionDialogue
-    self hasHeroWillToPlay
-]
-
-Soldier >> introductionDialogue: [
-    communicatesService talkToSoldier_1
-    communicatesService talkToSoldier_2
-    communicatesService talkToSoldier_3
-    communicatesService talkToSoldier_4
-]
-
-Soldier >> hasHeroWillToPlay: [
-    | inputOption |
-    inputOption := inputService inputCharacter: #($a $b)
-    (inputOption = $a) 
-    ifTrue: [
-        self heroDoesNotWantToPlay
+    items: newItems [
+        items := newItems
     ]
-    (inputOption = $b) 
-    ifTrue: [
-        self heroWantsToPlay
+
+    addItem: newItem [
+        items add: newItem
     ]
-]
 
-Soldier >> heroDoesNotWantToPlay: [
-    communicatesService talkToSoldier_5
-    communicatesService talkToSoldier_6
-]
-
-Soldier >> heroWantsToPlay: [
-    communicatesService talkToSoldier_7
-    (hero has: umbrella)
-    ifTrue: [
-        self heroHasUmbrella
+    removeItem: item [
+        items remove: item
     ]
-    ifFalse: [
-        self herohasNotUmbrella
+
+    hasItem: item [
+        ^ self items include: item
     ]
-]
 
-Soldier >> heroHasUmbrella: [
-    communicatesService talkToSoldier_8
-    communicatesService talkToSoldier_9
-    communicatesService talkToSoldier_10
-    communicatesService talkToSoldier_11
-    self heroWon
-]
+    hasPlayedCards [
+        ^ hasPlayedCards
+    ]
 
-Soldier >> herohasNotUmbrella: [
-    communicatesService talkToSoldier_13
-]
+    hasPlayedCards: newHasPlayedCards [
+        hasPlayedCards := newHasPlayedCards
+    ]
 
-Soldier >> heroWon: [
-    self hasPlayedCards: true
-    self removeItem: helmet
-    hero addItem: helmet
+    createInfo: [
+        | info |
+        info := super createInfo,
+                'Items: ', (self items joinSeparatedBy: ', '), String cr.
+        ^ info
+    ]
+
+    interaction: [
+        (self hasPlayedCards)
+        ifTrue: [
+            self alreadyPlayedOption
+        ]
+        ifFalse: [
+            self firstGameOption
+        ]
+    ]
+
+    alreadyPlayedOption: [
+        communicatesService talkToSoldier_12
+    ]
+
+    firstGameOption: [
+        self introductionDialogue
+        self hasHeroWillToPlay
+    ]
+
+    introductionDialogue: [
+        communicatesService talkToSoldier_1
+        communicatesService talkToSoldier_2
+        communicatesService talkToSoldier_3
+        communicatesService talkToSoldier_4
+    ]
+
+    hasHeroWillToPlay: [
+        | inputOption |
+        inputOption := inputService inputCharacter: #($a $b)
+        (inputOption = $a) 
+        ifTrue: [
+            self heroDoesNotWantToPlay
+        ]
+        (inputOption = $b) 
+        ifTrue: [
+            self heroWantsToPlay
+        ]
+    ]
+
+    heroDoesNotWantToPlay: [
+        communicatesService talkToSoldier_5
+        communicatesService talkToSoldier_6
+    ]
+
+    heroWantsToPlay: [
+        communicatesService talkToSoldier_7
+        (hero has: umbrella)
+        ifTrue: [
+            self heroHasUmbrella
+        ]
+        ifFalse: [
+            self herohasNotUmbrella
+        ]
+    ]
+
+    heroHasUmbrella: [
+        communicatesService talkToSoldier_8
+        communicatesService talkToSoldier_9
+        communicatesService talkToSoldier_10
+        communicatesService talkToSoldier_11
+        self heroWon
+    ]
+
+    herohasNotUmbrella: [
+        communicatesService talkToSoldier_13
+    ]
+
+    heroWon: [
+        self hasPlayedCards: true
+        self removeItem: helmet
+        hero addItem: helmet
+    ]
 ]

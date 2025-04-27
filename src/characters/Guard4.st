@@ -1,103 +1,104 @@
-Guard subclass: #Guard4
+Guard subclass: Guard4 [
 
-Guard4 >> initialize: [
-    super initialize: 'guard4' 
-        location: fuhrersOffice
-        isKillable: true
-]
-
-Guard4 >> interaction: [
-    (self hasPermission)
-    ifTrue: [
-        communicatesService authorized
+    initialize: [
+        super initializeWithName: 'guard4' 
+            location: fuhrersOffice
+            isKillable: true
     ]
-    ifFalse: [
-        self conversation
+
+    interaction: [
+        (self hasPermission)
+        ifTrue: [
+            communicatesService authorized
+        ]
+        ifFalse: [
+            self conversation
+        ]
     ]
-]
 
-Guard4 >> conversation [
-    self introductionDialogue
-    self chooseDialogueOption
-]
-
-Guard4 >> introductionDialogue: [
-    communicatesService talkToGuard4_1
-    communicatesService talkToGuard4_2
-    communicatesService talkToGuard4_3
-]
-
-Guard4 >> chooseDialogueOption: [
-    (hero uniform == serviceUniform and: [hero hasPoisonedJuice]) 
-    ifTrue: [
-        self trueWaiterCondition
+    conversation [
+        self introductionDialogue
+        self chooseDialogueOption
     ]
-    ifFalse: [
-        self falseWaiterCondition
+
+    introductionDialogue: [
+        communicatesService talkToGuard4_1
+        communicatesService talkToGuard4_2
+        communicatesService talkToGuard4_3
     ]
-]
 
-Guard4 >> trueWaiterCondition: [
-    communicatesService talkToGuard4_6
-    inputOption := inputService inputCharacter: #($a $b)
-    (inputOption = $a) 
-    ifTrue: [
-        self aOptionWaiterCondition
+    chooseDialogueOption: [
+        (hero uniform == serviceUniform and: [hero hasPoisonedJuice]) 
+        ifTrue: [
+            self trueWaiterCondition
+        ]
+        ifFalse: [
+            self falseWaiterCondition
+        ]
     ]
-    (inputOption = $b) 
-    ifTrue: [
-        self bOptionWaiterCondition
+
+    trueWaiterCondition: [
+        communicatesService talkToGuard4_6
+        inputOption := inputService inputCharacter: #($a $b)
+        (inputOption = $a) 
+        ifTrue: [
+            self aOptionWaiterCondition
+        ]
+        (inputOption = $b) 
+        ifTrue: [
+            self bOptionWaiterCondition
+        ]
     ]
-]
 
-Guard4 >> aOptionWaiterCondition: [
-    communicatesService talkToGuard4_4
-    communicatesService talkToGuard4_5
-]
-
-Guard4 >> bOptionWaiterCondition: [
-    communicatesService talkToGuard4_7
-    communicatesService talkToGuard4_6
-    guard3 interactionBeverages
-]
-
-Guard4 >> falseWaiterCondition: [
-    inputService inputCharacter: ('a')
-    communicatesService talkToGuard4_4
-    communicatesService talkToGuard4_5
-]
-
-Guard4 >> interactionShooting: [
-    communicatesService talkToGuard4_8
-    (hero hasItem: bulletproofVest) 
-    ifTrue: [
-        self usedVest
+    aOptionWaiterCondition: [
+        communicatesService talkToGuard4_4
+        communicatesService talkToGuard4_5
     ]
-    ifFalse: [
-        self notUsedVest
+
+    bOptionWaiterCondition: [
+        communicatesService talkToGuard4_7
+        communicatesService talkToGuard4_6
+        guard3 interactionBeverages
     ]
-]
 
-Guard4 >> usedVest: [
-    communicatesService talkToGuard4_9
-    communicatesService talkToGuard4_10
-    communicatesService talkToGuard4_11
-    inputService inputCharacter: ('a')
-    communicatesService talkToGuard4_12
-    communicatesService talkToGuard4_13
-    communicatesService talkToGuard4_14
-    communicatesService talkToGuard_wayNorthAccessible
-]
+    falseWaiterCondition: [
+        inputService inputCharacter: ('a')
+        communicatesService talkToGuard4_4
+        communicatesService talkToGuard4_5
+    ]
 
-Guard4 >> notUsedVest: [
-    communicatesService talkToGuard4_15
-    communicatesService talkToGuard_wakeUpInMedbay
-    communicatesService talkToGuard_needVest
-    hero getWounded
-]
+    interactionShooting: [
+        communicatesService talkToGuard4_8
+        (hero hasItem: bulletproofVest) 
+        ifTrue: [
+            self usedVest
+        ]
+        ifFalse: [
+            self notUsedVest
+        ]
+    ]
 
-Guard3 >> attacked [
-    self npcKilled
-    communicatesService killedGuard4
-    guard3 interactionShooting
+    usedVest: [
+        communicatesService talkToGuard4_9
+        communicatesService talkToGuard4_10
+        communicatesService talkToGuard4_11
+        inputService inputCharacter: ('a')
+        communicatesService talkToGuard4_12
+        communicatesService talkToGuard4_13
+        communicatesService talkToGuard4_14
+        communicatesService talkToGuard_wayNorthAccessible
+    ]
+
+    notUsedVest: [
+        communicatesService talkToGuard4_15
+        communicatesService talkToGuard_wakeUpInMedbay
+        communicatesService talkToGuard_needVest
+        hero getWounded
+    ]
+
+    attacked [
+        self npcKilled
+        communicatesService killedGuard4
+        guard3 interactionShooting
+    ]
 ]
