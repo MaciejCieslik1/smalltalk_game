@@ -1,10 +1,11 @@
-Item subclass: #Bandage
+Item subclass: Bandage [
 
-Bandage >> initialize [
-    super initialize: 'bandage'
-        location: medicBay
-]
+    initialize [
+        super initializeWithName: 'bandage'
+            location: medicBay.
+    ]
 
-Bandage >> description [
-    communicatesService bandageDescription
+    description [
+        communicatesService bandageDescription.
+    ]
 ]

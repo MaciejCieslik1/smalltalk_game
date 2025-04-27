@@ -1,10 +1,11 @@
-Item subclass: #Baton
+Item subclass: Baton [
 
-Baton >> initialize [
-    super initialize: 'baton'
-        location: barracks
-]
+    initialize [
+        super initializeWithName: 'baton'
+            location: barracks.
+    ]
 
-Baton >> description [
-    communicatesService batonDescription
+    description [
+        communicatesService batonDescription.
+    ]
 ]

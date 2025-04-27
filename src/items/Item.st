@@ -1,40 +1,41 @@
-Object subclass: #Item
-    instanceVariableNames: 'name location'
+Object subclass: Item [
+    | name location |
 
-Item >> initialize: newName newLocation [
-    name := newName.
-    location := newLocation.
-]
-
-Item >> name [
-    ^ name
-]
-
-Item >> name: newName [
-    name := newName
-]
-
-Item >> location [
-    ^ location
-]
-
-Item >> location: newLocation [
-    location := newLocation
-]
-
-Item >> pickUp [
-    hero addItem: self
-    self location removeItem: self
-    (self itemsList isEmpty)
-    ifTrue: [
-        self hasItem: false 
+    initializeWithName: newName location: newLocation [
+        name := newName.
+        location := newLocation.
     ]
-]
 
-Item >> interact [
-    " This method is overwritten by subclass "
-]
+    name [
+        ^ name
+    ]
 
-Item >> description [
-    " This method is overwritten by subclass "
+    name: newName [
+        name := newName
+    ]
+
+    location [
+        ^ location
+    ]
+
+    location: newLocation [
+        location := newLocation
+    ]
+
+    pickUp [
+        "hero addItem: self."
+        location removeItem: self.
+        (self itemsLists isEmpty)
+        ifTrue: [
+            self hasItem: false 
+        ]
+    ]
+
+    interact [
+        " This method is overwritten by subclass "
+    ]
+
+    description [
+        " This method is overwritten by subclass "
+    ]
 ]

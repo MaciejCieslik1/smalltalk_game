@@ -1,20 +1,21 @@
-Item subclass: #Juice
-    instanceVariableNames: 'isPoisoned'
+Item subclass: Juice [
+    | isPoisoned |
 
-Juice >> initialize: newName newLocation newIsPoisoned [
-    super initialize: newName newLocation
-    isPoisoned := newIsPoisoned
-]
+    initializeWithName: newName location: newLocation isPoisoned: newIsPoisoned [
+        super initializeWithName: newName location: newLocation.
+        isPoisoned := newIsPoisoned
+    ]
 
-Juice >> isPoisoned [
-    ^ isPoisoned
-]
+    isPoisoned [
+        ^ isPoisoned
+    ]
 
-Juice >> isPoisoned: newIsPoisoned [
-    isPoisoned := newIsPoisoned
-]
+    isPoisoned1: newIsPoisoned [
+        isPoisoned := newIsPoisoned
+    ]
 
-Juice >> addPoison [
-    self name: ('poisoned ', self name) asString.
-    self isPoisoned: true
+    addPoison [
+        self name: ('poisoned ', self name) asString.
+        self isPoisoned: true
+    ]
 ]

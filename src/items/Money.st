@@ -1,24 +1,25 @@
-Item subclass: #Money
-    instanceVariableNames: 'amount'
+Item subclass: Money [
+    | amount |
 
-Money >> initialize: newName newLocation newAmount [
-    super initialize: newName newLocation
-    amount := newAmount
-]
+    initializeWithName: newName location: newLocation amount: newAmount [
+        super initializeWithName: newName location: newLocation.
+        amount := newAmount.
+    ]
 
-Money >> amount [
-    ^ amount
-]
+    amount [
+        ^ amount
+    ]
 
-Money >> amount: newAmount [
-    amount := newAmount
-]
+    amount: newAmount [
+        amount := newAmount.
+    ]
 
-Money >> pickUp [
-    hero addMoney: self amount
-    self location removeItem: self
-]
+    pickUp [
+        hero addMoney: self amount.
+        self location removeItem: self.
+    ]
 
-Money >> description [
-    communicatesService moneyDescription: self amount
+    description [
+        communicatesService moneyDescription: self amount.
+    ]
 ]

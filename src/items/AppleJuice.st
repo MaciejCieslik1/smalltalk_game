@@ -1,11 +1,11 @@
-Juice subclass: #AppleJuice
+Juice subclass: AppleJuice [
+    initialize [
+        super initializeWithName: 'apple_juice'
+            location: cafeteria
+            isPoisoned: false.
+    ]
 
-AppleJuice >> initialize [
-    super initialize: 'apple_juice'
-        location: cafeteria
-        isPoisoned: false
-]
-
-AppleJuice >> description [
-    communicatesService appleJuiceDescription
+    description [
+        communicatesService appleJuiceDescription.
+    ]
 ]

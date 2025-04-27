@@ -1,10 +1,11 @@
-Item subclass: #Poison
+Item subclass: Poison [
 
-Poison >> initialize [
-    super initialize: 'poison'
-        location: foodStorage
-]
+    initialize [
+        super initializeWithName: 'poison'
+            location: foodStorage.
+    ]
 
-Poison >> description [
-    communicatesService poisonDescription
+    description [
+        communicatesService poisonDescription.
+    ]
 ]

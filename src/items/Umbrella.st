@@ -1,10 +1,11 @@
-Item subclass: #Umbrella
+Item subclass: Umbrella [
 
-Umbrella >> initialize [
-    super initialize: 'umbrella'
-        location: cloakroom
-]
+    initialize [
+        super initializeWithName: 'umbrella'
+            location: cloakroom.
+    ]
 
-Umbrella >> description [
-    communicatesService umbrellaDescription
+    description [
+        communicatesService umbrellaDescription.
+    ]
 ]

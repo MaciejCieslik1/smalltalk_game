@@ -1,10 +1,11 @@
-Item subclass: #BulletproofVest
+Item subclass: BulletproofVest [
 
-BulletproofVest >> initialize [
-    super initialize: 'bulletproof_vest'
-        location: nil
-]
+    initialize [
+        super initializeWithName: 'bulletproof_vest'
+            location: nil.
+    ]
 
-BulletproofVest >> description [
-    communicatesService bulletproofVestDescription
+    description [
+        communicatesService bulletproofVestDescription.
+    ]
 ]

@@ -1,10 +1,11 @@
-Item subclass: #Gun
+Item subclass: Gun [
 
-Gun >> initialize [
-    super initialize: 'gun'
-        location: nil
-]
+    initialize [
+        super initializeWithName: 'gun'
+            location: nil
+    ]
 
-Gun >> description [
-    communicatesService gunDescription
+    description [
+        communicatesService gunDescription
+    ]
 ]

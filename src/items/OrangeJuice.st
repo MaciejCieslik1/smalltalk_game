@@ -1,11 +1,12 @@
-Juice subclass: #OrangeJuice
+Juice subclass: OrangeJuice [
 
-OrangeJuice >> initialize [
-    super initialize: 'orange_juice'
-        location: cafeteria
-        isPoisoned: false
-]
+    initialize [
+        super initializeWithName: 'orange_juice'
+            location: cafeteria
+            isPoisoned: false.
+    ]
 
-OrangeJuice >> description [
-    communicatesService orangeJuiceDescription
+    description [
+        communicatesService orangeJuiceDescription.
+    ]
 ]

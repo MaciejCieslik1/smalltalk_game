@@ -1,25 +1,26 @@
-Item subclass: #Rag
-    instanceVariableNames: 'isChloroformed'
+Item subclass: Rag [
+    | isChloroformed | 
 
-Rag >> initialize [
-    super initialize: 'rag' 
-        location: barracks
-        isChloroformed: false
-]
+    initialize [
+        super initializeWithName: 'rag' 
+            location: barracks
+            isChloroformed: false.
+    ]
 
-Rag >> isChloroformed [
-    ^ isChloroformed
-]
+    isChloroformed [
+        ^ isChloroformed
+    ]
 
-Rag >> isChloroformed: newIsChloroformed [
-    isChloroformed := newIsChloroformed
-]
+    isChloroformed: newIsChloroformed [
+        isChloroformed := newIsChloroformed.
+    ]
 
-Rag >> description [
-    communicatesService ragDescription
-]
+    description [
+        communicatesService ragDescription.
+    ]
 
-Rag >> addChloroform [
-    self name: ('chloroformed ', self name) asString.
-    self isChloroformed: true
+    addChloroform [
+        self name: ('chloroformed ', self name) asString.
+        self isChloroformed: true.
+    ]
 ]

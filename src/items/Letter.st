@@ -1,10 +1,11 @@
-Item subclass: #Letter
+Item subclass: Letter [
 
-Letter >> initialize [
-    super initialize: 'letter'
-        location: goebbelsOffice
-]
+    initialize [
+        super initializeWithName: 'letter'
+            location: goebbelsOffice.
+    ]
 
-Letter >> description [
-    communicatesService letterDescription
+    description [
+        communicatesService letterDescription.
+    ]
 ]

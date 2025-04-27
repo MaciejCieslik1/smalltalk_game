@@ -1,10 +1,11 @@
-Item subclass: #Chloroform
+Item subclass: Chloroform [
 
-Chloroform >> initialize [
-    super initialize: 'chloroform'
-        location: medicBay
-]
+    initialize [
+        super initializeWithName: 'chloroform'
+            location: medicBay.
+    ]
 
-Chloroform >> description [
-    communicatesService chloroformDescription
+    description [
+        communicatesService chloroformDescription.
+    ]
 ]

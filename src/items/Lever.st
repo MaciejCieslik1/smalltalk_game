@@ -1,36 +1,37 @@
-Item subclass: #Lever
-    instanceVariableNames: 'isPulled'
+Item subclass: Lever [
+    | isPulled |
 
-Lever >> initialize: newName newLocation[
-    super initialize: 'lever' 
-        location: archives
-    isPulled := false
-]
-
-Lever >> isPulled [
-    ^ isPulled
-]
-
-Lever >> isPulled: newIsPulled [
-    isPulled := newIsPulled
-]
-
-Lever pickUp [
-    communicatesService cannotPickUpItem
-]
-
-Lever >> interact [
-    (self isPulled)
-    ifTrue: [
-        communicatesService leverAlreadyPulled
+    initializeWithName: newName location: newLocation[
+        super initializeWithName: 'lever' 
+            location: archives.
+        isPulled := false.
     ]
-    ifFalse: [
-        communicatesService leverPulled
-        communicatesService leverRumbling
-        self isPulled: true
-    ]
-]
 
-Lever >> description [
-    communicatesService leverDescription
+    isPulled [
+        ^ isPulled
+    ]
+
+    isPulled: newIsPulled [
+        isPulled := newIsPulled.
+    ]
+
+    pickUp [
+        communicatesService cannotPickUpItem.
+    ]
+
+    interact [
+        (self isPulled)
+        ifTrue: [
+            communicatesService leverAlreadyPulled.
+        ]
+        ifFalse: [
+            communicatesService leverPulled.
+            communicatesService leverRumbling.
+            self isPulled: true.
+        ]
+    ]
+
+    description [
+        communicatesService leverDescription.
+    ]
 ]

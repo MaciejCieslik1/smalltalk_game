@@ -1,11 +1,12 @@
-Juice subclass: #MultivitaminaJuice
+Juice subclass: MultivitaminaJuice [
 
-MultivitaminaJuice >> initialize [
-    super initialize: 'multivitamina_juice'
-        location: cafeteria
-        isPoisoned: false
-]
+    initialize [
+        super initializeWithName: 'multivitamina_juice'
+            location: cafeteria
+            isPoisoned: false.
+    ]
 
-MultivitaminaJuice >> description [
-    communicatesService multivitaminaJuiceDescription
+    description [
+        communicatesService multivitaminaJuiceDescription.
+    ]
 ]

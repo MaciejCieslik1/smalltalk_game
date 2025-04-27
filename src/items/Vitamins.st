@@ -1,10 +1,11 @@
-Item subclass: #Vitamins
+Item subclass: Vitamins [
 
-Vitamins >> initialize [
-    super initialize: 'vitamins'
-        location: medicBay
-]
+    initialize [
+        super initializeWithName: 'vitamins'
+            location: medicBay.
+    ]
 
-Vitamins >> description [
-    communicatesService vitaminsDescription
+    description [
+        communicatesService vitaminsDescription.
+    ]
 ]
