@@ -1,10 +1,11 @@
-Uniform subclass: #ServiceUniform
+Uniform subclass: ServiceUniform [
 
-ServiceUniform >> initialize [
-    super initialize: 
-        name := 'service_uniform'.
-]
+    initialize [
+        super initializeWithName: 
+            name := 'service_uniform'.
+    ]
 
-ServiceUniform >> description [
-    communicatesService serviceUniformDescription
+    description [
+        communicatesService serviceUniformDescription
+    ]
 ]

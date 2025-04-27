@@ -1,10 +1,11 @@
-Uniform subclass: #MilitaryUniform
+Uniform subclass: MilitaryUniform [
 
-MilitaryUniform >> initialize [
-    super initialize: 
-        name := 'military_uniform'.
-]
+    initialize [
+        super initializeWithName: 
+            name := 'military_uniform'.
+    ]
 
-MilitaryUniform >> description [
-    communicatesService militaryUniformDescription
+    description [
+        communicatesService militaryUniformDescription
+    ]
 ]

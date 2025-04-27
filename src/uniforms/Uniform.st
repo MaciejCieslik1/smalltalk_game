@@ -1,14 +1,15 @@
-Object subclass: #Uniform
-    instanceVariableNames: 'name'
+Object subclass: Uniform [
+    | name |
 
-Uniform >> initialize: newName [
-    name := newName.
-]
+    initializeWithName: newName [
+        name := newName.
+    ]
 
-Uniform >> name [
-    ^ name
-]
+    name [
+        ^ name
+    ]
 
-Uniform >> name: newName [
-    name := newName
+    name: newName [
+        name := newName
+    ]
 ]
