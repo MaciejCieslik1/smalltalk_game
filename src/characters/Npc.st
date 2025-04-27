@@ -1,4 +1,4 @@
-Character subclass: Npc [
+Person subclass: Npc [
     | rank |
 
     initializeWithName: newName rank: newRank location: newLocation isKillable: newIsKillable [

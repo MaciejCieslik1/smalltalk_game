@@ -1,4 +1,4 @@
-Character subclass: Hero [
+Person subclass: Hero [
     instanceVariableNames: 'items uniform money'
 
     initialize: [

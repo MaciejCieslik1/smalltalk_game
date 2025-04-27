@@ -1,4 +1,4 @@
-Object subclass: Character [
+Object subclass: Person [
    | name isAlive location isKillable |
 
     initializeWithName: newName location: newLocation isKillable: newIsKillable [

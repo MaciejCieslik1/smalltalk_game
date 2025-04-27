@@ -17,7 +17,7 @@ FileStream fileIn: 'items/Poison.st'.
 FileStream fileIn: 'items/Rag.st'.
 FileStream fileIn: 'items/Umbrella.st'.
 
-"FileStream fileIn: 'characters/Character.st'.
+FileStream fileIn: 'characters/Character.st'.
 FileStream fileIn: 'characters/Hero.st'.
 FileStream fileIn: 'characters/Npc.st'.
 FileStream fileIn: 'characters/Salesman.st'.
@@ -30,11 +30,11 @@ FileStream fileIn: 'characters/Guard.st'.
 FileStream fileIn: 'characters/Guard1.st'.
 FileStream fileIn: 'characters/Guard2.st'.
 FileStream fileIn: 'characters/Guard3.st'.
-FileStream fileIn: 'characters/Guard4.st'."
+FileStream fileIn: 'characters/Guard4.st'.
 
-"FileStream fileIn: 'uniforms/Uniform.st'.
+FileStream fileIn: 'uniforms/Uniform.st'.
 FileStream fileIn: 'uniforms/ServiceUniform.st'.
-FileStream fileIn: 'uniforms/MilitaryUniform.st'."
+FileStream fileIn: 'uniforms/MilitaryUniform.st'.
 
 
 FileStream fileIn: 'locations/Room.st'.
