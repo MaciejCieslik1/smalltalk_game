@@ -1,9 +1,9 @@
 Npc subclass: Salesman [
     | items |
 
-    initialize [
-        super initializeWithName: 'salesman' rank: 'private' location: armory isKillable: false.
-        items := Array with: bulletproofVest with: gun.
+    initialize: newLocation gun: newGun bulletproofVest: newBulletproofVest [
+        super initializeWithName: 'salesman' rank: 'private' location: newLocation isKillable: false.
+        items := Array with: newBulletproofVest with: newGun.
     ]
 
     items [
@@ -26,6 +26,16 @@ Npc subclass: Salesman [
         ^ self items include: item
     ]
 
+    hasItemWithName: itemName [
+        items do: [:item |
+            (item name = itemName) 
+            ifTrue: [
+                ^ true
+            ].
+        ].
+        ^ false
+    ]
+
     createInfo [
         | info |
         info := super createInfo,
@@ -44,7 +54,7 @@ Npc subclass: Salesman [
     ]
 
     hasGun [
-        (self hasItem: gun)
+        (self hasItemWithName: 'gun')
         ifTrue: [
             communicatesService talkToSalesman_3.
             self hasVestAndGun.
@@ -55,7 +65,7 @@ Npc subclass: Salesman [
     ]
 
     hasVestAndGun [
-        (self hasItem: bulletproof)
+        (self hasItemWithName: 'bulletproof')
         ifTrue: [
             communicatesService talkToSalesman_4.
             communicatesService talkToSalesman_5.
@@ -69,7 +79,8 @@ Npc subclass: Salesman [
 
 
     hasVest [
-        (self hasItem: bulletproof)
+        | inputOption |
+        (self hasItemWithName: 'bulletproof')
         ifTrue: [
             communicatesService talkToSalesman_6.
             communicatesService talkToSalesman_7.
@@ -125,9 +136,9 @@ Npc subclass: Salesman [
         ].
     ]
 
-    buyGun [
+    buyGun: hero [
         self preBuyGunDialogues.
-        (hero hasItem: amber)
+        (hero hasItemWithName: 'amber')
         ifTrue: [
             communicatesService talkToSalesman_13.
             communicatesService talkToSalesman_14.
@@ -158,6 +169,7 @@ Npc subclass: Salesman [
     ]
 
     heroHasNoAmber [
+        | inputOption |
         communicatesService talkToSalesman_18.
         inputOption := inputService inputCharacter: ('a').
         communicatesService talkToSalesman_19
@@ -172,7 +184,7 @@ Npc subclass: Salesman [
         self transferGunToHero.
     ]
 
-    buyVest [
+    buyVest: hero [
         | vestPrice |
         vestPrice := 1000.
         self preBuyVestDialogues.
@@ -207,6 +219,7 @@ Npc subclass: Salesman [
     ]
 
     heroHasNotEnoughMoney [
+        | inputOption |
         communicatesService talkToSalesman_22.
         inputOption := inputService inputCharacter: ('a').
         communicatesService talkToSalesman_23
@@ -224,17 +237,31 @@ Npc subclass: Salesman [
         self transferVestToHero.
     ]
 
-    transferGunToHero [
-        self removeItem: gun.
-        hero addItem: gun.
-        hero removeItem: amber.
+    transferGunToHero: hero [
+        | gun amber |
+        (self hasItemWithName: 'gun')
+        ifTrue: [
+            gun := self findItemWithName: 'gun'.
+            self removeItem: gun.
+            hero addItem: gun.
+            (self hasItemWithName: 'amber')
+            ifTrue: [
+                amber := self findItemWithName: 'amber'.
+                hero removeItem: amber.
+                self proceedPaymentVest.
+            ].
+        ].
     ]
 
-    transferVestToHero [
-        | vestPrice |
+    transferVestToHero: hero[
+        | vestPrice bulletproofVest |
         vestPrice := 1000.
-        self removeItem: bulletproofVest.
-        hero addItem: bulletproofVest.
-        hero subtractMoney: vestPrice.
+        (self hasItemWithName: 'bulletproofVest')
+        ifTrue: [
+            bulletproofVest := self findItemWithName: 'bulletproofVest'.
+            self removeItem: bulletproofVest.
+            hero addItem: bulletproofVest.
+            hero subtractMoney: vestPrice.
+        ].
     ]
 ]

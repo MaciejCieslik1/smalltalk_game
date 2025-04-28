@@ -1,11 +1,12 @@
 Person subclass: Hero [
-    | items uniform money |
+    | items uniform money recoveryPlace |
 
-    initialize [
-        super initializeWithName: 'Johannes_Golmer' location: startExit isKillable: true.
+    initialize: newLocation recoveryPlace: newRecoveryPlace uniform: newUniform [
+        super initializeWithName: 'Johannes_Golmer' location: newLocation isKillable: true recoveryPlace: newRecoveryPlace.
         items := OrderedCollection new.
-        uniform := military_uniform.
+        uniform := newUniform.
         money := 0.
+        recoveryPlace := newRecoveryPlace
     ]
 
     items [
@@ -26,6 +27,26 @@ Person subclass: Hero [
 
     hasItem: item [
         ^ self items include: item
+    ]
+
+    hasItemWithName: itemName [
+        items do: [:item |
+            (item name = itemName) 
+            ifTrue: [
+                ^ true
+            ].
+        ].
+        ^ false
+    ]
+
+    findItemWithName: itemName [
+        items do: [:item |
+            (item name = itemName) 
+            ifTrue: [
+                ^ item
+            ].
+        ].
+        ^ nil
     ]
 
     uniform [
@@ -80,7 +101,7 @@ Person subclass: Hero [
     ]
 
     getWounded [
-        self moveTotheRoom: medicBay
+        self moveTotheRoom: recoveryPlace
     ]
 
     attack: target [
@@ -102,8 +123,8 @@ Person subclass: Hero [
         ].
     ]
 
-    attackGuard1 [
-        (hero hasItem: baton)
+    attackGuard1: guard1 [
+        (self hasItemWithName: 'baton')
         ifTrue: [
             guard1 attacked
         ]
@@ -112,8 +133,8 @@ Person subclass: Hero [
         ].
     ]
 
-    attackGuard3 [
-        (hero hasItem: gun)
+    attackGuard3: guard3 [
+        (self hasItemWithName: 'gun')
         ifTrue: [
             guard3 attacked
         ]
@@ -122,8 +143,8 @@ Person subclass: Hero [
         ].
     ]
 
-    attackGuard4 [
-        (hero hasItem: gun)
+    attackGuard4: guard4 [
+        (self hasItemWithName: 'gun')
         ifTrue: [
             guard4 attacked
         ]
@@ -132,8 +153,8 @@ Person subclass: Hero [
         ].
     ]
 
-    attackWaiter [
-        (hero hasItem: baton)
+    attackWaiter: waiter [
+        (self hasItemWithName: 'baton')
         ifTrue: [
             waiter attacked
         ]
@@ -146,17 +167,17 @@ Person subclass: Hero [
         self uniform: newUniform
     ]
 
-    addPoison: juice [
+    addPoison: juice poison: poison [
         juice addPoison.
         self removeItem: poison.
     ]
 
-    addChloroform: rag [
+    addChloroform: rag chloroform: chloroform [
         rag addChloroform.
         self removeItem: chloroform.
     ]
 
-    hasPoisonedJuice [
+    hasPoisonedJuice: appleJuice orangeJuice: orangeJuice multivitaminaJuice: multivitaminaJuice [
         (appleJuice isPoisoned)
         ifTrue: [
             ^ true

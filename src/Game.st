@@ -61,7 +61,7 @@ Object subclass: Game [
     ]
 
     initializeItems [
-        initializedAppleJuice := AppleJuice new
+        initializedAppleJuice := AppleJuice location new
         Smalltalk at: #appleJuice put: initializedAppleJuice.
         initializedOrangeJuice := OrangeJuice new
         Smalltalk at: #orangeJuice put: initializedOrangeJuice.
