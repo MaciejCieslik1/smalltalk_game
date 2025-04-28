@@ -14,7 +14,7 @@ Item subclass: Money [
         amount := newAmount.
     ]
 
-    pickUp [
+    pickUp: hero [
         hero addMoney: self amount.
         self location removeItem: self.
     ]

@@ -125,24 +125,24 @@ Object subclass: Room [
         communicatesService printItems
     ]
 
-    pickUpItem: itemName [
+    pickUpItem: itemName character: hero [
         | item |
         (self hasItemName: itemName)
         ifTrue: [
             item := self findItemByName: itemName
-            item pickUp
+            item pickUp: hero
         ]
         ifFalse: [
             communicatesService wrongItemName
         ]
     ]
 
-    interactWithItem: itemName [
+    interactWithItem: itemName character: hero [
         | item |
         (self hasItemName: itemName)
         ifTrue: [
             item := self findItemByName: itemName
-            item interact
+            item interact: hero
         ]
         ifFalse: [
             communicatesService wrongItemName

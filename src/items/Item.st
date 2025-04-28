@@ -28,7 +28,7 @@ Object subclass: Item [
         location := newLocation
     ]
 
-    pickUp [
+    pickUp: hero [
         hero addItem: self.
         location removeItem: self.
         (self itemsLists isEmpty)
@@ -37,7 +37,7 @@ Object subclass: Item [
         ]
     ]
 
-    interact [
+    interact: hero [
         " This method is overwritten by subclass "
     ]
 
