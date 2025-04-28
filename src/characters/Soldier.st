@@ -42,13 +42,13 @@ Npc subclass: Soldier [
         ^ info
     ]
 
-    interactions [
+    interaction: hero [
         (self hasPlayedCards)
         ifTrue: [
             self alreadyPlayedOption
         ]
         ifFalse: [
-            self firstGameOption
+            self firstGameOption: hero
         ].
     ]
 
@@ -56,9 +56,9 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_12
     ]
 
-    firstGameOption [
+    firstGameOption: hero [
         self introductionDialogue.
-        self hasHeroWillToPlay.
+        self hasHeroWillToPlay: hero.
     ]
 
     introductionDialogue [
@@ -68,7 +68,7 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_4
     ]
 
-    hasHeroWillToPlay [
+    hasHeroWillToPlay: hero [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 

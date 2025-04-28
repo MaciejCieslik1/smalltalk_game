@@ -54,9 +54,9 @@ Npc subclass: Salesman [
         ^ info
     ]
 
-    interaction [
+    interaction: hero [
         self introductionDialogue.
-        self hasGun.
+        self hasGun: hero.
     ]
 
     introductionDialogue [
@@ -64,18 +64,18 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_2
     ]
 
-    hasGun [
+    hasGun: hero [
         (self hasItemWithName: 'gun')
         ifTrue: [
             communicatesService talkToSalesman_3.
-            self hasVestAndGun.
+            self hasVestAndGun: hero.
         ]
         ifFalse: [
             self hasVest.
         ].
     ]
 
-    hasVestAndGun [
+    hasVestAndGun: hero [
         (self hasItemWithName: 'bulletproof')
         ifTrue: [
             communicatesService talkToSalesman_4.
@@ -134,7 +134,7 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abOptionNoGun [
+    abOptionNoGun: hero [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
@@ -203,7 +203,7 @@ Npc subclass: Salesman [
         ifTrue: [
             communicatesService talkToSalesman_13.
             communicatesService talkToSalesman_14.
-            self vestPaymentConfirmation.
+            self vestPaymentConfirmation: hero.
         ]
         ifFalse: [
             self heroHasNotEnoughMoney.
@@ -216,12 +216,12 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_2
     ]
 
-    vestPaymentConfirmation [
+    vestPaymentConfirmation: hero [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self proceedPaymentVest.
+            self proceedPaymentVest: hero.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -241,7 +241,7 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_17
     ]
 
-    proceedPaymentVest [
+    proceedPaymentVest: hero [
         communicatesService talkToSalesman_15.
         communicatesService talkToSalesman_24.
         communicatesService talkToSalesman_21.

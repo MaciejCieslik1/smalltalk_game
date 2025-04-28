@@ -16,7 +16,7 @@ Guard subclass: Guard1 [
         ].
     ]
 
-    conversation [
+    conversation: hero [
         self introductionDialogue.
         self showDialogueOptions: hero.
     ]

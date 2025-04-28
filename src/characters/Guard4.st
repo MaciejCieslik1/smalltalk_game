@@ -6,7 +6,7 @@ Guard subclass: Guard4 [
             isKillable: true
     ]
 
-    interaction [
+    interaction: hero [
         (self hasPermission)
         ifTrue: [
             communicatesService authorized
