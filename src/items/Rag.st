@@ -1,9 +1,9 @@
 Item subclass: Rag [
     | isChloroformed | 
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'rag' 
-            location: barracks
+            location: newLocation
             isChloroformed: false.
     ]
 

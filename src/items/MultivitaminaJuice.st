@@ -1,8 +1,8 @@
 Juice subclass: MultivitaminaJuice [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'multivitamina_juice'
-            location: cafeteria
+            location: newLocation
             isPoisoned: false.
     ]
 

@@ -1,8 +1,8 @@
 Juice subclass: OrangeJuice [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'orange_juice'
-            location: cafeteria
+            location: newLocation
             isPoisoned: false.
     ]
 

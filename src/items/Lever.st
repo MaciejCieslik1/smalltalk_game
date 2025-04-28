@@ -3,7 +3,7 @@ Item subclass: Lever [
 
     initializeWithName: newName location: newLocation[
         super initializeWithName: 'lever' 
-            location: archives.
+            location: newLocation.
         isPulled := false.
     ]
 

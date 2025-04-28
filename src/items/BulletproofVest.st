@@ -1,8 +1,8 @@
 Item subclass: BulletproofVest [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'bulletproof_vest'
-            location: nil.
+            location: newLocation.
     ]
 
     description [

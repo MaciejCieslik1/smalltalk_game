@@ -1,8 +1,8 @@
 Item subclass: Umbrella [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'umbrella'
-            location: cloakroom.
+            location: newLocation.
     ]
 
     description [

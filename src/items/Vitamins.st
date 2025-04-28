@@ -1,8 +1,8 @@
 Item subclass: Vitamins [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'vitamins'
-            location: medicBay.
+            location: newLocation.
     ]
 
     description [

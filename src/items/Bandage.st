@@ -1,8 +1,8 @@
 Item subclass: Bandage [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'bandage'
-            location: medicBay.
+            location: newLocation.
     ]
 
     description [

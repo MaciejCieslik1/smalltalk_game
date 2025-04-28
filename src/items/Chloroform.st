@@ -1,8 +1,8 @@
 Item subclass: Chloroform [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'chloroform'
-            location: medicBay.
+            location: newLocation.
     ]
 
     description [

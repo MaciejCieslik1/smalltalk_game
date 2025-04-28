@@ -1,8 +1,8 @@
 Item subclass: Baton [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'baton'
-            location: barracks.
+            location: newLocation.
     ]
 
     description [

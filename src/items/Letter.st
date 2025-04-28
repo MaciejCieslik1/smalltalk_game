@@ -1,8 +1,8 @@
 Item subclass: Letter [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'letter'
-            location: goebbelsOffice.
+            location: newLocation.
     ]
 
     description [

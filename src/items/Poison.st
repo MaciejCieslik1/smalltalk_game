@@ -1,8 +1,8 @@
 Item subclass: Poison [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'poison'
-            location: foodStorage.
+            location: newLocation.
     ]
 
     description [
