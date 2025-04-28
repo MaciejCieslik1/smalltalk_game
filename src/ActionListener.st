@@ -1,5 +1,5 @@
 Object subclass: ActionListener [ 
-    | communicatesService inputService |
+    | communicatesService inputService movement |
 
     initialize: newCommunicatesService 
         inputService: newInputService
@@ -8,7 +8,7 @@ Object subclass: ActionListener [
         inputService := newInputService
     ]
 
-    chooseAction [
+    chooseAction: hero [
         | result command argument |
         [
             result := inputService inputCommand.
@@ -42,7 +42,7 @@ Object subclass: ActionListener [
         ].
         (command = 'poison')
         ifTrue: [
-            self checkArgumentPoison: argument
+            self checkArgumentPoison: hero argument2: argument
         ].
         (command = 'chloroform')
         ifTrue: [
@@ -50,7 +50,7 @@ Object subclass: ActionListener [
         ].
         (command = 'help')
         ifTrue: [
-            communicateService help
+            communicatesService help
         ].
     ]
 
@@ -66,21 +66,21 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentPick: argument [
+    checkArgumentPick: hero argument2: argument [
         | validArguments |
         validArguments := #('lever' 'apple_juice' 'orange_juice' 'multivitamina_juice' 'poison' 'vitamins' 'bandage' 'baton' 'chloroform'
                             'umbrella' 'rag' 'chloroform_rag' 'letter' 'poisoned_apple_juice' 'poisoned_orange_juice' 
                             'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
         (validArguments includes: argument)
         ifTrue: [
-            self pickCheckIfItemAccessible
+            self pickCheckIfItemAccessible: hero
         ]
         ifFalse: [
             communicatesService invalidArgument
         ]
     ]
 
-    pickCheckIfItemAccessible [
+    pickCheckIfItemAccessible: hero argument2: argument [
         (hero location hasItemName: argument)
         ifTrue: [
             hero location pickUpItem: argument
@@ -90,21 +90,21 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentInteract: argument [
+    checkArgumentInteract: hero argument2: argument [
         | validArguments |
         validArguments := #('lever' 'apple_juice' 'orange_juice' 'multivitamina_juice' 'poison' 'vitamins' 'bandage' 'baton' 'chloroform'
                             'umbrella' 'rag' 'chloroform_rag' 'letter' 'poisoned_apple_juice' 'poisoned_orange_juice' 
                             'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
         (validArguments includes: argument)
         ifTrue: [
-            self interactCheckIfItemAccessible
+            self interactCheckIfItemAccessible: hero
         ]
         ifFalse: [
             communicatesService invalidArgument
         ]
     ]
 
-    interactCheckIfItemAccessible [
+    interactCheckIfItemAccessible: hero argument2: argument [
         (hero location hasItemName: argument)
         ifTrue: [
             hero location interactWithItem: argument
@@ -114,19 +114,19 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentAttack: argument [
+    checkArgumentAttack: hero argument2: argument [
         | validArguments |
         validArguments := #('guard1' 'guard3' 'guard4' 'waiter').
         (validArguments includes: argument)
         ifTrue: [
-            self attackCheckIfRoomHasNpc
+            self attackCheckIfRoomHasNpc: hero
         ]
         ifFalse: [
             communicatesService cannotAttackPerson
         ]
     ]
 
-    attackCheckIfRoomHasNpc: npcName [
+    attackCheckIfRoomHasNpc: hero npc: npcName [
         (hero location hasNpc)
         ifTrue: [
             self attackCheckIfNpcAccessible: npcName
@@ -136,7 +136,7 @@ Object subclass: ActionListener [
         ]
     ]
 
-    attackCheckIfNpcAccessible: npcName[
+    attackCheckIfNpcAccessible: hero npc: npcName [
         (hero location findNpcByName: npcName)
         ifTrue: [
             hero attack: npcName
@@ -146,33 +146,33 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentInfo: argument [
+    checkArgumentInfo: hero argument2: argument [
         | validArguments |
         validArguments := #('bandit' 'chef' 'adolf' 'guard1' 'guard2' 'guard3' 'guard4' 'Johannes_Golmer' 'salesman' 'soldier' 'waiter').
         (validArguments includes: argument)
         ifTrue: [
-            self displayInfoCheckIfRoomHasNpc: argument
+            self displayInfoCheckIfRoomHasNpc: hero argument2: argument
         ]
         ifFalse: [
             communicatesService cannotDisplayInfo
         ]
     ]
 
-    displayInfoCheckIfRoomHasNpc: npcName [
+    displayInfoCheckIfRoomHasNpc: hero npc: npcName [
         (hero location hasNpc)
         ifTrue: [
-            self displayInfoCheckIfNpcAccessible: npcName
+            self displayInfoCheckIfNpcAccessible: hero npc: npcName
         ]
         ifFalse: [
             communicatesService roomHasNoNpc
         ]
     ]
 
-    displayInfoCheckIfNpcAccessible: npcName[
+    displayInfoCheckIfNpcAccessible: hero npc: npcName [
         | npc npcInfo |
         (hero location findNpcByName: npcName)
         ifTrue: [
-            npc := hero location findNpcByName: argument.
+            npc := hero location findNpcByName: npcName.
             npcInfo := npc createInfo.
             communicatesService printStringNewLine: npcInfo
         ]
@@ -181,14 +181,14 @@ Object subclass: ActionListener [
         ]
     ]
 
-    dipslayNpcInfo: npcName [
-        | npc npcInfo|
-        npc := hero location findNpcByName: argument. 
+    dipslayNpcInfo: hero npc: npcName [
+        | npc npcInfo |
+        npc := hero location findNpcByName: npcName. 
         npcInfo := npc createInfo. 
         communicatesService printStringNewLine: npcInfo
     ]
 
-    checkArgumentPoison: argument [
+    checkArgumentPoison: hero argument2: argument [
         | validArguments |
         validArguments := #('appleJuice' 'orangeJuice' 'multivitaminaJuice').
         (validArguments includes: argument)
@@ -200,15 +200,24 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentChloroform: argument [
-        | validArguments |
+    checkArgumentChloroform: hero argument2: argument [
+        | validArguments rag |
         validArguments := 'rag'.
-        (validArguments = rag)
+        (validArguments = argument)
         ifTrue: [
-            hero addChloroform: rag
+            self addChloroformToRag: hero rag: validArguments
         ]
         ifFalse: [
             communicatesService cannotChlorofomItem
+        ]
+    ]
+
+    addChloroformToRag: hero rag: ragName [
+        | rag |
+        (hero hasItemWithName: ragName)
+        ifTrue: [
+            rag := hero findItemWithName: ragName
+            hero addChloroform: rag 
         ]
     ]
 ]
