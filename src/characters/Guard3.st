@@ -1,8 +1,8 @@
 Guard subclass: Guard3 [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'guard3' 
-            location: fuhrersOffice
+            location: newLocation
             isKillable: true
     ]
 
@@ -10,9 +10,9 @@ Guard subclass: Guard3 [
         communicatesService talkToGuard3_1
     ]
 
-    interactionShooting [
+    interactionShooting: hero [
         communicatesService talkToGuard3_2.
-        (hero hasItem: bulletproofVest) 
+        (hero hasItemWithItem: 'bulletproofVest') 
         ifTrue: [
             self usedVest.
         ]
@@ -44,7 +44,7 @@ Guard subclass: Guard3 [
         self chooseJuice.
     ]
 
-    chooseJuice [
+    chooseJuice: appleJuice juice2: orangeJuice juice3: multivitaminaJuice [
         (appleJuice isPoisoned)
         ifTrue: [
             communicatesService talkToGuard3_12.

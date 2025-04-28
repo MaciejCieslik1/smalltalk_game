@@ -1,9 +1,9 @@
 Npc subclass: Soldier [
     | items hasPlayedCards |
 
-    initialize [
-        super initializeWithName: 'soldier' rank: 'private' location: barracks isKillable: false.
-        items := Array with: helmet.
+    initialize: newLocation helmet: newHelmet [
+        super initializeWithName: 'soldier' rank: 'private' location: newLocation isKillable: false.
+        items := Array with: newHelmet.
         hasPlayedCards := false.
     ]
 
@@ -77,7 +77,7 @@ Npc subclass: Soldier [
         ].
         (inputOption = $b) 
         ifTrue: [
-            self heroWantsToPlay.
+            self heroWantsToPlay: hero.
         ].
     ]
 
@@ -86,32 +86,38 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_6
     ]
 
-    heroWantsToPlay [
+    heroWantsToPlay: hero [
         communicatesService talkToSoldier_7.
-        (hero has: umbrella)
+        (hero hasItemWithName: 'umbrella')
         ifTrue: [
-            self heroHasUmbrella.
+            self heroHasUmbrella: hero.
         ]
         ifFalse: [
             self herohasNotUmbrella.
         ].
     ]
 
-    heroHasUmbrella [
+    heroHasUmbrella: hero [
         communicatesService talkToSoldier_8
         communicatesService talkToSoldier_9
         communicatesService talkToSoldier_10
         communicatesService talkToSoldier_11.
-        self heroWon.
+        self heroWon: hero.
     ]
 
     herohasNotUmbrella [
         communicatesService talkToSoldier_13
     ]
 
-    heroWon [
+    heroWon: hero [
+        | helmet |
         self hasPlayedCards: true.
-        self removeItem: helmet.
-        hero addItem: helmet.
+        (self hasItem: items first)
+        ifTrue: [
+            helmet := items first.
+            self removeItem: helmet.
+            hero addItem: helmet.
+        ]
+        
     ]
 ]

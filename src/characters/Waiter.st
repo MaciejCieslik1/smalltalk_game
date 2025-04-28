@@ -1,7 +1,8 @@
 Npc subclass: Waiter [
-
-    initialize [
-        super initializeWithName: 'waiter' rank: 'civil' location: kitchen isKillable: false.
+    | uniform |
+    initialize: newLocation uniform: newUniform [
+        super initializeWithName: 'waiter' rank: 'civil' location: newLocation isKillable: false.
+        uniform := newUniform
     ]
 
     interaction [
@@ -15,6 +16,6 @@ Npc subclass: Waiter [
         communicatesService waiterStealUniformOption.
         inputOption := inputService inputCharacter: ('a').
         communicatesService waiterStealUniform
-        hero changeUniform: serviceUniform
+        hero changeUniform: uniform
     ]
 ]

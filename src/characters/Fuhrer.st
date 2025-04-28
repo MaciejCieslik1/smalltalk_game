@@ -1,7 +1,7 @@
 Npc subclass: Fuhrer [
 
-    initialize [
-        super initializeWithName: 'adolf' rank: 'fuhrer' location:fuhrersQuarters isKillable: true.
+    initialize: newLocation [
+        super initializeWithName: 'adolf' rank: 'fuhrer' location: newLocation isKillable: true.
     ]
 
     interaction [

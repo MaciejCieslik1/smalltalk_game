@@ -36,6 +36,17 @@ Npc subclass: Salesman [
         ^ false
     ]
 
+    findItemWithName: itemName [
+        items do: [:item |
+            (item name = itemName) 
+            ifTrue: [
+                ^ item
+            ].
+        ].
+        ^ nil
+    ]
+
+
     createInfo [
         | info |
         info := super createInfo,
@@ -69,11 +80,11 @@ Npc subclass: Salesman [
         ifTrue: [
             communicatesService talkToSalesman_4.
             communicatesService talkToSalesman_5.
-            self abcOptionAllItems.
+            self abcOptionAllItems: hero.
         ]
         ifFalse: [
             communicatesService talkToSalesman_7.
-            self abOptionNoVest.
+            self abOptionNoVest: hero.
         ].
     ]
 
@@ -93,16 +104,16 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abcOptionAllItems [
+    abcOptionAllItems: hero [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b $c).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun.
+            self buyGun: hero.
         ].
         (inputOption = $b) 
         ifTrue: [
-            self buyVest.
+            self buyVest: hero.
         ].
         (inputOption = $c) 
         ifTrue: [
@@ -110,12 +121,12 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abOptionNoVest [
+    abOptionNoVest: hero [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun.
+            self buyGun: hero.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -128,7 +139,7 @@ Npc subclass: Salesman [
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyVest.
+            self buyVest: hero.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -234,7 +245,7 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_15.
         communicatesService talkToSalesman_24.
         communicatesService talkToSalesman_21.
-        self transferVestToHero.
+        self transferVestToHero: hero.
     ]
 
     transferGunToHero: hero [
@@ -253,7 +264,7 @@ Npc subclass: Salesman [
         ].
     ]
 
-    transferVestToHero: hero[
+    transferVestToHero: hero [
         | vestPrice bulletproofVest |
         vestPrice := 1000.
         (self hasItemWithName: 'bulletproofVest')

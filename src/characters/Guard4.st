@@ -1,8 +1,8 @@
 Guard subclass: Guard4 [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'guard4' 
-            location: fuhrersOffice
+            location: newLocation
             isKillable: true
     ]
 
@@ -12,13 +12,13 @@ Guard subclass: Guard4 [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation
+            self conversation: hero
         ].
     ]
 
-    conversation [
+    conversation: hero [
         self introductionDialogue.
-        self chooseDialogueOption.
+        self chooseDialogueOption: hero.
     ]
 
     introductionDialogue [
@@ -27,8 +27,8 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard4_3
     ]
 
-    chooseDialogueOption [
-        (hero uniform == serviceUniform and: [hero hasPoisonedJuice]) 
+    chooseDialogueOption: hero [
+        (hero hasUniformWithName = 'serviceUniform' and: [hero hasPoisonedJuice]) 
         ifTrue: [
             self trueWaiterCondition.
         ]
@@ -38,6 +38,7 @@ Guard subclass: Guard4 [
     ]
 
     trueWaiterCondition [
+        | inputOption |
         communicatesService talkToGuard4_6.
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
@@ -67,14 +68,14 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard4_5
     ]
 
-    interactionShooting [
+    interactionShooting: hero [
         communicatesService talkToGuard4_8.
-        (hero hasItem: bulletproofVest) 
+        (hero hasItemWithItem: 'bulletproofVest') 
         ifTrue: [
             self usedVest.
         ]
         ifFalse: [
-            self notUsedVest.
+            self notUsedVest: hero.
         ].
     ]
 
@@ -89,7 +90,7 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard_wayNorthAccessible
     ]
 
-    notUsedVest [
+    notUsedVest: hero [
         communicatesService talkToGuard4_15
         communicatesService talkToGuard_wakeUpInMedbay
         communicatesService talkToGuard_needVest

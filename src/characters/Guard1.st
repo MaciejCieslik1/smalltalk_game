@@ -1,24 +1,24 @@
 Guard subclass: Guard1 [
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'guard1' 
-            location: securityCheckEntry 
+            location: newLocation 
             isKillable: true.
     ]
 
-    interaction [
+    interaction: hero [
         (self hasPermission)
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation
+            self conversation: hero
         ].
     ]
 
     conversation [
         self introductionDialogue.
-        self showDialogueOptions.
+        self showDialogueOptions: hero.
     ]
 
     introductionDialogue [
@@ -27,8 +27,8 @@ Guard subclass: Guard1 [
         communicatesService talkToGuard1_3
     ]
 
-    showDialogueOptions [
-        (hero hasItem: id)
+    showDialogueOptions: hero [
+        (hero hasItemWithName: 'id')
         ifTrue: [
             self hasIdDialogueOptionHandling.
         ]

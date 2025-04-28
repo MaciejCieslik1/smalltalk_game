@@ -1,26 +1,26 @@
 Guard subclass: Guard2 [
     | hasHigherPermission | 
 
-    initialize [
+    initialize: newLocation [
         super initializeWithName: 'guard2'
-            location: securityCheckOffices 
+            location: newLocation 
             isKillable: false
         hasHigherPermission: false
     ]
 
-    interaction [
+    interaction: hero [
         (self hasPermission and: [self hasHigherPermission])
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation
+            self conversation: hero
         ].
     ]
 
-    conversation [
+    conversation: hero [
         self introductionDialogue.
-        self showDialogueOptions.
+        self showDialogueOptions: hero.
     ]
 
     introductionDialogue [
@@ -29,8 +29,8 @@ Guard subclass: Guard2 [
         communicatesService talkToGuard2_3
     ]
 
-    showDialogueOptions [
-        (hero uniform == serviceUniform and: [hero hasPoisonedJuice])
+    showDialogueOptions: hero [
+        (hero hasUniformWithName = 'service_uniform' and: [hero hasPoisonedJuice])
         ifTrue: [
             self usedServiceUniform.
         ]
@@ -65,14 +65,14 @@ Guard subclass: Guard2 [
         roomService openOffices
     ]
 
-    usedMilitaryUniform [
+    usedMilitaryUniform: hero [
         self dipslayDialogues.
-        (hero hasItem: redKey)
+        (hero hasItemWithName: 'redKey')
         ifTrue: [
             self heroHasRedKey.
         ]
         ifFalse: [
-            (hero hasItem: midRankPass)
+            (hero hasItemWithName: 'midRankPass')
             ifTrue: [
                 self heroHasMidPass.
             ]
@@ -82,16 +82,16 @@ Guard subclass: Guard2 [
         ].
     ]
 
-    dipslayDialogues [
-        (hero hasItem: id)
+    dipslayDialogues: hero [
+        (hero hasItemWithName: 'id')
         ifTrue: [
             communicatesService talkToGuard2_6
         ].
-        (hero hasItem: midRankPass)
+        (hero hasItemWithName: 'midRankPass')
         ifTrue: [
             communicatesService talkToGuard2_8
         ].
-        (hero hasItem: redKey)
+        (hero hasItemWithName: 'redKey')
         ifTrue: [
             communicatesService talkToGuard2_10
         ].

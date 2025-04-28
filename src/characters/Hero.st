@@ -39,6 +39,14 @@ Person subclass: Hero [
         ^ false
     ]
 
+    hasUniformWithName: uniformName [
+        (self uniform name = uniformName)
+        ifTrue: [
+            ^ true
+        ].
+        ^ false
+    ]
+
     findItemWithName: itemName [
         items do: [:item |
             (item name = itemName) 
