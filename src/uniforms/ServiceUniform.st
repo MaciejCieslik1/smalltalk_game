@@ -1,8 +1,7 @@
 Uniform subclass: ServiceUniform [
 
     initialize [
-        super initializeWithName: 
-            name := 'service_uniform'.
+        super initializeWithName: 'service_uniform'.
     ]
 
     description [

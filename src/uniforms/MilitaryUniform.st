@@ -1,8 +1,7 @@
 Uniform subclass: MilitaryUniform [
 
     initialize [
-        super initializeWithName: 
-            name := 'military_uniform'.
+        super initializeWithName: 'military_uniform'.
     ]
 
     description [

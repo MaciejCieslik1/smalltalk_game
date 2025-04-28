@@ -1,5 +1,6 @@
 Object subclass: Room [
-    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth | 
+    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth communicatesService | 
+    | inputService | 
 
     initializeWithName: newName 
         isAccessible: newIsAccessible 
@@ -10,6 +11,8 @@ Object subclass: Room [
         adjacentSouth: newAdjacentSouth 
         adjacentEast: newAdjacentEast 
         adjacentNorth: newAdjacentNorth 
+        communicatesService: newCommunicatesService
+        inputService: newInputService
     [
         name := newName.
         isAccessible := newIsAccessible.
@@ -21,6 +24,8 @@ Object subclass: Room [
         adjacentSouth := newAdjacentSouth.
         adjacentEast := newAdjacentEast.
         adjacentNorth := newAdjacentNorth.
+        communicatesService := newCommunicatesService.
+        inputService := newInputService.
     ]
 
     name [
@@ -121,6 +126,7 @@ Object subclass: Room [
     ]
 
     pickUpItem: itemName [
+        | item |
         (self hasItemName: itemName)
         ifTrue: [
             item := self findItemByName: itemName

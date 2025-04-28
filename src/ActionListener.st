@@ -1,4 +1,12 @@
 Object subclass: ActionListener [ 
+    | communicatesService inputService |
+
+    initialize: newCommunicatesService 
+        inputService: newInputService
+    [
+        communicatesService := newCommunicatesService.
+        inputService := newInputService
+    ]
 
     chooseAction [
         | result command argument |

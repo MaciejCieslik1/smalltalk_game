@@ -1,11 +1,18 @@
 Object subclass: Person [
-   | name isAlive location isKillable |
+   | name isAlive location isKillable communicatesService inputService |
 
-    initializeWithName: newName location: newLocation isKillable: newIsKillable [
+    initializeWithName: newName 
+        location: newLocation 
+        isKillable: newIsKillable 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         name := newName.
         isAlive := true.
         location := newLocation.
         isKillable := newIsKillable.
+        communicatesService := newCommunicatesService.
+        inputService := newInputService.
     ]
 
     name [

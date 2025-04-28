@@ -1,8 +1,13 @@
 Object subclass: Uniform [
-    | name |
+    | name communicatesService inputService |
 
-    initializeWithName: newName [
+    initializeWithName: newName 
+        communicatesService: newCommunicatesService
+        inputService: newInputService
+    [
         name := newName.
+        communicatesService := newCommunicatesService.
+        inputService := newInputService.
     ]
 
     name [

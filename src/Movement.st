@@ -1,4 +1,9 @@
 Object subclass: Movement [
+    | communicatesService |
+
+    initialize: newCommunicatesService [
+        communicatesService := newCommunicatesService.
+    ]
 
     go: direction [
         (direction = 'n')

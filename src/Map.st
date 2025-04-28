@@ -1,4 +1,9 @@
 Object subclass: Map [
+    | communicatesService |
+
+    initialize: newCommunicatesService [
+        communicatesService := newCommunicatesService.
+    ]
 
     createMap [
         | firstLevelRoomsList secondLevelRoomsList thirdLevelRoomsList fourthLevelRoomsList fifthLevelRoomsList sixthLevelRoomsList map |

@@ -1,4 +1,9 @@
 Object subclass: InputService [
+    | communicatesService |
+
+    initialize: newCommunicatesService [
+        communicatesService := newCommunicatesService.
+    ]
 
     inputCharacter: charList [
         | character |
@@ -27,11 +32,12 @@ Object subclass: InputService [
             ^ inputString
         ]
         ifFalse: [
-            ^ self commandNotHelp
+            ^ self commandNotHelp: inputString.
         ]
     ]
 
-    commandNotHelp [
+    commandNotHelp: inputString argument2: validCommands [
+        | parts command argument |
         parts := inputString substrings: ' '.
         parts size = 2 ifFalse: [ 
             communicatesService invalidCommand.

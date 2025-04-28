@@ -1,9 +1,15 @@
 Object subclass: Item [
-    | name location |
+    | name location communicatesService inputService |
 
-    initializeWithName: newName location: newLocation [
+    initializeWithName: newName 
+        location: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         name := newName.
         location := newLocation.
+        communicatesService := newCommunicatesService.
+        inputService := newInputService.
     ]
 
     name [
@@ -23,7 +29,7 @@ Object subclass: Item [
     ]
 
     pickUp [
-        "hero addItem: self."
+        hero addItem: self.
         location removeItem: self.
         (self itemsLists isEmpty)
         ifTrue: [
