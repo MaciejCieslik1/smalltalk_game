@@ -1,6 +1,11 @@
 Item subclass: Lever [
     | isPulled |
 
+    Lever class >> newInitialize: location [
+        ^ super new initialize: location.
+    ]
+
+
     initializeWithName: newName location: newLocation[
         super initializeWithName: 'lever' 
             location: newLocation.

@@ -1,6 +1,10 @@
 Item subclass: Rag [
     | isChloroformed | 
 
+    Rag class >> newInitialize: location [
+        ^ super new initialize: location.
+    ]
+
     initialize: newLocation [
         super initializeWithName: 'rag' 
             location: newLocation
