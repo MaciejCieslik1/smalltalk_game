@@ -185,18 +185,12 @@ Person subclass: Hero [
         self removeItem: chloroform.
     ]
 
-    hasPoisonedJuice: appleJuice orangeJuice: orangeJuice multivitaminaJuice: multivitaminaJuice [
-        (appleJuice isPoisoned)
-        ifTrue: [
-            ^ true
-        ].
-        (orangeJuice isPoisoned)
-        ifTrue: [
-            ^ true
-        ].
-        (multivitaminaJuice isPoisoned)
-        ifTrue: [
-            ^ true
+    hasPoisonedJuice: juices [
+        juices do: [:juice |
+            (juice isPoisoned) 
+            ifTrue: [
+                ^ true
+            ].
         ].
         ^ false
     ]

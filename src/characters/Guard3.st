@@ -10,7 +10,7 @@ Guard subclass: Guard3 [
         communicatesService talkToGuard3_1
     ]
 
-    interactionShooting: hero [
+    interactionShooting [
         communicatesService talkToGuard3_2.
         (hero hasItemWithItem: 'bulletproofVest') 
         ifTrue: [

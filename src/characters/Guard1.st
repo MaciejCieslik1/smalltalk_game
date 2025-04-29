@@ -6,19 +6,19 @@ Guard subclass: Guard1 [
             isKillable: true.
     ]
 
-    interaction: hero [
+    interaction [
         (self hasPermission)
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation: hero
+            self conversation
         ].
     ]
 
-    conversation: hero [
+    conversation [
         self introductionDialogue.
-        self showDialogueOptions: hero.
+        self showDialogueOptions.
     ]
 
     introductionDialogue [
@@ -27,7 +27,7 @@ Guard subclass: Guard1 [
         communicatesService talkToGuard1_3
     ]
 
-    showDialogueOptions: hero [
+    showDialogueOptions [
         (hero hasItemWithName: 'id')
         ifTrue: [
             self hasIdDialogueOptionHandling.

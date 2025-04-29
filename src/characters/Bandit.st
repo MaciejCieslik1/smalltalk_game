@@ -1,17 +1,18 @@
 Npc subclass: Bandit [
-
-    initialize: newLocation [
+    | hero |
+    initialize: newLocation hero: newHero [
         super initializeWithName: 'bandit' rank: 'private' location: newLocation isKillable: true.
+        hero := newHero
     ]
 
-    interaction: hero [
+    interaction [
         self introductionDialogue.
         (hero hasItemWithName: 'helmet')
         ifTrue: [
-            self figthUsingHelmet: hero.
+            self figthUsingHelmet.
         ]
         ifFalse: [
-            self figthWithoutHelmet: hero.
+            self figthWithoutHelmet.
         ].
     ]
 
@@ -25,7 +26,7 @@ Npc subclass: Bandit [
         communicatesService talkToBandit_6
     ]
 
-    figthUsingHelmet: hero [
+    figthUsingHelmet [
         communicatesService talkToBandit_7
         communicatesService talkToBandit_8.
         (hero hasItemWithName: 'baton')
@@ -33,11 +34,11 @@ Npc subclass: Bandit [
             self figthUsingBaton.
         ]
         ifFalse: [
-            self figthUsingFists: hero.
+            self figthUsingFists.
         ].
     ]
 
-    figthWithoutHelmet: hero [
+    figthWithoutHelmet [
         communicatesService talkToBandit_19
         communicatesService talkToBandit_17.
         (hero hasItemWithName: 'baton')
@@ -60,7 +61,7 @@ Npc subclass: Bandit [
         self npcKilled.
     ]
 
-    figthUsingFists: hero [
+    figthUsingFists [
         communicatesService talkToBandit_13.
         inputService inputCharacter: ('a').
         communicatesService talkToBandit_14

@@ -1,9 +1,13 @@
 Npc subclass: Salesman [
-    | items |
+    | items hero |
 
-    initialize: newLocation gun: newGun bulletproofVest: newBulletproofVest [
+    initialize: newLocation items: newItems hero: newHero [
         super initializeWithName: 'salesman' rank: 'private' location: newLocation isKillable: false.
-        items := Array with: newBulletproofVest with: newGun.
+        items := OrderedCollection new.
+        hero := newHero.
+        newItems do: [:item |
+            items addItem: item. 
+        ].
     ]
 
     items [
@@ -54,9 +58,9 @@ Npc subclass: Salesman [
         ^ info
     ]
 
-    interaction: hero [
+    interaction [
         self introductionDialogue.
-        self hasGun: hero.
+        self hasGun.
     ]
 
     introductionDialogue [
@@ -64,27 +68,27 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_2
     ]
 
-    hasGun: hero [
+    hasGun [
         (self hasItemWithName: 'gun')
         ifTrue: [
             communicatesService talkToSalesman_3.
-            self hasVestAndGun: hero.
+            self hasVestAndGun.
         ]
         ifFalse: [
             self hasVest.
         ].
     ]
 
-    hasVestAndGun: hero [
+    hasVestAndGun [
         (self hasItemWithName: 'bulletproof')
         ifTrue: [
             communicatesService talkToSalesman_4.
             communicatesService talkToSalesman_5.
-            self abcOptionAllItems: hero.
+            self abcOptionAllItems.
         ]
         ifFalse: [
             communicatesService talkToSalesman_7.
-            self abOptionNoVest: hero.
+            self abOptionNoVest.
         ].
     ]
 
@@ -104,16 +108,16 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abcOptionAllItems: hero [
+    abcOptionAllItems [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b $c).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun: hero.
+            self buyGun.
         ].
         (inputOption = $b) 
         ifTrue: [
-            self buyVest: hero.
+            self buyVest.
         ].
         (inputOption = $c) 
         ifTrue: [
@@ -121,12 +125,12 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abOptionNoVest: hero [
+    abOptionNoVest [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyGun: hero.
+            self buyGun.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -134,12 +138,12 @@ Npc subclass: Salesman [
         ].
     ]
 
-    abOptionNoGun: hero [
+    abOptionNoGun [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self buyVest: hero.
+            self buyVest.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -147,7 +151,7 @@ Npc subclass: Salesman [
         ].
     ]
 
-    buyGun: hero [
+    buyGun [
         self preBuyGunDialogues.
         (hero hasItemWithName: 'amber')
         ifTrue: [
@@ -195,7 +199,7 @@ Npc subclass: Salesman [
         self transferGunToHero.
     ]
 
-    buyVest: hero [
+    buyVest [
         | vestPrice |
         vestPrice := 1000.
         self preBuyVestDialogues.
@@ -203,7 +207,7 @@ Npc subclass: Salesman [
         ifTrue: [
             communicatesService talkToSalesman_13.
             communicatesService talkToSalesman_14.
-            self vestPaymentConfirmation: hero.
+            self vestPaymentConfirmation.
         ]
         ifFalse: [
             self heroHasNotEnoughMoney.
@@ -216,12 +220,12 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_2
     ]
 
-    vestPaymentConfirmation: hero [
+    vestPaymentConfirmation [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [
-            self proceedPaymentVest: hero.
+            self proceedPaymentVest.
         ].
         (inputOption = $b) 
         ifTrue: [
@@ -248,23 +252,28 @@ Npc subclass: Salesman [
         self transferVestToHero: hero.
     ]
 
-    transferGunToHero: hero [
+    transferGunToHero [
         | gun amber |
         (self hasItemWithName: 'gun')
         ifTrue: [
             gun := self findItemWithName: 'gun'.
             self removeItem: gun.
             hero addItem: gun.
-            (self hasItemWithName: 'amber')
-            ifTrue: [
-                amber := self findItemWithName: 'amber'.
-                hero removeItem: amber.
-                self proceedPaymentVest.
-            ].
+            self transferGunHasHeroHasAmber.
+        ]
+    ]
+
+    transferGunHasHeroHasAmber [
+        | amber |
+        (self hasItemWithName: 'amber')
+        ifTrue: [
+            amber := self findItemWithName: 'amber'.
+            hero removeItem: amber.
+            self proceedPaymentGun.
         ].
     ]
 
-    transferVestToHero: hero [
+    transferVestToHero [
         | vestPrice bulletproofVest |
         vestPrice := 1000.
         (self hasItemWithName: 'bulletproofVest')

@@ -1,10 +1,11 @@
 Npc subclass: Soldier [
-    | items hasPlayedCards |
+    | items hasPlayedCards hero |
 
-    initialize: newLocation helmet: newHelmet [
+    initialize: newLocation helmet: newHelmet hero: newHero [
         super initializeWithName: 'soldier' rank: 'private' location: newLocation isKillable: false.
         items := Array with: newHelmet.
         hasPlayedCards := false.
+        hero := newHero.
     ]
 
     items [
@@ -42,13 +43,13 @@ Npc subclass: Soldier [
         ^ info
     ]
 
-    interaction: hero [
+    interaction [
         (self hasPlayedCards)
         ifTrue: [
             self alreadyPlayedOption
         ]
         ifFalse: [
-            self firstGameOption: hero
+            self firstGameOption.
         ].
     ]
 
@@ -56,9 +57,9 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_12
     ]
 
-    firstGameOption: hero [
+    firstGameOption [
         self introductionDialogue.
-        self hasHeroWillToPlay: hero.
+        self hasHeroWillToPlay.
     ]
 
     introductionDialogue [
@@ -68,7 +69,7 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_4
     ]
 
-    hasHeroWillToPlay: hero [
+    hasHeroWillToPlay [
         | inputOption |
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
@@ -77,7 +78,7 @@ Npc subclass: Soldier [
         ].
         (inputOption = $b) 
         ifTrue: [
-            self heroWantsToPlay: hero.
+            self heroWantsToPlay.
         ].
     ]
 
@@ -90,26 +91,26 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_7.
         (hero hasItemWithName: 'umbrella')
         ifTrue: [
-            self heroHasUmbrella: hero.
+            self heroHasUmbrella.
         ]
         ifFalse: [
             self herohasNotUmbrella.
         ].
     ]
 
-    heroHasUmbrella: hero [
+    heroHasUmbrella [
         communicatesService talkToSoldier_8
         communicatesService talkToSoldier_9
         communicatesService talkToSoldier_10
         communicatesService talkToSoldier_11.
-        self heroWon: hero.
+        self heroWon.
     ]
 
     herohasNotUmbrella [
         communicatesService talkToSoldier_13
     ]
 
-    heroWon: hero [
+    heroWon [
         | helmet |
         self hasPlayedCards: true.
         (self hasItem: items first)

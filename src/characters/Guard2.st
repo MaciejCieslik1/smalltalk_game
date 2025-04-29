@@ -8,19 +8,19 @@ Guard subclass: Guard2 [
         hasHigherPermission: false
     ]
 
-    interaction: hero [
+    interaction [
         (self hasPermission and: [self hasHigherPermission])
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation: hero
+            self conversation.
         ].
     ]
 
-    conversation: hero [
+    conversation [
         self introductionDialogue.
-        self showDialogueOptions: hero.
+        self showDialogueOptions.
     ]
 
     introductionDialogue [
@@ -29,7 +29,7 @@ Guard subclass: Guard2 [
         communicatesService talkToGuard2_3
     ]
 
-    showDialogueOptions: hero [
+    showDialogueOptions [
         (hero hasUniformWithName = 'service_uniform' and: [hero hasPoisonedJuice])
         ifTrue: [
             self usedServiceUniform.
@@ -65,7 +65,7 @@ Guard subclass: Guard2 [
         roomService openOffices
     ]
 
-    usedMilitaryUniform: hero [
+    usedMilitaryUniform [
         self dipslayDialogues.
         (hero hasItemWithName: 'redKey')
         ifTrue: [
@@ -82,7 +82,7 @@ Guard subclass: Guard2 [
         ].
     ]
 
-    dipslayDialogues: hero [
+    dipslayDialogues [
         (hero hasItemWithName: 'id')
         ifTrue: [
             communicatesService talkToGuard2_6

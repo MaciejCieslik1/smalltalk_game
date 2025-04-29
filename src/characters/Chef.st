@@ -1,13 +1,14 @@
 Npc subclass: Chef [
-
-    initialize: newLocation [
+    | hero |
+    initialize: newLocation hero: newHero [
         super initializeWithName: 'chef' rank: 'civil' location: newLocation isKillable: false.
+        hero := newHero
     ]
 
-    interaction: hero [
+    interaction [
         self introductionDialogue.
-        self showDialogueOptions: hero.
-        self dialogueOptionHandling: hero.
+        self showDialogueOptions.
+        self dialogueOptionHandling.
     ]   
 
     introductionDialogue [
@@ -16,7 +17,7 @@ Npc subclass: Chef [
         communicatesService talkToChef_3
     ] 
 
-    showDialogueOptions: hero [
+    showDialogueOptions  [
         (hero hasItemWithName: 'id')
         ifTrue: [
             communicatesService talkToChef_6
@@ -27,7 +28,7 @@ Npc subclass: Chef [
         ].
     ] 
 
-    dialogueOptionHandling: hero [
+    dialogueOptionHandling [
         (hero hasItemWithName: 'midRankPass')
         ifTrue: [
             self midRankPassOptionHandling

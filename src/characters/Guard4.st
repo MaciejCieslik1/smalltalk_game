@@ -6,19 +6,19 @@ Guard subclass: Guard4 [
             isKillable: true
     ]
 
-    interaction: hero [
+    interaction [
         (self hasPermission)
         ifTrue: [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation: hero
+            self conversation.
         ].
     ]
 
-    conversation: hero [
+    conversation: juices [
         self introductionDialogue.
-        self chooseDialogueOption: hero.
+        self chooseDialogueOption: juices.
     ]
 
     introductionDialogue [
@@ -27,8 +27,8 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard4_3
     ]
 
-    chooseDialogueOption: hero [
-        (hero hasUniformWithName = 'serviceUniform' and: [hero hasPoisonedJuice]) 
+    chooseDialogueOption: juices [
+        (hero hasUniformWithName = 'serviceUniform' and: [hero hasPoisonedJuice: juices]) 
         ifTrue: [
             self trueWaiterCondition.
         ]
@@ -68,14 +68,14 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard4_5
     ]
 
-    interactionShooting: hero [
+    interactionShooting [
         communicatesService talkToGuard4_8.
         (hero hasItemWithItem: 'bulletproofVest') 
         ifTrue: [
             self usedVest.
         ]
         ifFalse: [
-            self notUsedVest: hero.
+            self notUsedVest.
         ].
     ]
 
@@ -90,7 +90,7 @@ Guard subclass: Guard4 [
         communicatesService talkToGuard_wayNorthAccessible
     ]
 
-    notUsedVest: hero [
+    notUsedVest [
         communicatesService talkToGuard4_15
         communicatesService talkToGuard_wakeUpInMedbay
         communicatesService talkToGuard_needVest
