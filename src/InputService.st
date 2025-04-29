@@ -1,6 +1,10 @@
 Object subclass: InputService [
     | communicatesService |
 
+    InputService class >> newInitialize: communicatesService [
+        ^ super new initialize: communicatesService.
+    ]
+
     initialize: newCommunicatesService [
         communicatesService := newCommunicatesService.
     ]

@@ -1,6 +1,10 @@
 Object subclass: Map [
     | communicatesService nullRoom passage |
 
+    Map class >> newInitialize: communicatesService nullRoom: newNullRoom passage: newPassage [
+        ^ super new initialize: communicatesService nullRoom: newNullRoom passage: newPassage.
+    ]
+
     initialize: newCommunicatesService room: newNullRoom passage: newPassage[
         communicatesService := newCommunicatesService.
         nullRoom := newNullRoom.

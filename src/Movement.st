@@ -1,9 +1,12 @@
 Object subclass: Movement [
-    | communicatesService movement nullRoom passage |
+    | communicatesService nullRoom passage |
 
-    initialize: newCommunicatesService movement: newMovement nullRoom: newNullRoom passage: newPassage[
+    Movement class >> newInitialize: communicatesService nullRoom: newNullRoom passage: newPassage [
+        ^ super new initialize: communicatesService nullRoom: newNullRoom passage: newPassage.
+    ]
+
+    initialize: newCommunicatesService nullRoom: newNullRoom passage: newPassage[
         communicatesService := newCommunicatesService.
-        movement := newMovement.
         nullRoom := newNullRoom.
         passage := newPassage.
     ]

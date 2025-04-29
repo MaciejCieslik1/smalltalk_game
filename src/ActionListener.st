@@ -1,6 +1,10 @@
 Object subclass: ActionListener [ 
     | communicatesService inputService movement |
 
+    ActionListener class >> newInitialize: communicatesService inputService: newInputService [
+        ^ super new initialize: communicatesService inputService: newInputService.
+    ]
+
     initialize: newCommunicatesService 
         inputService: newInputService
     [

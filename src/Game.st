@@ -1,10 +1,6 @@
 Object subclass: Game [
     | communicatesService |
 
-    initialize: newCommunicatesService [
-        communicatesService := newCommunicatesService.
-    ]
-
     initializeGlobalObjects [
         self initializeLocations.
         self initializeItems.
