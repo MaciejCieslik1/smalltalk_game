@@ -5,9 +5,5 @@ NoneNpcRoom subclass: NullRoom [
             isAccessible: false
             hasItem: false
             itemsList: (OrderedCollection new)
-            adjacentWest: nil
-            adjacentSouth: nil
-            adjacentEast: nil
-            adjacentNorth: nil
     ]
 ]

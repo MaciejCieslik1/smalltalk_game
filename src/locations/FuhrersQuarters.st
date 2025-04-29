@@ -6,10 +6,5 @@ NpcRoom subclass: FuhrersOffice [
             hasItem: false
             itemsList: (OrderedCollection new)
             npcList: (OrderedCollection new)
-            adjacentWest: secretExit
-            adjacentSouth: fuhrersOffice
-            adjacentEast: nullRoom
-            adjacentNorth: nullRoom
-        npcList add: adolf
     ]
 ]

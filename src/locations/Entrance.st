@@ -5,10 +5,5 @@ NoneNpcRoom subclass: Entrance [
             isAccessible: true
             hasItem: true
             itemsList: (OrderedCollection new)
-            adjacentWest: nullRoom
-            adjacentSouth: nullRoom
-            adjacentEast: securityCheckEntry
-            adjacentNorth: nullRoom
-        itemsList add: id.
     ]
 ]

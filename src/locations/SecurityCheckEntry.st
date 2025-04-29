@@ -6,6 +6,5 @@ NpcRoom subclass: SecurityCheckEntry [
             hasItem: false
             itemsList: (OrderedCollection new)
             npcList: (OrderedCollection new)
-        npcList add: guard1.
     ]
 ]

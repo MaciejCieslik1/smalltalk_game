@@ -6,11 +6,5 @@ NpcRoom subclass: Kitchen [
             hasItem: true
             itemsList: (OrderedCollection new)
             npcList: (OrderedCollection new)
-            adjacentWest: cafeteria
-            adjacentSouth: nullRoom
-            adjacentEast: nullRoom
-            adjacentNorth: foodStorage
-        itemsList add: money2
-        npcList add: waiter.
     ]
 ]

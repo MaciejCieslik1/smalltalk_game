@@ -1,6 +1,6 @@
 NoneNpcRoom subclass: SecretExit [
 
-    initialize [
+    initialize: nullRoom [
         super initializeWithName: 'secret exit'
             isAccessible: false
             hasItem: false

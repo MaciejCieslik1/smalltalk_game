@@ -6,21 +6,13 @@ Room subclass: NpcRoom [
         hasItem: newHasItem 
         itemsList: newItemsList 
         npcList: newNpcList 
-        adjacentWest: newAdjacentWest 
-        adjacentSouth: newAdjacentSouth 
-        adjacentEast: newAdjacentEast
-        adjacentNorth: newAdjacentNorth
     [
         super initializeWithName: newName 
             isAccessible: newIsAccessible
             hasItem: newHasItem 
             itemsList: newItemsList 
-            hasNpc: true 
-            adjacentWest: newAdjacentWest
-            adjacentSouth: newAdjacentSouth
-            adjacentEast: newAdjacentEast
-            adjacentNorth: newAdjacentNorth.
-        npcList := newNpcList
+            hasNpc: true.
+        npcList := newNpcList.
     ]
 
     npcList [
@@ -49,6 +41,12 @@ Room subclass: NpcRoom [
         newNpcList remove: npc.
         self npcList: newNpcList.
         self checkIfNpcListEmpty.
+    ]
+
+    addNpcs: npcs [
+        npcs do: [:npc | 
+            npcs add: npc
+        ].
     ]
 
     checkIfNpcListEmpty [

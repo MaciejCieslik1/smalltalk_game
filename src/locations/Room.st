@@ -7,10 +7,6 @@ Object subclass: Room [
         hasItem: newHasItem 
         itemsLists: newItemsList 
         hasNpc: newHasNpc
-        adjacentWest: newAdjacentWest 
-        adjacentSouth: newAdjacentSouth 
-        adjacentEast: newAdjacentEast 
-        adjacentNorth: newAdjacentNorth 
         communicatesService: newCommunicatesService
         inputService: newInputService
     [
@@ -20,10 +16,10 @@ Object subclass: Room [
         itemsList := newItemsList.
         hasNpc := newHasNpc.
         wasVisisted := false.
-        adjacentWest := newAdjacentWest.
-        adjacentSouth := newAdjacentSouth.
-        adjacentEast := newAdjacentEast.
-        adjacentNorth := newAdjacentNorth.
+        adjacentWest := nil.
+        adjacentSouth := nil.
+        adjacentEast := nil.
+        adjacentNorth := nil.
         communicatesService := newCommunicatesService.
         inputService := newInputService.
     ]
@@ -118,6 +114,12 @@ Object subclass: Room [
 
     removeItem: item [
         itemsList remove: item
+    ]
+
+    addItems: items [
+        items do: [:item | 
+            itemsList add: item
+        ].
     ]
 
     roomInfo [

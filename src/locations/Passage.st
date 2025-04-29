@@ -5,9 +5,5 @@ NoneNpcRoom subclass: Passage [
             isAccessible: false
             hasItem: false
             itemsList: (OrderedCollection new)
-            adjacentWest: emptyRoomB
-            adjacentSouth: false
-            adjacentEast: lobby
-            adjacentNorth: false
     ]
 ]

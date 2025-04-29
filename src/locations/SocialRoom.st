@@ -5,6 +5,5 @@ NoneNpcRoom subclass: SocialRoom [
             isAccessible: false
             hasItem: true
             itemsList: (OrderedCollection new)
-        itemsList add: money3.
     ]
 ]

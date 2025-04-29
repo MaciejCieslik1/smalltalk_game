@@ -5,10 +5,5 @@ NoneNpcRoom subclass: Archives [
             isAccessible: false
             hasItem: true
             itemsList: (OrderedCollection new)
-            adjacentWest: nullRoom
-            adjacentSouth: securityCheckOffices
-            adjacentEast: nullRoom
-            adjacentNorth: nullRoom
-        itemsList add: lever.
     ]
 ]
