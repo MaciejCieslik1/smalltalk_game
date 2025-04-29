@@ -1,5 +1,9 @@
 NoneNpcRoom subclass: Passage [
 
+    Passage class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'passage'
             isAccessible: false

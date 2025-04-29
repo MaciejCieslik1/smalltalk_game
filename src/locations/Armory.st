@@ -1,5 +1,9 @@
 NpcRoom subclass: Armory [
 
+    Armory class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'armory'
             isAccessible: false

@@ -1,5 +1,9 @@
 NpcRoom subclass: EmptyRoomB [
 
+    EmptyRoomB class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'empty room B'
             isAccessible: false

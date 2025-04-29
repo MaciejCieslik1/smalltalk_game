@@ -1,5 +1,9 @@
 NpcRoom subclass: SecurityCheckEntry [
 
+    SecurityCheckEntry class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'security check (entry)'
             isAccessible: true

@@ -1,5 +1,9 @@
 NpcRoom subclass: Kitchen [
 
+    Kitchen class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'kitchen'
             isAccessible: false

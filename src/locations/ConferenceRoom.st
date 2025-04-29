@@ -1,5 +1,9 @@
 NoneNpcRoom subclass: ConferenceRoom [
 
+    ConferenceRoom class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'conference room'
             isAccessible: false

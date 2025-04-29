@@ -1,5 +1,9 @@
 NpcRoom subclass: Barracs [
 
+    Barracs class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'barracs'
             isAccessible: false

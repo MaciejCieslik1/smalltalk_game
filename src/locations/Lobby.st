@@ -1,5 +1,9 @@
 NoneNpcRoom subclass: Lobby [
 
+    Lobby class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'lobby'
             isAccessible: false

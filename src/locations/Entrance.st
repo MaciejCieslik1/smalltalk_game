@@ -1,5 +1,9 @@
 NoneNpcRoom subclass: Entrance [
 
+    Entrance class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'entrance'
             isAccessible: true

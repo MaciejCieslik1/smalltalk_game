@@ -1,5 +1,9 @@
 NpcRoom subclass: Cafeteria [
 
+    Cafeteria class >> newInitialize [
+        ^ super new initialize.
+    ]
+
     initialize [
         super initializeWithName: 'cafeteria'
             isAccessible: false
