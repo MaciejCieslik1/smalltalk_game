@@ -1,7 +1,12 @@
 Npc subclass: Bandit [
     | hero |
+
+    Bandit class >> newInitialize: location hero: newHero [
+        ^ super new initialize: location hero: newHero.
+    ]
+
     initialize: newLocation hero: newHero [
-        super initializeWithName: 'bandit' rank: 'private' location: newLocation isKillable: true.
+        super initialize: 'bandit' rank: 'private' location: newLocation isKillable: true.
         hero := newHero
     ]
 

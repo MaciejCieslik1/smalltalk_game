@@ -1,5 +1,10 @@
 Npc subclass: Waiter [
     | uniform |
+
+    Waiter class >> newInitialize: location uniform: newUniform [
+        ^ super new initialize: location uniform: newUniform.
+    ]
+
     initialize: newLocation uniform: newUniform [
         super initializeWithName: 'waiter' rank: 'civil' location: newLocation isKillable: false.
         uniform := newUniform

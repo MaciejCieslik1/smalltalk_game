@@ -1,6 +1,10 @@
 Person subclass: Hero [
     | items uniform money recoveryPlace |
 
+    Hero class >> newInitialize: location recoveryPlace: newRecoveryPlace uniform: newUniform [
+        ^ super new initialize: location recoveryPlace: newRecoveryPlace uniform: newUniform.
+    ]
+
     initialize: newLocation recoveryPlace: newRecoveryPlace uniform: newUniform [
         super initializeWithName: 'Johannes_Golmer' location: newLocation isKillable: true recoveryPlace: newRecoveryPlace.
         items := OrderedCollection new.

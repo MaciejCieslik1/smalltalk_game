@@ -1,8 +1,12 @@
 Guard subclass: Guard2 [
     | hasHigherPermission | 
 
+    Guard2 class >> newInitialize: location hero: newHero [
+        ^ super new initialize: location hero: newHero.
+    ]
+
     initialize: newLocation [
-        super initializeWithName: 'guard2'
+        super initialize: 'guard2'
             location: newLocation 
             isKillable: false
         hasHigherPermission: false

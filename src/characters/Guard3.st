@@ -1,7 +1,11 @@
 Guard subclass: Guard3 [
 
+    Guard3 class >> newInitialize: location hero: newHero [
+        ^ super new initialize: location hero: newHero.
+    ]
+
     initialize: newLocation [
-        super initializeWithName: 'guard3' 
+        super initialize: 'guard3' 
             location: newLocation
             isKillable: true
     ]
