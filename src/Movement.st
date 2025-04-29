@@ -1,80 +1,82 @@
 Object subclass: Movement [
-    | communicatesService |
+    | communicatesService movement nullRoom passage |
 
-    initialize: newCommunicatesService movement: newMovement [
+    initialize: newCommunicatesService movement: newMovement nullRoom: newNullRoom passage: newPassage[
         communicatesService := newCommunicatesService.
-        movement := newMovement
+        movement := newMovement.
+        nullRoom := newNullRoom.
+        passage := newPassage.
     ]
 
-    go: direction [
+    go: hero direction: direction [
         (direction = 'n')
         ifTrue: [
-            self goNorth
+            self goNorth: hero
         ].
         (direction = 'w')
         ifTrue: [
-            self goWest
+            self goWest: hero
         ].
         (direction = 's')
         ifTrue: [
-            self goSouth
+            self goSouth: hero
         ].
         (direction = 'e')
         ifTrue: [
-            self goEast
+            self goEast: hero
         ].
     ]
 
-    goNorth [
+    goNorth: hero [
         | adjacentRoom |
         adjacentRoom := hero location adjacentNorth.
         self checkAdjacentRoom: adjacentRoom direction: 'n'.
     ]
 
-    goWest [
+    goWest: hero [
         | adjacentRoom |
         adjacentRoom := hero location adjacentWest.
         self checkAdjacentRoom: adjacentRoom direction: 'w'.
     ]
 
-    goSouth [
+    goSouth: hero [
         | adjacentRoom |
         adjacentRoom := hero location adjacentSouth.
         self checkAdjacentRoom: adjacentRoom direction: 's'.
     ]
 
-    goEast [
+    goEast: hero [
         | adjacentRoom |
         adjacentRoom := hero location adjacentEast.
-        self checkAdjacentRoom: adjacentRoom direction: 'e'.
+        self checkAdjacentRoom: hero room: adjacentRoom direction: 'e'.
     ]
 
-    checkAdjacentRoom: adjacentRoom direction: direction [
+    checkAdjacentRoom: hero room: adjacentRoom direction: direction [
         (adjacentRoom ~= nullRoom)
         ifTrue: [
-            self checkIfAccessible: adjacentRoom direction: direction.
+            self checkIfAccessible: hero room: adjacentRoom direction: direction.
         ]
         ifFalse: [
             communicatesService noRoom
         ]
     ]
 
-    checkIfAccessible: adjacentRoom direction: direction[
+    checkIfAccessible: hero room: adjacentRoom direction: direction[
         (adjacentRoom isAccessible = true)
         ifTrue: [
-            self checkIfPassage: adjacentRoom direction: direction.
+            self checkIfPassage: hero room: adjacentRoom direction: direction.
         ]
         ifFalse: [
             communicatesService roomLocked
         ]
     ]
 
-    checkIfPassage: room direction: direction[
+    checkIfPassage: hero room: room direction: direction[
         (room == passage)
         ifTrue: [
             hero location: passage.
             passage wasVisited: true.
-            self go: direction.
+            self go: hero direction: direction.
         ]
         ifFalse: [
             hero moveTotheRoom: room.

@@ -1,38 +1,21 @@
 Object subclass: Map [
-    | communicatesService |
+    | communicatesService nullRoom passage |
 
-    initialize: newCommunicatesService [
+    initialize: newCommunicatesService room: newNullRoom passage: newPassage[
         communicatesService := newCommunicatesService.
+        nullRoom := newNullRoom.
+        passage := newPassage.
     ]
 
-    createMap [
-        | firstLevelRoomsList secondLevelRoomsList thirdLevelRoomsList fourthLevelRoomsList fifthLevelRoomsList sixthLevelRoomsList map |
-        sixthLevelRoomsList := Array with: secretExit with: fuhrersQuarters with: goebbelsOffice with: archives with: nullRoom 
-                                with: nullRoom with: nullRoom.
-        fifthLevelRoomsList := Array with: nullRoom with: fuhrersOffice with: conferenceRoom with: securityCheckOffices with: barracks 
-                                with: nullRoom with: nullRoom.
-        fourthLevelRoomsList := Array with: nullRoom with: emptyRoomB with: passage with: lobby with: socialRoom with: foodStorage
-                                with: kitchenExit.
-        thirdLevelRoomsList := Array with: nullRoom with: nullRoom with: nullRoom with: emptyRoomA with: cafeteria with: kitchen 
-                                with: nullRoom.
-        secondLevelRoomsList := Array with: nullRoom with: nullRoom with: nullRoom with: cloaroom with: medicBay with: nullRoom 
-                                with: nullRoom.
-        firstLevelRoomsList := Array with: nullRoom with: nullRoom with: entrance with: securityCheckEntry with: armory with: nullRoom 
-                                with: nullRoom.
+    createMap: roomsRowsMatrix [
+        | level map |
 
-        map := map, cr, self createLevelMap: sixthLevelRoomsList.
-        map := map, cr, self createVerticalCorridors: sixthLevelRoomsList.
-        map := map, cr, self createLevelMap: fifthLevelRoomsList.
-        map := map, cr, self createVerticalCorridors: fifthLevelRoomsList.
-        map := map, cr, self createLevelMap: fourthLevelRoomsList.
-        map := map, cr, self createVerticalCorridors: fourthLevelRoomsList.
-        map := map, cr, self createLevelMap: thirdLevelRoomsList.
-        map := map, cr, self createVerticalCorridors: thirdLevelRoomsList.
-        map := map, cr, self createLevelMap: secondLevelRoomsList.
-        map := map, cr, self createVerticalCorridors: secondLevelRoomsList.
-        map := map, cr, self createLevelMap: firstLevelRoomsList.
+        roomsRowsMatrix do: [:row |
+            map := map, String cr, self createLevelMap: row.
+            map := map, String cr, self createVerticalCorridors: row.
+        ].
 
-        communicateService printStringNewLine: map
+        communicatesService printStringNewLine: map
     ]
 
     createLevelMap: levelList [
@@ -43,7 +26,7 @@ Object subclass: Map [
         ].
     ]
 
-    isHeroInRoom: room [
+    isHeroInRoom: hero currentRoom: room [
         (hero location == room)
         ifTrue: [
             ^ '[X]'
@@ -56,17 +39,17 @@ Object subclass: Map [
     wasRoomVisited: room [
         (room wasVisited)
         ifTrue: [
-            ^ self roomWasVisited.
+            ^ self roomWasVisited: room.
         ]
         ifFalse: [
             ^ self checkNorthAdjacentRoom: room.
         ].
     ]
 
-    roomWasVisited [
+    roomWasVisited: room [
         | roomLayout |
         roomLayout := ''.
-        roomLayout := roomLayout, drawVisitedRoom.
+        roomLayout := roomLayout, self drawVisitedRoom: room.
         (room adjacentEast ~= nullRoom)
         ifTrue: [
             roomLayout := roomLayout, '-'
@@ -77,17 +60,17 @@ Object subclass: Map [
         ^ roomLayout
     ]
 
-    drawVisitedRoom [
+    drawVisitedRoom: room [
         (room hasNpc)
         ifTrue: [
-            ^ self drawNpcVisitedRoom.
+            ^ self drawNpcVisitedRoom: room.
         ]
         ifFalse: [
-            ^ self drawNoneNpcVisitedRoom.
+            ^ self drawNoneNpcVisitedRoom: room.
         ].
     ]
 
-    drawNpcVisitedRoom [
+    drawNpcVisitedRoom: room [
         (room hasItem)
         ifTrue: [
             ^ '[B]'
@@ -97,7 +80,7 @@ Object subclass: Map [
         ].
     ]
 
-    drawNoneNpcVisitedRoom [
+    drawNoneNpcVisitedRoom: room [
         (room == passage)
         ifTrue: [
             ^ '==='
@@ -111,17 +94,17 @@ Object subclass: Map [
         ].
     ]
 
-    drawAdjacentRoom [
+    drawAdjacentRoom: room [
         (room hasNpc)
         ifTrue: [
-            ^ self drawNpcAdjacentRoom.
+            ^ self drawNpcAdjacentRoom: room.
         ]
         ifFalse: [
-            ^ self drawNoneNpcAdjacentRoom.
+            ^ self drawNoneNpcAdjacentRoom: room.
         ].
     ]
 
-    drawNpcAdjacentRoom [
+    drawNpcAdjacentRoom: room [
         (room hasItem)
         ifTrue: [
             ^ '(B)'
@@ -131,7 +114,7 @@ Object subclass: Map [
         ].
     ]
 
-    drawNoneNpcAdjacentRoom [
+    drawNoneNpcAdjacentRoom: room [
         (room == passage)
         ifTrue: [
             ^ '==='
@@ -171,6 +154,7 @@ Object subclass: Map [
     ]
 
     checkSouthAdjacentRoom: room [
+        | roomLayout |
         (room adjacentSouth wasVisited)
         ifTrue: [
             roomLayout := roomLayout, self drawAdjacentRoom.
@@ -182,6 +166,7 @@ Object subclass: Map [
     ]
 
     checkEastAdjacentRoom: room [
+        | roomLayout |
         (room adjacentEast wasVisited)
         ifTrue: [
             roomLayout := roomLayout, '-', self drawAdjacentRoom.
