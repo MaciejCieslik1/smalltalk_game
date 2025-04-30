@@ -1,7 +1,7 @@
 Item subclass: Gun [
 
-    Gun class >> newInitialize: location [
-        ^ super new initialize: location.
+    Gun class >> newInitialize [
+        ^ super new initialize.
     ]
 
     initialize [

@@ -5,8 +5,8 @@ Item subclass: Money [
         ^ super new initialize: location amount: newAmount.
     ]
 
-    initializeWithName: newName location: newLocation amount: newAmount [
-        super initializeWithName: newName location: newLocation.
+    initialize: newLocation amount: newAmount [
+        super initializeWithName: 'money' location: newLocation.
         amount := newAmount.
     ]
 

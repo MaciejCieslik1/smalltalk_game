@@ -1,7 +1,7 @@
 Item subclass: Helmet [
 
-    Helmet class >> newInitialize: location [
-        ^ super new initialize: location.
+    Helmet class >> newInitialize [
+        ^ super new initialize.
     ]
 
 
