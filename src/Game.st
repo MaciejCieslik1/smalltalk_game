@@ -7,7 +7,7 @@ Object subclass: Game [
     |  movement roomService |
 
     initializeFields [
-        self initializeCommunicatesService.
+        self initializeCommunicationService.
         self initializeLocations.
         self initializeItems.
         self initializeUniforms.
@@ -15,12 +15,14 @@ Object subclass: Game [
         self initializeServiceClasses.
     ]
 
-    initializeCommunicatesService [
+    initializeCommunicationService [
         communicatesService := CommunicatesService new.
+        inputService := InputService newInitialize: communicatesService.
     ]
 
     initializeLocations [
-        archives := Archives newInitialize.
+        archives := Archives new.
+        archives initialize: communicatesService inputService: inputService.
         armory := Armory newInitialize.
         barracks := Barracks newInitialize.
         cafeteria := Cafeteria newInitialize.
@@ -115,7 +117,6 @@ Object subclass: Game [
 
     initializeServiceClasses [
         actionListener := ActionListener newInitialize.
-        inputService := InputService newInitialize: communicatesService.
         map := Map newInitialize: communicatesService nullRoom: nullRoom passage: passage.
         movement := Movement newInitialize: communicatesService nullRoom: nullRoom passage: passage.
         roomService := RoomService new.

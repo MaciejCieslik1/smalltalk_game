@@ -4,19 +4,15 @@ Room subclass: NoneNpcRoom [
         isAccessible: newIsAccessible 
         hasItem: newHasItem 
         itemsList: newItemsList 
-        adjacentWest: newAdjacentWest 
-        adjacentSouth: newAdjacentSouth 
-        adjacentEast: newAdjacentEast
-        adjacentNorth: newAdjacentNorth
+        communicatesService: newCommunicatesService
+        inputService: newInputService
     [
         super initializeWithName: newName 
             isAccessible: newIsAccessible 
             hasItem: newHasItem 
             itemsList: newItemsList 
             hasNpc: false
-            adjacentWest: newAdjacentWest
-            adjacentSouth: newAdjacentSouth
-            adjacentEast: newAdjacentEast
-            adjacentNorth: newAdjacentNorth
+            communicatesService: newCommunicatesService
+            inputService: newInputService
     ]
 ]
