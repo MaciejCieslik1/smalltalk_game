@@ -1,7 +1,13 @@
 Object subclass: Game [
-    | communicatesService |
+    | communicatesService archives armory barracks cafeteria cloakroom conferenceRoom emptyRoomA emptyRoomB entrance foodStorage |
+    |  fuhrersOffice fuhrersQuarters goebbelsOffice kitchen kitchenExit lobby medicBay nullRoom secretExit securityCheckEntry passage |
+    |  securityCheckOffices socialRoom appleJuice orangeJuice multivitaminaJuice bandage baton bulletproofVest chloroform gun helmet |
+    |  letter lever money moneyMedicBay moneyKitchen moneySocialRoom moneyLobby poison rag umbrella vitamins militaryUniform |
+    |  serviceUniform bandit chef fuhrer guard1 guard2 guard3 guard4 hero salesman soldier waiter actionListener inputService map |
+    |  movement roomService |
 
-    initializeGlobalObjects [
+    initializeFields [
+        self initializeCommunicatesService.
         self initializeLocations.
         self initializeItems.
         self initializeUniforms.
@@ -9,139 +15,110 @@ Object subclass: Game [
         self initializeServiceClasses.
     ]
 
+    initializeCommunicatesService [
+        communicatesService := CommunicatesService new.
+    ]
+
     initializeLocations [
-        initializedArchives := Archives new
-        Smalltalk at: #archives put: initializedArchives.
-        initializedArmory := Armory new
-        Smalltalk at: #armory put: initializedArmory.
-        initializedBarracks := Barracks new
-        Smalltalk at: #barracks put: initializedBarracks.
-        initializedCafeteria := Cafeteria new
-        Smalltalk at: #cafeteria put: initializedCafeteria.
-        initializedCloakroom := Cloakroom new
-        Smalltalk at: #cloakroom put: initializedCloakroom.
-        initializedConferenceRoom := ConferenceRoom new
-        Smalltalk at: #conferenceRoom put: initializedConferenceRoom.
-        initializedEmptyRoomA := EmptyRoomA new
-        Smalltalk at: #emptyRoomA put: initializedEmptyRoomA.
-        initializedEmptyRoomB := EmptyRoomB new
-        Smalltalk at: #emptyRoomB put: initializedEmptyRoomB.
-        initializedEntrance := Entrance new
-        Smalltalk at: #entrance put: initializedEntrance.
-        initializedFoodStorage := FoodStorage new
-        Smalltalk at: #foodStorage put: initializedFoodStorage.
-        initializedFuhrersOffice := FuhrersOffice new
-        Smalltalk at: #fuhrersOffice put: initializedFuhrersOffice.
-        initializedFuhrersQuarters := FuhrersQuarters new
-        Smalltalk at: #fuhrersQuarters put: initializedFuhrersQuarters.
-        initializedGoebbelsOffice := GoebbelsOffice new
-        Smalltalk at: #goebbelsOffice put: initializedGoebbelsOffice.
-        initializedKitchen := Kitchen new
-        Smalltalk at: #kitchen put: initializedKitchen.
-        initializedKitchenExit := KitchenExit new
-        Smalltalk at: #kitchenExit put: initializedKitchenExit.
-        initializedLobby := Lobby new
-        Smalltalk at: #lobby put: initializedLobby.
-        initializedMedicBay := MedicBay new
-        Smalltalk at: #medicBay put: initializedMedicBay.
-        initializedNullRoom := NullRoom new
-        Smalltalk at: #nullRoom put: initializedNullRoom.
-        initializedSecretExit := SecretExit new
-        Smalltalk at: #secretExit put: initializedSecretExit.
-        initializedSecurityCheckEntry := SecurityCheckEntry new
-        Smalltalk at: #securityCheckEntry put: initializedSecurityCheckEntry.
-        initializedSecurityCheckOffices := SecurityCheckOffices new
-        Smalltalk at: #securityCheckOffices put: initializedSecurityCheckOffices.
-        initializedSocialRoom := SocialRoom new
-        Smalltalk at: #socialRoom put: initializedSocialRoom.
+        archives := Archives newInitialize.
+        armory := Armory newInitialize.
+        barracks := Barracks newInitialize.
+        cafeteria := Cafeteria newInitialize.
+        cloakroom := Cloakroom newInitialize.
+        conferenceRoom := ConferenceRoom newInitialize.
+        emptyRoomA := EmptyRoomA newInitialize.
+        emptyRoomB := EmptyRoomB newInitialize.
+        entrance := Entrance newInitialize.
+        foodStorage := FoodStorage newInitialize.
+        fuhrersOffice := FuhrersOffice newInitialize.
+        fuhrersQuarters := FuhrersQuarters newInitialize.
+        goebbelsOffice := GoebbelsOffice newInitialize.
+        kitchen := Kitchen newInitialize.
+        kitchenExit := KitchenExit newInitialize.
+        lobby := Lobby newInitialize.
+        medicBay := MedicBay newInitialize.
+        nullRoom := NullRoom newInitialize.
+        secretExit := SecretExit newInitialize.
+        securityCheckEntry := SecurityCheckEntry newInitialize.
+        securityCheckOffices := SecurityCheckOffices newInitialize.
+        socialRoom := SocialRoom newInitialize.
+        passage := Passage newInitialize.
+
+        self initializeAdjacentRooms.
+    ]
+
+    initializeAdjacentRooms [
+        archives addAdjacentRooms: nullRoom west: nullRoom south: securityCheckOffices east: nullRoom.
+        barracks addAdjacentRooms: nullRoom west: nullRoom south: socialRoom east: nullRoom. 
+        cafeteria addAdjacentRooms: socialRoom west: emptyRoomA south: medicBay east: kitchen.
+        cloakroom addAdjacentRooms: emptyRoomA west: nullRoom south: securityCheckEntry east: nullRoom. 
+        conferenceRoom addAdjacentRooms: goebbelsOffice west: fuhrersOffice south: nullRoom east: securityCheckOffices. 
+        emptyRoomA addAdjacentRooms: nullRoom west: nullRoom south: securityCheckOffices east: nullRoom. 
+        emptyRoomB addAdjacentRooms: fuhrersOffice west: nullRoom south: nullRoom east: passage. 
+        entrance addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: securityCheckEntry. 
+        foodStorage addAdjacentRooms: nullRoom west: nullRoom south: kitchen east: kitchenExit. 
+        fuhrersOffice addAdjacentRooms: fuhrersQuarters west: nullRoom south: emptyRoomB east: conferenceRoom. 
+        fuhrersQuarters addAdjacentRooms: nullRoom west: secretExit south: fuhrersOffice east: nullRoom. 
+        goebbelsOffice addAdjacentRooms: nullRoom west: nullRoom south: conferenceRoom east: nullRoom. 
+        kitchen addAdjacentRooms: foodStorage west: cafeteria south: nullRoom east: nullRoom. 
+        kitchenExit addAdjacentRooms: nullRoom west: foodStorage south: nullRoom east: nullRoom. 
+        lobby addAdjacentRooms: securityCheckOffices west: passage south: cloakroom east: cafeteria. 
+        medicBay addAdjacentRooms: cafeteria west: nullRoom south: nullRoom east: nullRoom. 
+        secretExit addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: fuhrersQuarters. 
+        securityCheckEntry addAdjacentRooms: cloakroom west: entrance south: nullRoom east: armory. 
+        securityCheckOffices addAdjacentRooms: archives west: conferenceRoom south: lobby east: nullRoom. 
+        socialRoom addAdjacentRooms: barracks west: lobby south: cafeteria east: nullRoom.  
+        passage addAdjacentRooms: nullRoom west: emptyRoomB south: nullRoom east: lobby.  
     ]
 
     initializeItems [
-        initializedAppleJuice := AppleJuice location new
-        Smalltalk at: #appleJuice put: initializedAppleJuice.
-        initializedOrangeJuice := OrangeJuice new
-        Smalltalk at: #orangeJuice put: initializedOrangeJuice.
-        initializedMultivitaminaJuice := MultivitaminaJuice new
-        Smalltalk at: #multivitaminaJuice put: initializedMultivitaminaJuice.
-        initializedBandage := Bandage new
-        Smalltalk at: #bandage put: initializedBandage.
-        initializedBaton := Baton new
-        Smalltalk at: #baton put: initializedBaton.
-        initializedBulletproofVest := BulletproofVest new
-        Smalltalk at: #bulletproofVest put: initializedBulletproofVest.
-        initializedChloroform := Chloroform new
-        Smalltalk at: #chloroform put: initializedChloroform.
-        initializedGun := Gun new
-        Smalltalk at: #gun put: initializedGun.
-        initializedHelmet := Helmet new
-        Smalltalk at: #helmet put: initializedHelmet.
-        initializedLetter := Letter new
-        Smalltalk at: #letter put: initializedLetter.
-        initializedLever := Lever new
-        Smalltalk at: #lever put: initializedLever.
-        initializedMoney := Money name: 'money' location: nil amount: 0
-        Smalltalk at: #money put: initializedMoney.
-        initializedMoneyMedicBay := Money name: 'money' location: medicBay amount: 250.
-        Smalltalk at: #money1 put: initializedMoneyMedicBay.
-        initializedMoneyKitchen := Money name: 'money' location: kitchens amount: 250.
-        Smalltalk at: #money2 put: initializedMoneyKitchen.
-        initializedMoneySocialRoom := Money name: 'money' location: socialRoom amount: 250.
-        Smalltalk at: #money3 put: initializedMoneySocialRoom.
-        initializedMoneyLobby := Money name: 'money' location: lobby amount: 250.
-        Smalltalk at: #money4 put: initializedMoneyLobby.
-        initializedPoison := Poison new.
-        Smalltalk at: #poison put: initializedPoison.
-        initializedRag := Rag new.
-        Smalltalk at: #rag put: initializedRag.
-        initializedUmbrella := Umbrella new.
-        Smalltalk at: #umbrella put: initializedUmbrella.
-        initializedVitamins := Vitamins new.
-        Smalltalk at: #vitamins put: initializedVitamins.
+        appleJuice := AppleJuice newInitialize: cafeteria.
+        orangeJuice := OrangeJuice newInitialize: cafeteria.
+        multivitaminaJuice := MultivitaminaJuice newInitialize: cafeteria.
+        bandage := Bandage newInitialize: medicBay.
+        baton := Baton newInitialize: barracks.
+        bulletproofVest := BulletproofVest newInitialize.
+        chloroform := Chloroform newInitialize: medicBay.
+        gun := Gun newInitialize.
+        helmet := Helmet newInitialize.
+        letter := Letter newInitialize: goebbelsOffice.
+        lever := Lever newInitialize: archives.
+        money := Money newInitialize: nil amount: 0.
+        moneyMedicBay := Money newInitialize: medicBay amount: 250.
+        moneyKitchen := Money newInitialize: kitchen amount: 250.
+        moneySocialRoom := Money newInitialize: socialRoom amount: 250.
+        moneyLobby := Money newInitialize: lobby amount: 250.
+        poison := Poison newInitialize: foodStorage.
+        rag := Rag newInitialize: barracks.
+        umbrella := Umbrella newInitialize: cloakroom.
+        vitamins := Vitamins newInitialize: medicBay.
     ]
 
     initializeUniforms [
-        initializedMilitaryUniform := MilitaryUniform new
-        Smalltalk at: #militaryUniform put: initializedMilitaryUniform.
-        initializedServiceUniform := ServiceUniform new
-        Smalltalk at: #serviceUniform put: initializedServiceUniform.
+        militaryUniform := MilitaryUniform newInitialize.
+        serviceUniform := ServiceUniform newInitialize.
     ]
 
     initializeCharacters [
-        initializedBandit := Bandit new
-        Smalltalk at: #bandit put: initializedBandit.
-        initializedChef := Chef new
-        Smalltalk at: #chef put: initializedChef.
-        initializedFuhrer := Fuhrer new
-        Smalltalk at: #fuhrer put: initializedFuhrer.
-        initializedGuard1 := Guard1 new
-        Smalltalk at: #guard1 put: initializedGuard1.
-        initializedGuard2 := Guard2 new
-        Smalltalk at: #guard2 put: initializedGuard2.
-        initializedGuard3 := Guard3 new
-        Smalltalk at: #guard3 put: initializedGuard3.
-        initializedGuard4 := Guard4 new
-        Smalltalk at: #guard4 put: initializedGuard4.
-        initializedHero := Hero new
-        Smalltalk at: #hero put: initializedHero.
-        initializedSalesman := Salesman new
-        Smalltalk at: #salesman put: initializedSalesman.
-        initializedSoldier := Soldier new
-        Smalltalk at: #soldier put: initializedSoldier.
-        initializedWaiter := Waiter new
-        Smalltalk at: #waiter put: initializedWaiter.
+        hero := Hero newInitialize: entrance recoveryPlace: medicBay uniform: militaryUniform.
+        bandit := Bandit newInitialize: emptyRoomB hero: hero.
+        chef := Chef newInitialize: cafeteria hero: hero.
+        fuhrer := Fuhrer newInitialize: fuhrersQuarters hero: hero.
+        guard1 := Guard1 newInitialize: securityCheckEntry hero: hero.
+        guard2 := Guard2 newInitialize: securityCheckOffices hero: hero.
+        guard3 := Guard3 newInitialize: fuhrersOffice hero: hero.
+        guard4 := Guard4 newInitialize: fuhrersOffice hero: hero.
+        salesman := Salesman newInitialize: armory items: OrderedCollection withAll: { gun. bulletproofVest } hero: hero.
+        soldier := Soldier newInitialize: barracks item: helmet hero: hero.
+        waiter := Waiter newInitialize: kitchen uniform: serviceUniform.
     ]
 
     initializeServiceClasses [
-        initializedActionListener := ActionListener new
-        Smalltalk at: #actionListener put: initializedActionListener.
-        initializedInputService := InputService new
-        Smalltalk at: #inputService put: initializedInputService.
-        initializedMap := Map new
-        Smalltalk at: #map put: initializedMap.
-        initializedMovement := Movement new
-        Smalltalk at: #movement put: initializedMovement.
-        initializedRoomService := RoomService new
-        Smalltalk at: #roomService put: initializedRoomService.
+        actionListener := ActionListener newInitialize.
+        inputService := InputService newInitialize: communicatesService.
+        map := Map newInitialize: communicatesService nullRoom: nullRoom passage: passage.
+        movement := Movement newInitialize: communicatesService nullRoom: nullRoom passage: passage.
+        roomService := RoomService new.
     ]
 
     gameLoop [
@@ -154,9 +131,9 @@ Object subclass: Game [
     ]
 
     ending [
-        communicatesService thanks 
-        communicatesService thanksForPlaying 
-        communicatesService youWon 
-        communicatesService typeQToExit 
+        communicatesService thanks. 
+        communicatesService thanksForPlaying. 
+        communicatesService youWon. 
+        communicatesService typeQToExit. 
     ]
 ]
