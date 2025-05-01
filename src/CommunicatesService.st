@@ -955,6 +955,7 @@ Object subclass: CommunicatesService [
 
     CommunicatesService >> help [
         Transcript
+            show: ''; cr;
             show: '# Main goal #'; cr;
             show: 'Kill Adolf Hitler'; cr;
             show: '# Useful commands #'; cr;
@@ -982,6 +983,7 @@ Object subclass: CommunicatesService [
             show: '( ) - unvisited empty room, adjacent to the visited one'; cr;
             show: '=== - long horizonal corridor'; cr;
             show: '- - normal horizonal corridor'; cr;
-            show: '| - normal vertical corridor'; cr.
+            show: '| - normal vertical corridor'; cr;
+            show: ''; cr.
     ]
 ]
