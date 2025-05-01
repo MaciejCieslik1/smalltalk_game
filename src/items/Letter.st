@@ -1,12 +1,13 @@
 Item subclass: Letter [
 
-    Letter class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'letter'
-            location: newLocation.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

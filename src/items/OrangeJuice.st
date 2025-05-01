@@ -1,13 +1,14 @@
 Juice subclass: OrangeJuice [
 
-    OrangeJuice class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'orange_juice'
             location: newLocation
-            isPoisoned: false.
+            isPoisoned: false
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

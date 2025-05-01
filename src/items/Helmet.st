@@ -1,13 +1,12 @@
 Item subclass: Helmet [
 
-    Helmet class >> newInitialize [
-        ^ super new initialize.
-    ]
-
-
-    initialize [
+    initialize: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'helmet'
-            location: nil.
+            location: nil
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

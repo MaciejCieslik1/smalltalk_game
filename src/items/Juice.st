@@ -1,9 +1,17 @@
 Item subclass: Juice [
     | isPoisoned |
 
-    initializeWithName: newName location: newLocation isPoisoned: newIsPoisoned [
-        super initializeWithName: newName location: newLocation.
-        isPoisoned := newIsPoisoned
+    initializeWithName: newName 
+        location: newLocation 
+        isPoisoned: newIsPoisoned 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService 
+    [
+        super initializeWithName: newName 
+            location: newLocation 
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
+        isPoisoned := newIsPoisoned.
     ]
 
     isPoisoned [

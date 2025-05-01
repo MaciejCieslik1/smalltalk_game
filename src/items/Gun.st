@@ -1,12 +1,11 @@
 Item subclass: Gun [
 
-    Gun class >> newInitialize [
-        ^ super new initialize.
-    ]
-
-    initialize [
+    initialize: newCommunicatesService 
+        inputService: newInputService[
         super initializeWithName: 'gun'
             location: nil
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

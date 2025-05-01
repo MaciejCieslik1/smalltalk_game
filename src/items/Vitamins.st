@@ -1,12 +1,13 @@
 Item subclass: Vitamins [
 
-    Vitamins class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'vitamins'
-            location: newLocation.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

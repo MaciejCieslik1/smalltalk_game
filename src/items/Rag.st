@@ -1,14 +1,15 @@
 Item subclass: Rag [
     | isChloroformed | 
 
-    Rag class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'rag' 
             location: newLocation
-            isChloroformed: false.
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
+        isChloroformed := false.
     ]
 
     isChloroformed [

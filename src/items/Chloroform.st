@@ -1,12 +1,13 @@
 Item subclass: Chloroform [
 
-    Chloroform class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService 
+    [
         super initializeWithName: 'chloroform'
-            location: newLocation.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

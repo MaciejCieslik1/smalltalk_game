@@ -1,12 +1,13 @@
 Item subclass: Poison [
 
-    Poison class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'poison'
-            location: newLocation.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [

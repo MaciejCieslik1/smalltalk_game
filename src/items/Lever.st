@@ -1,15 +1,15 @@
 Item subclass: Lever [
     | isPulled |
 
-    Lever class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-
-    initializeWithName: newName location: newLocation[
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'lever' 
-            location: newLocation.
-        isPulled := false.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
+        isPulled := false
     ]
 
     isPulled [

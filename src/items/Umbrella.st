@@ -1,12 +1,13 @@
 Item subclass: Umbrella [
 
-    Umbrella class >> newInitialize: location [
-        ^ super new initialize: location.
-    ]
-
-    initialize: newLocation [
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
         super initializeWithName: 'umbrella'
-            location: newLocation.
+            location: newLocation
+            communicatesService: newCommunicatesService 
+            inputService: newInputService
     ]
 
     description [
