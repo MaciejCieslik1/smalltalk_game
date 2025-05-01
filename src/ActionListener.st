@@ -1,13 +1,15 @@
 Object subclass: ActionListener [ 
-    | hero movement communicatesService inputService |
+    | hero movement map communicatesService inputService |
 
     initialize: newHero
         movement: newMovement
+        map: newMap
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         hero := newHero.
         movement := newMovement.
+        map := newMap.
         communicatesService := newCommunicatesService.
         inputService := newInputService
     ]
@@ -46,11 +48,15 @@ Object subclass: ActionListener [
         ].
         (command = 'poison')
         ifTrue: [
-            self checkArgumentPoison: hero argument2: argument
+            self checkArgumentPoison: argument
         ].
         (command = 'chloroform')
         ifTrue: [
             self checkArgumentChloroform: argument
+        ].
+        (command = 'map')
+        ifTrue: [
+            map createMap 
         ].
         (command = 'help')
         ifTrue: [

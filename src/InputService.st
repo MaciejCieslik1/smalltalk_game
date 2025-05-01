@@ -26,22 +26,22 @@ Object subclass: InputService [
     ]
 
     inputCommand [
-        | parts command argument validCommands inputString |
-        validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform').
+        | parts command argument inputString |
         communicatesService chooseAction.
         inputString := FileStream stdin nextLine.
 
         (inputString = 'help')
         ifTrue: [
-            ^ inputString
+            ^ inputString, ' empty'
         ]
         ifFalse: [
             ^ self commandNotHelp: inputString.
         ]
     ]
 
-    commandNotHelp: inputString argument2: validCommands [
-        | parts command argument |
+    commandNotHelp: inputString [
+        | parts command argument validCommands |
+        validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform' 'map' 'help').
         parts := inputString substrings: ' '.
         parts size = 2 ifFalse: [ 
             communicatesService invalidCommand.

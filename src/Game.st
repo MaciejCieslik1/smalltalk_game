@@ -196,10 +196,11 @@ Object subclass: Game [
     ]
 
     initializeServiceClasses [
-        actionListener := ActionListener new.
-        actionListener initialize: hero movement: movement communicatesService: communicatesService inputService: inputService.
         map := Map new.
         map initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService. 
+        actionListener := ActionListener new.
+        actionListener initialize: hero movement: movement map: map communicatesService: communicatesService 
+            inputService: inputService.
         movement := Movement new.
         movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService.
         roomService := RoomService new.
