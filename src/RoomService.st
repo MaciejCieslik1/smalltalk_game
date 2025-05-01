@@ -1,4 +1,4 @@
-Object subclass: RoomSevice [
+Object subclass: RoomService [
 
     openRooms: accessRooms [
         accessRooms do: [:room | 
