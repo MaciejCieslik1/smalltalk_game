@@ -4,7 +4,7 @@ Object subclass: Game [
     |  securityCheckOffices socialRoom appleJuice orangeJuice multivitaminaJuice bandage baton bulletproofVest chloroform gun helmet |
     |  letter lever money moneyMedicBay moneyKitchen moneySocialRoom moneyLobby poison rag umbrella vitamins militaryUniform |
     |  serviceUniform bandit chef fuhrer guard1 guard2 guard3 guard4 hero salesman soldier waiter actionListener inputService map |
-    |  movement roomService |
+    |  movement roomService levelMatrix |
 
     initializeFields [
         self initializeCommunicationService.
@@ -92,6 +92,7 @@ Object subclass: Game [
             communicatesService: communicatesService inputService: inputService.
 
         self initializeAdjacentRooms.
+        levelMatrix := self createLevelMatrix.
     ]
 
     initializeAdjacentRooms [
@@ -111,11 +112,80 @@ Object subclass: Game [
         kitchenExit addAdjacentRooms: nullRoom west: foodStorage south: nullRoom east: nullRoom. 
         lobby addAdjacentRooms: securityCheckOffices west: passage south: cloakroom east: cafeteria. 
         medicBay addAdjacentRooms: cafeteria west: nullRoom south: nullRoom east: nullRoom. 
+        nullRoom addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: nullRoom.
         secretExit addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: fuhrersQuarters. 
         securityCheckEntry addAdjacentRooms: cloakroom west: entrance south: nullRoom east: armory. 
         securityCheckOffices addAdjacentRooms: archives west: conferenceRoom south: lobby east: nullRoom. 
         socialRoom addAdjacentRooms: barracks west: lobby south: cafeteria east: nullRoom.  
         passage addAdjacentRooms: nullRoom west: emptyRoomB south: nullRoom east: lobby.  
+    ]
+
+    createLevelMatrix [
+        | firstLevelRoomsList secondLevelRoomsList thirdLevelRoomsList fourthLevelRoomsList fifthLevelRoomsList sixthLevelRoomsList matrix |
+
+        sixthLevelRoomsList := OrderedCollection new.
+        sixthLevelRoomsList add: secretExit.
+        sixthLevelRoomsList add: fuhrersQuarters.
+        sixthLevelRoomsList add: goebbelsOffice.
+        sixthLevelRoomsList add: archives.
+        sixthLevelRoomsList add: nullRoom.
+        sixthLevelRoomsList add: nullRoom.
+        sixthLevelRoomsList add: nullRoom.
+
+        fifthLevelRoomsList := OrderedCollection new.
+        fifthLevelRoomsList add: nullRoom.
+        fifthLevelRoomsList add: fuhrersOffice.
+        fifthLevelRoomsList add: conferenceRoom.
+        fifthLevelRoomsList add: securityCheckOffices.
+        fifthLevelRoomsList add: barracks.
+        fifthLevelRoomsList add: nullRoom.
+        fifthLevelRoomsList add: nullRoom.
+
+        fourthLevelRoomsList := OrderedCollection new.
+        fourthLevelRoomsList add: nullRoom.
+        fourthLevelRoomsList add: emptyRoomB.
+        fourthLevelRoomsList add: passage.
+        fourthLevelRoomsList add: lobby.
+        fourthLevelRoomsList add: socialRoom.
+        fourthLevelRoomsList add: foodStorage.
+        fourthLevelRoomsList add: kitchenExit.
+
+        thirdLevelRoomsList := OrderedCollection new.
+        thirdLevelRoomsList add: nullRoom.
+        thirdLevelRoomsList add: nullRoom.
+        thirdLevelRoomsList add: nullRoom.
+        thirdLevelRoomsList add: emptyRoomA.
+        thirdLevelRoomsList add: cafeteria.
+        thirdLevelRoomsList add: kitchen.
+        thirdLevelRoomsList add: nullRoom.
+
+        secondLevelRoomsList := OrderedCollection new.
+        secondLevelRoomsList add: nullRoom.
+        secondLevelRoomsList add: nullRoom.
+        secondLevelRoomsList add: nullRoom.
+        secondLevelRoomsList add: cloakroom.
+        secondLevelRoomsList add: medicBay.
+        secondLevelRoomsList add: nullRoom.
+        secondLevelRoomsList add: nullRoom.
+
+        firstLevelRoomsList := OrderedCollection new.
+        firstLevelRoomsList add: nullRoom.
+        firstLevelRoomsList add: nullRoom.
+        firstLevelRoomsList add: entrance.
+        firstLevelRoomsList add: securityCheckEntry.
+        firstLevelRoomsList add: armory.
+        firstLevelRoomsList add: nullRoom.
+        firstLevelRoomsList add: nullRoom.
+
+        matrix := OrderedCollection new.
+        matrix add: sixthLevelRoomsList.
+        matrix add: fifthLevelRoomsList.
+        matrix add: fourthLevelRoomsList.
+        matrix add: thirdLevelRoomsList.
+        matrix add: secondLevelRoomsList.
+        matrix add: firstLevelRoomsList.
+
+        ^ matrix.
     ]
 
     initializeItems [
@@ -197,7 +267,7 @@ Object subclass: Game [
 
     initializeServiceClasses [
         map := Map new.
-        map initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService. 
+        map initialize: hero nullRoom: nullRoom passage: passage levelMatrix: levelMatrix communicatesService: communicatesService. 
         actionListener := ActionListener new.
         actionListener initialize: hero movement: movement map: map communicatesService: communicatesService 
             inputService: inputService.

@@ -45,7 +45,7 @@ Object subclass: InputService [
         parts := inputString substrings: ' '.
         parts size = 2 ifFalse: [ 
             communicatesService invalidCommand.
-            ^ Array with: '0' with: '0'
+            ^ '0 0'
         ].
 
         command := parts first.
@@ -53,11 +53,11 @@ Object subclass: InputService [
 
         (validCommands includes: command)
         ifTrue: [
-            ^ Array with: command with: argument 
+            ^ '0 0'
         ]
         ifFalse: [
             communicatesService invalidCommand.
-            ^ Array with: '0' with: '0'
+            ^ '0 0'
         ].
     ]
 ]

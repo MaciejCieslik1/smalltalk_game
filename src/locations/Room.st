@@ -1,5 +1,5 @@
 Object subclass: Room [
-    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth communicatesService |
+    | name isAccessible hasItem itemsList hasNpc wasVisited adjacentWest adjacentSouth adjacentEast adjacentNorth communicatesService |
     | inputService | 
 
     initializeWithName: newName 
@@ -15,7 +15,7 @@ Object subclass: Room [
         hasItem := newHasItem.
         itemsList := newItemsList.
         hasNpc := newHasNpc.
-        wasVisisted := false.
+        wasVisited := false.
         adjacentWest := nil.
         adjacentSouth := nil.
         adjacentEast := nil.
@@ -64,12 +64,12 @@ Object subclass: Room [
         hasNpc := newHasNpc
     ]
 
-    wasVisisted [
-        ^ wasVisisted
+    wasVisited [
+        ^ wasVisited
     ]
 
-    wasVisisted: newWasVisited [
-        wasVisisted := newWasVisited
+    wasVisited: newWasVisited [
+        wasVisited := newWasVisited
     ]
 
     adjacentWest [

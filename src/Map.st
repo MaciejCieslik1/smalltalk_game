@@ -1,35 +1,44 @@
 Object subclass: Map [
-    | hero nullRoom passage communicatesService |
+    | hero nullRoom passage levelMatrix communicatesService |
 
-    initialize: newHero nullRoom: newNullRoom passage: newPassage communicatesService: newCommunicatesService [
+    initialize: newHero 
+        nullRoom: newNullRoom 
+        passage: newPassage 
+        levelMatrix: newLevelMatrix 
+        communicatesService: newCommunicatesService
+    [
         hero := newHero.
         nullRoom := newNullRoom.
         passage := newPassage.
+        levelMatrix := newLevelMatrix.
         communicatesService := newCommunicatesService.
     ]
 
-    createMap: roomsRowsMatrix [
-        | level map |
-        roomsRowsMatrix do: [:row |
-            map := map, String cr, self createLevelMap: row.
-            map := map, String cr, self createVerticalCorridors: row.
+    createMap [
+        | levelMap |
+        levelMap := ''.
+        levelMatrix do: [:row |
+            levelMap :=  self createLevelMap: row.
+            communicatesService printStringNewLine: levelMap.
+            levelMap := self createVerticalCorridors: row.
+            communicatesService printStringNewLine: levelMap.
         ].
-
-        communicatesService printStringNewLine: map
     ]
 
-    createLevelMap: levelList [
-        | levelLayout |
-        levelLayout := ''
-        levelList do: [:room |
-            levelLayout := levelLayout, self isHeroInRoom: room.
+    createLevelMap: row [
+        | levelLayout symbol |
+        levelLayout := ''.
+        row do: [:room |
+            symbol := self isHeroInRoom: room.
+            levelLayout := levelLayout, symbol.
         ].
+        ^ levelLayout.
     ]
 
     isHeroInRoom: room [
         (hero location == room)
         ifTrue: [
-            ^ '[X]'
+            ^ '[X]'.
         ]
         ifFalse: [
             ^ self wasRoomVisited: room.
@@ -129,58 +138,69 @@ Object subclass: Map [
     ]
 
     checkNorthAdjacentRoom: room [
-        | roomLayout |
+        | roomLayout symbol |
         roomLayout := ''.
         (room adjacentNorth wasVisited)
         ifTrue: [
-            roomLayout := roomLayout, self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom.
+            roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
-            roomLayout := roomLayout, self checkWestAdjacentRoom.
+            symbol := self checkWestAdjacentRoom: room.
+            roomLayout := roomLayout, symbol.
         ].
         ^ roomLayout
     ]
 
-    checkWestAdjacentRoomWasVisited: room [
-        | roomLayout |
+    checkWestAdjacentRoom: room [
+        | roomLayout symbol |
+        roomLayout := ''.
         (room adjacentWest wasVisited)
         ifTrue: [
-            roomLayout := roomLayout, self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom.
+            roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
-            roomLayout := roomLayout, self checkSouthAdjacentRoom.
+            symbol := self checkSouthAdjacentRoom: room.
+            roomLayout := roomLayout, symbol. 
         ].
         ^ roomLayout
     ]
 
     checkSouthAdjacentRoom: room [
-        | roomLayout |
+        | roomLayout symbol |
+        roomLayout := ''.
         (room adjacentSouth wasVisited)
         ifTrue: [
-            roomLayout := roomLayout, self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom.
+            roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
-            roomLayout := roomLayout, self checkEastAdjacentRoom.
+            symbol := self checkEastAdjacentRoom: room.
+            roomLayout := roomLayout, symbol.
         ].
         ^ roomLayout
     ]
 
     checkEastAdjacentRoom: room [
-        | roomLayout |
+        | roomLayout symbol |
+        roomLayout := ''.
         (room adjacentEast wasVisited)
         ifTrue: [
-            roomLayout := roomLayout, '-', self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom.
+            roomLayout := roomLayout, '-', symbol.
         ]
         ifFalse: [
-            roomLayout := roomLayout, ' '
+            roomLayout := roomLayout, ' '.
         ].
     ]
 
     createVerticalCorridors: levelList [
-        | corridorsLayout |
-        corridorsLayout := ''
+        | corridorsLayout symbol |
+        corridorsLayout := ''.
         levelList do: [:room |
-            corridorsLayout := corridorsLayout, self hasRoomVerticalCorridor: room.
+            symbol := self hasRoomVerticalCorridor: room.
+            corridorsLayout := corridorsLayout, symbol. 
         ].
     ]
 
