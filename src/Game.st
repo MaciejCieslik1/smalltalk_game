@@ -208,6 +208,7 @@ Object subclass: Game [
     gameLoop [
         | hasHeroEscaped |
         hasHeroEscaped := false.
+        communicatesService help.
         [ hasHeroEscaped ] whileFalse: [
             actionListener chooseAction
         ].
