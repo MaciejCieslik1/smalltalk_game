@@ -122,26 +122,46 @@ Object subclass: Game [
     ]
 
     initializeItems [
-        appleJuice := AppleJuice newInitialize: cafeteria.
-        orangeJuice := OrangeJuice newInitialize: cafeteria.
-        multivitaminaJuice := MultivitaminaJuice newInitialize: cafeteria.
-        bandage := Bandage newInitialize: medicBay.
-        baton := Baton newInitialize: barracks.
-        bulletproofVest := BulletproofVest newInitialize.
-        chloroform := Chloroform newInitialize: medicBay.
-        gun := Gun newInitialize.
-        helmet := Helmet newInitialize.
-        letter := Letter newInitialize: goebbelsOffice.
-        lever := Lever newInitialize: archives.
-        money := Money newInitialize: nil amount: 0.
-        moneyMedicBay := Money newInitialize: medicBay amount: 250.
-        moneyKitchen := Money newInitialize: kitchen amount: 250.
-        moneySocialRoom := Money newInitialize: socialRoom amount: 250.
-        moneyLobby := Money newInitialize: lobby amount: 250.
-        poison := Poison newInitialize: foodStorage.
-        rag := Rag newInitialize: barracks.
-        umbrella := Umbrella newInitialize: cloakroom.
-        vitamins := Vitamins newInitialize: medicBay.
+        appleJuice := AppleJuice new.
+        appleJuice initialize: cafeteria communicatesService: communicatesService inputService: inputService.
+        orangeJuice := OrangeJuice new.
+        orangeJuice initialize: cafeteria communicatesService: communicatesService inputService: inputService.
+        multivitaminaJuice := MultivitaminaJuice new.
+        multivitaminaJuice initialize: cafeteria communicatesService: communicatesService inputService: inputService.
+        bandage := Bandage new.
+        bandage initialize: medicBay communicatesService: communicatesService inputService: inputService.
+        baton := Baton new.
+        baton initialize: barracks communicatesService: communicatesService inputService: inputService.
+        bulletproofVest := BulletproofVest new.
+        bulletproofVest initialize: communicatesService inputService: inputService.
+        chloroform := Chloroform new.
+        chloroform initialize: medicBay communicatesService: communicatesService inputService: inputService.
+        gun := Gun new.
+        gun initialize: communicatesService inputService: inputService.
+        helmet := Helmet new. 
+        helmet initialize: communicatesService inputService: inputService.
+        letter := Letter new.
+        letter initialize: goebbelsOffice communicatesService: communicatesService inputService: inputService.
+        lever := Lever new.
+        lever initialize: archives communicatesService: communicatesService inputService: inputService.
+        money := Money new.
+        money initialize: nil amount: 0 communicatesService: communicatesService inputService: inputService.
+        moneyMedicBay := Money new. 
+        moneyMedicBay initialize: medicBay amount: 250 communicatesService: communicatesService inputService: inputService.
+        moneyKitchen := Money new.
+        moneyKitchen initialize: kitchen amount: 250 communicatesService: communicatesService inputService: inputService.
+        moneySocialRoom := Money new.
+        moneySocialRoom initialize: socialRoom amount: 250 communicatesService: communicatesService inputService: inputService.
+        moneyLobby := Money new.
+        moneyLobby initialize: lobby amount: 250 communicatesService: communicatesService inputService: inputService.
+        poison := Poison new.
+        poison initialize: foodStorage communicatesService: communicatesService inputService: inputService.
+        rag := Rag new.
+        rag initialize: barracks communicatesService: communicatesService inputService: inputService.
+        umbrella := Umbrella new. 
+        umbrella initialize: cloakroom communicatesService: communicatesService inputService: inputService.
+        vitamins := Vitamins new.
+        vitamins initialize: medicBay communicatesService: communicatesService inputService: inputService.
     ]
 
     initializeUniforms [
