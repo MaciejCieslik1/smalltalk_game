@@ -6,12 +6,16 @@ Room subclass: NpcRoom [
         hasItem: newHasItem 
         itemsList: newItemsList 
         npcList: newNpcList 
+        communicatesService: newCommunicatesService
+        inputService: newInputService
     [
         super initializeWithName: newName 
             isAccessible: newIsAccessible
             hasItem: newHasItem 
             itemsList: newItemsList 
-            hasNpc: true.
+            hasNpc: true
+            communicatesService: newCommunicatesService
+            inputService: newInputService.
         npcList := newNpcList.
     ]
 
