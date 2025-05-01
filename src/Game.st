@@ -165,22 +165,37 @@ Object subclass: Game [
     ]
 
     initializeUniforms [
-        militaryUniform := MilitaryUniform newInitialize.
-        serviceUniform := ServiceUniform newInitialize.
+        militaryUniform := MilitaryUniform new.
+        militaryUniform initialize: communicatesService inputService: inputService.
+        serviceUniform := ServiceUniform new.
+        serviceUniform initialize: communicatesService inputService: inputService.
     ]
 
     initializeCharacters [
-        hero := Hero newInitialize: entrance recoveryPlace: medicBay uniform: militaryUniform.
-        bandit := Bandit newInitialize: emptyRoomB hero: hero.
-        chef := Chef newInitialize: cafeteria hero: hero.
-        fuhrer := Fuhrer newInitialize: fuhrersQuarters hero: hero.
-        guard1 := Guard1 newInitialize: securityCheckEntry hero: hero.
-        guard2 := Guard2 newInitialize: securityCheckOffices hero: hero.
-        guard3 := Guard3 newInitialize: fuhrersOffice hero: hero.
-        guard4 := Guard4 newInitialize: fuhrersOffice hero: hero.
-        salesman := Salesman newInitialize: armory items: OrderedCollection withAll: { gun. bulletproofVest } hero: hero.
-        soldier := Soldier newInitialize: barracks item: helmet hero: hero.
-        waiter := Waiter newInitialize: kitchen uniform: serviceUniform.
+        hero := Hero new.
+        hero initialize: entrance recoveryPlace: medicBay uniform: militaryUniform communicatesService: communicatesService 
+            inputService: inputService.
+        bandit := Bandit new.
+        bandit initialize: emptyRoomB hero: hero communicatesService: communicatesService inputService: inputService.
+        chef := Chef new.
+        chef initialize: cafeteria hero: hero communicatesService: communicatesService inputService: inputService.
+        fuhrer := Fuhrer new.
+        fuhrer initialize: fuhrersQuarters communicatesService: communicatesService inputService: inputService.
+        guard1 := Guard1 new.
+        guard1 initialize: securityCheckEntry communicatesService: communicatesService inputService: inputService.
+        guard2 := Guard2 new.
+        guard2 initialize: securityCheckOffices communicatesService: communicatesService inputService: inputService.
+        guard3 := Guard3 new.
+        guard3 initialize: fuhrersOffice communicatesService: communicatesService inputService: inputService.
+        guard4 := Guard4 new.
+        guard4 initialize: fuhrersOffice communicatesService: communicatesService inputService: inputService.
+        salesman := Salesman new.
+        salesman initialize: armory items: (OrderedCollection withAll: { gun. bulletproofVest }) hero: hero 
+            communicatesService: communicatesService inputService: inputService.
+        soldier := Soldier new. 
+        soldier initialize: barracks helmet: helmet hero: hero communicatesService: communicatesService inputService: inputService.
+        waiter := Waiter new. 
+        waiter initialize: kitchen uniform: serviceUniform communicatesService: communicatesService inputService: inputService.
     ]
 
     initializeServiceClasses [
