@@ -21,30 +21,75 @@ Object subclass: Game [
     ]
 
     initializeLocations [
-        archives := Archives new.
-        archives initialize: communicatesService inputService: inputService.
-        armory := Armory newInitialize.
-        barracks := Barracks newInitialize.
-        cafeteria := Cafeteria newInitialize.
-        cloakroom := Cloakroom newInitialize.
-        conferenceRoom := ConferenceRoom newInitialize.
-        emptyRoomA := EmptyRoomA newInitialize.
-        emptyRoomB := EmptyRoomB newInitialize.
-        entrance := Entrance newInitialize.
-        foodStorage := FoodStorage newInitialize.
-        fuhrersOffice := FuhrersOffice newInitialize.
-        fuhrersQuarters := FuhrersQuarters newInitialize.
-        goebbelsOffice := GoebbelsOffice newInitialize.
-        kitchen := Kitchen newInitialize.
-        kitchenExit := KitchenExit newInitialize.
-        lobby := Lobby newInitialize.
-        medicBay := MedicBay newInitialize.
+        archives := NoneNpcRoom new. 
+        archives initializeWithName: 'archives' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        armory := NpcRoom new.
+        armory initializeWithName: 'armory' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        barracks := NpcRoom new.
+        barracks initializeWithName: 'barracs' isAccessible: false hasItem: true itemsList: (OrderedCollection new) 
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        cafeteria := NoneNpcRoom new.
+        cafeteria initializeWithName: 'cafeteria' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        cloakroom := NoneNpcRoom new.
+        cloakroom initializeWithName: 'cloakroom' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        conferenceRoom := NoneNpcRoom new.
+        conferenceRoom initializeWithName: 'conference room' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        emptyRoomA := NoneNpcRoom new.
+        emptyRoomA initializeWithName: 'empty room A' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        emptyRoomB := NpcRoom new.
+        emptyRoomB initializeWithName: 'empty room B' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        entrance := NoneNpcRoom new.
+        entrance initializeWithName: 'entrance' isAccessible: true hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        foodStorage := NoneNpcRoom new.
+        foodStorage initializeWithName: 'food storage' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        fuhrersOffice := NoneNpcRoom new.
+        fuhrersOffice initializeWithName: 'fuhrer''s office' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        fuhrersQuarters := NpcRoom new.
+        fuhrersQuarters initializeWithName: 'fuhrer''s quarters' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        goebbelsOffice := NoneNpcRoom new.
+        goebbelsOffice initializeWithName: 'goebbels''s office' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        kitchen := NpcRoom new.
+        kitchen initializeWithName: 'kitchen' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        kitchenExit := NoneNpcRoom new.
+        kitchenExit initializeWithName: 'kitchen exit' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        lobby := NoneNpcRoom new.
+        lobby initializeWithName: 'lobby' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        medicBay := NoneNpcRoom new.
+        medicBay initializeWithName: 'medic bay' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
         nullRoom := NullRoom newInitialize.
-        secretExit := SecretExit newInitialize.
-        securityCheckEntry := SecurityCheckEntry newInitialize.
-        securityCheckOffices := SecurityCheckOffices newInitialize.
-        socialRoom := SocialRoom newInitialize.
-        passage := Passage newInitialize.
+        nullRoom initializeWithName: 'null room' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        secretExit := NoneNpcRoom new.
+        secretExit initializeWithName: 'secret exit' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        securityCheckEntry := NpcRoom new.
+        securityCheckEntry initializeWithName: 'security check (entry)' isAccessible: true hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        securityCheckOffices := NpcRoom new.
+        securityCheckOffices initializeWithName: 'security check (offices)' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
+        socialRoom := NoneNpcRoom new.
+        socialRoom initializeWithName: 'social room' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
+        passage := NoneNpcRoom new.
+        passage initializeWithName: 'passage' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService.
 
         self initializeAdjacentRooms.
     ]
