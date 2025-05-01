@@ -1,11 +1,11 @@
 Object subclass: Room [
-    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth communicatesService | 
+    | name isAccessible hasItem itemsList hasNpc wasVisisted adjacentWest adjacentSouth adjacentEast adjacentNorth communicatesService |
     | inputService | 
 
     initializeWithName: newName 
         isAccessible: newIsAccessible 
         hasItem: newHasItem 
-        itemsLists: newItemsList 
+        itemsList: newItemsList 
         hasNpc: newHasNpc
         communicatesService: newCommunicatesService
         inputService: newInputService

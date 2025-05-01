@@ -21,6 +21,9 @@ Object subclass: Game [
     ]
 
     initializeLocations [
+        "archives := NoneNpcRoom new. 
+        archives initializeWithName: 'archives' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
+            communicatesService: communicatesService inputService: inputService."
         archives := NoneNpcRoom new. 
         archives initializeWithName: 'archives' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
             communicatesService: communicatesService inputService: inputService.
@@ -30,7 +33,7 @@ Object subclass: Game [
         barracks := NpcRoom new.
         barracks initializeWithName: 'barracs' isAccessible: false hasItem: true itemsList: (OrderedCollection new) 
             npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
-        cafeteria := NoneNpcRoom new.
+        cafeteria := NpcRoom new.
         cafeteria initializeWithName: 'cafeteria' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
             npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
         cloakroom := NoneNpcRoom new.
@@ -51,7 +54,7 @@ Object subclass: Game [
         foodStorage := NoneNpcRoom new.
         foodStorage initializeWithName: 'food storage' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
             communicatesService: communicatesService inputService: inputService.
-        fuhrersOffice := NoneNpcRoom new.
+        fuhrersOffice := NpcRoom new.
         fuhrersOffice initializeWithName: 'fuhrer''s office' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
             npcList: (OrderedCollection new) communicatesService: communicatesService inputService: inputService.
         fuhrersQuarters := NpcRoom new.
@@ -72,7 +75,7 @@ Object subclass: Game [
         medicBay := NoneNpcRoom new.
         medicBay initializeWithName: 'medic bay' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
             communicatesService: communicatesService inputService: inputService.
-        nullRoom := NullRoom newInitialize.
+        nullRoom := NullRoom new.
         nullRoom initializeWithName: 'null room' isAccessible: false hasItem: false itemsList: (OrderedCollection new)
             communicatesService: communicatesService inputService: inputService.
         secretExit := NoneNpcRoom new.
