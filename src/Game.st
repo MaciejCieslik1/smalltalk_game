@@ -21,9 +21,6 @@ Object subclass: Game [
     ]
 
     initializeLocations [
-        "archives := NoneNpcRoom new. 
-        archives initializeWithName: 'archives' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
-            communicatesService: communicatesService inputService: inputService."
         archives := NoneNpcRoom new. 
         archives initializeWithName: 'archives' isAccessible: false hasItem: true itemsList: (OrderedCollection new)
             communicatesService: communicatesService inputService: inputService.
