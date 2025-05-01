@@ -1,19 +1,15 @@
 Object subclass: Map [
-    | communicatesService nullRoom passage |
+    | hero nullRoom passage communicatesService |
 
-    Map class >> newInitialize: communicatesService nullRoom: newNullRoom passage: newPassage [
-        ^ super new initialize: communicatesService nullRoom: newNullRoom passage: newPassage.
-    ]
-
-    initialize: newCommunicatesService room: newNullRoom passage: newPassage[
-        communicatesService := newCommunicatesService.
+    initialize: newHero nullRoom: newNullRoom passage: newPassage communicatesService: newCommunicatesService [
+        hero := newHero.
         nullRoom := newNullRoom.
         passage := newPassage.
+        communicatesService := newCommunicatesService.
     ]
 
     createMap: roomsRowsMatrix [
         | level map |
-
         roomsRowsMatrix do: [:row |
             map := map, String cr, self createLevelMap: row.
             map := map, String cr, self createVerticalCorridors: row.
@@ -30,7 +26,7 @@ Object subclass: Map [
         ].
     ]
 
-    isHeroInRoom: hero currentRoom: room [
+    isHeroInRoom: room [
         (hero location == room)
         ifTrue: [
             ^ '[X]'
