@@ -16,6 +16,7 @@ FileStream fileIn: 'items/OrangeJuice.st'.
 FileStream fileIn: 'items/Poison.st'.
 FileStream fileIn: 'items/Rag.st'.
 FileStream fileIn: 'items/Umbrella.st'.
+FileStream fileIn: 'items/Vitamins.st'.
 
 FileStream fileIn: 'characters/Person.st'.
 FileStream fileIn: 'characters/Npc.st'.
