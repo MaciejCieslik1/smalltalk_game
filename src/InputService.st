@@ -30,16 +30,16 @@ Object subclass: InputService [
         communicatesService chooseAction.
         inputString := FileStream stdin nextLine.
 
-        (inputString = 'help')
+        (inputString = 'help' or: [inputString = 'map'] )
         ifTrue: [
             ^ inputString, ' empty'
         ]
         ifFalse: [
-            ^ self commandNotHelp: inputString.
+            ^ self commandNotHelpOrMap: inputString.
         ]
     ]
 
-    commandNotHelp: inputString [
+    commandNotHelpOrMap: inputString [
         | parts command argument validCommands |
         validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform' 'map' 'help').
         parts := inputString substrings: ' '.

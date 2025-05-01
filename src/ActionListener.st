@@ -17,9 +17,9 @@ Object subclass: ActionListener [
     chooseAction [
         | result command argument |
         [
-            result := inputService inputCommand.
-            command := result first.
-            argument := result second.
+            result := (inputService inputCommand) asString substrings: ' '.
+            command := result first asString.
+            argument := result second asString.
             (command = '0' and: [ argument = '0' ])
         ] whileTrue.
         (command = 'go')
