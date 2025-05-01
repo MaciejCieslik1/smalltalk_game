@@ -1,11 +1,11 @@
 Uniform subclass: ServiceUniform [
 
-    ServiceUniform class >> newInitialize [
-        ^ super new initialize.
-    ]
-
-    initialize [
-        super initializeWithName: 'service_uniform'.
+    initialize: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'service_uniform' 
+            communicatesService: newCommunicatesService
+            inputService: newInputService.
     ]
 
     description [

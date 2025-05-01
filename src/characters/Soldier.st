@@ -1,12 +1,18 @@
 Npc subclass: Soldier [
     | items hasPlayedCards hero |
 
-    Soldier class >> newInitialize: location item: newItem hero: newHero [
-        ^ super new initialize: location item: newItem hero: newHero.
-    ]
-
-    initialize: newLocation helmet: newHelmet hero: newHero [
-        super initializeWithName: 'soldier' rank: 'private' location: newLocation isKillable: false.
+    initialize: newLocation 
+        helmet: newHelmet 
+        hero: newHero 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'soldier' 
+            rank: 'private' 
+            location: newLocation 
+            isKillable: false
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
         items := Array with: newHelmet.
         hasPlayedCards := false.
         hero := newHero.

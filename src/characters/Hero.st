@@ -1,12 +1,17 @@
 Person subclass: Hero [
     | items uniform money recoveryPlace |
 
-    Hero class >> newInitialize: location recoveryPlace: newRecoveryPlace uniform: newUniform [
-        ^ super new initialize: location recoveryPlace: newRecoveryPlace uniform: newUniform.
-    ]
-
-    initialize: newLocation recoveryPlace: newRecoveryPlace uniform: newUniform [
-        super initializeWithName: 'Johannes_Golmer' location: newLocation isKillable: true recoveryPlace: newRecoveryPlace.
+    initialize: newLocation 
+        recoveryPlace: newRecoveryPlace 
+        uniform: newUniform
+        communicatesService: newCommunicatesService 
+        inputService: newInputService 
+    [
+        super initializeWithName: 'Johannes_Golmer' 
+            location: newLocation 
+            isKillable: true 
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
         items := OrderedCollection new.
         uniform := newUniform.
         money := 0.

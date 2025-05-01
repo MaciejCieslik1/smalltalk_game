@@ -1,10 +1,18 @@
 Person subclass: Npc [
     | rank |
 
-    initializeWithName: newName rank: newRank location: newLocation isKillable: newIsKillable [
-        super initialize: newName 
+    initializeWithName: newName 
+        rank: newRank 
+        location: newLocation 
+        isKillable: newIsKillable
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: newName 
             location: newLocation
-            isKillable: newIsKillable.
+            isKillable: newIsKillable
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
         rank := newRank
     ]
 

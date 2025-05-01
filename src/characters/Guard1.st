@@ -1,13 +1,14 @@
 Guard subclass: Guard1 [
 
-    Guard1 class >> newInitialize: location hero: newHero [
-        ^ super new initialize: location hero: newHero.
-    ]
-
-    initialize: newLocation [
-        super initialize: 'guard1' 
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'guard1' 
             location: newLocation 
-            isKillable: true.
+            isKillable: true
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
     ]
 
     interaction [

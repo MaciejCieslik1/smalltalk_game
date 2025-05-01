@@ -1,16 +1,22 @@
 Npc subclass: Salesman [
     | items hero |
 
-    Salesman class >> newInitialize: location items: newItems hero: newHero [
-        ^ super new initialize: location items: newItems hero: newHero.
-    ]
-
-    initialize: newLocation items: newItems hero: newHero [
-        super initializeWithName: 'salesman' rank: 'private' location: newLocation isKillable: false.
+    initialize: newLocation 
+        items: newItems 
+        hero: newHero 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'salesman' 
+            rank: 'private' 
+            location: newLocation 
+            isKillable: false
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
         items := OrderedCollection new.
         hero := newHero.
         newItems do: [:item |
-            items addItem: item. 
+            items add: item. 
         ].
     ]
 

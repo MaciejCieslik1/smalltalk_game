@@ -1,15 +1,16 @@
 Guard subclass: Guard2 [
     | hasHigherPermission | 
 
-    Guard2 class >> newInitialize: location hero: newHero [
-        ^ super new initialize: location hero: newHero.
-    ]
-
-    initialize: newLocation [
-        super initialize: 'guard2'
+    initialize: newLocation 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'guard2'
             location: newLocation 
             isKillable: false
-        hasHigherPermission: false
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
+        hasHigherPermission := false.
     ]
 
     interaction [

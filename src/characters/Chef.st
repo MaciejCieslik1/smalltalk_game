@@ -1,12 +1,17 @@
 Npc subclass: Chef [
     | hero |
 
-    Chef class >> newInitialize: location hero: newHero [
-        ^ super new initialize: location hero: newHero.
-    ]
-
-    initialize: newLocation hero: newHero [
-        super initialize: 'chef' rank: 'civil' location: newLocation isKillable: false.
+    initialize: newLocation 
+        hero: newHero 
+        communicatesService: newCommunicatesService 
+        inputService: newInputService
+    [
+        super initializeWithName: 'chef' 
+            rank: 'civil' 
+            location: newLocation 
+            isKillable: false
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
         hero := newHero
     ]
 
