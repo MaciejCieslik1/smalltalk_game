@@ -124,21 +124,27 @@ Person subclass: Hero [
     ]
 
     attack: target [
+        | attackedNpc sideNpc |
         (target = 'guard1')
         ifTrue: [
-            self attackGuard1
+            attackedNpc := hero location findNpcByName: target.
+            self attackGuard1: attackedNpc.
         ].
         (target = 'guard3')
         ifTrue: [
-            self attackGuard3
+            attackedNpc := hero location findNpcByName: target.
+            self attackGuard3: attackedNpc.
         ].
         (target = 'guard4')
         ifTrue: [
-            self attackGuard4
+            attackedNpc := hero location findNpcByName: target.
+            sideNpc := hero location findNpcByName: 'guard4'.
+            self attackGuard4: attackedNpc sideNpc: sideNpc.
         ].
         (target = 'waiter')
         ifTrue: [
-            self attackWaiter
+            attackedNpc := hero location findNpcByName: target.
+            self attackWaiter.
         ].
     ]
 
@@ -152,10 +158,10 @@ Person subclass: Hero [
         ].
     ]
 
-    attackGuard3: guard3 [
+    attackGuard3: guard3 guard4: guard4 [
         (self hasItemWithName: 'gun')
         ifTrue: [
-            guard3 attacked
+            guard3 attacked: guard4
         ]
         ifFalse: [
             communicatesService attackNoGun

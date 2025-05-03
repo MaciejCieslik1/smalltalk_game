@@ -2,6 +2,7 @@ Guard subclass: Guard1 [
 
     initialize: newLocation 
         hero: newHero
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -9,6 +10,7 @@ Guard subclass: Guard1 [
             location: newLocation 
             isKillable: true
             hero: newHero
+            roomService: newRoomService
             communicatesService: newCommunicatesService 
             inputService: newInputService.
     ]

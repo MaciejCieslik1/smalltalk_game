@@ -1,8 +1,9 @@
 Npc subclass: Chef [
-    | hero |
+    | hero roomService |
 
     initialize: newLocation 
         hero: newHero 
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -12,7 +13,8 @@ Npc subclass: Chef [
             isKillable: false
             communicatesService: newCommunicatesService 
             inputService: newInputService.
-        hero := newHero
+        hero := newHero.
+        roomService := newRoomService.
     ]
 
     interaction [

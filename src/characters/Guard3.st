@@ -2,6 +2,7 @@ Guard subclass: Guard3 [
 
     initialize: newLocation 
         hero: newHero 
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -9,6 +10,7 @@ Guard subclass: Guard3 [
             location: newLocation
             isKillable: true
             hero: newHero 
+            roomService: newRoomService
             communicatesService: newCommunicatesService 
             inputService: newInputService
     ]
@@ -57,21 +59,21 @@ Guard subclass: Guard3 [
             communicatesService talkToGuard3_12.
             inputService inputCharacter: ('a').
             communicatesService talkToGuard3_13.
-            deliverDrink
+            self deliverDrink.
         ].
         (orangeJuice isPoisoned)
         ifTrue: [
             communicatesService talkToGuard3_22.
             inputService inputCharacter: ('a').
             communicatesService talkToGuard3_23.
-            deliverDrink
+            self deliverDrink.
         ].
         (multivitaminaJuice isPoisoned)
         ifTrue: [
             communicatesService talkToGuard3_27.
             inputService inputCharacter: ('a').
             communicatesService talkToGuard3_28.
-            deliverDrink
+            self deliverDrink.
         ].
     ]
 
@@ -92,7 +94,7 @@ Guard subclass: Guard3 [
         roomService openKitchenExit.
     ]
 
-    attacked [
+    attacked: guard4 [
         self npcKilled.
         communicatesService killedGuard3.
         guard4 interactionShooting.

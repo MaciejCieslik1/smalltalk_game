@@ -1,7 +1,9 @@
 Guard subclass: Guard4 [
-
+    | guard3 |
     initialize: newLocation
         hero: newHero  
+        roomService: newRoomService
+        guard3: newGuard3
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -9,8 +11,10 @@ Guard subclass: Guard4 [
             location: newLocation
             isKillable: true
             hero: newHero 
+            roomService: newRoomService
             communicatesService: newCommunicatesService 
-            inputService: newInputService
+            inputService: newInputService.
+        guard3 := newGuard3.
     ]
 
     interaction [
@@ -77,7 +81,7 @@ Guard subclass: Guard4 [
 
     interactionShooting [
         communicatesService talkToGuard4_8.
-        (hero hasItemWithItem: 'bulletproofVest').
+        (hero hasItemWithItem: 'bulletproofVest')
         ifTrue: [
             self usedVest.
         ]

@@ -8,7 +8,7 @@ Object subclass: Game [
     |  movement roomService levelMatrix |
 
     initializeFields [
-        self initializeCommunicationService.
+        self initializeFirstsServices.
         self initializeLocations.
         self initializeItems.
         self initializeUniforms.
@@ -18,9 +18,10 @@ Object subclass: Game [
         self deployNpcs.
     ]
 
-    initializeCommunicationService [
+    initializeFirstsServices [
         communicatesService := CommunicatesService new.
         inputService := InputService newInitialize: communicatesService.
+        roomService := RoomService new.
     ]
 
     initializeLocations [
@@ -255,24 +256,24 @@ Object subclass: Game [
         bandit := Bandit new.
         bandit initialize: emptyRoomB hero: hero communicatesService: communicatesService inputService: inputService.
         chef := Chef new.
-        chef initialize: cafeteria hero: hero communicatesService: communicatesService inputService: inputService.
+        chef initialize: cafeteria hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         fuhrer := Fuhrer new.
         fuhrer initialize: fuhrersQuarters communicatesService: communicatesService inputService: inputService.
         guard1 := Guard1 new.
-        guard1 initialize: securityCheckEntry hero: hero communicatesService: communicatesService inputService: inputService.
+        guard1 initialize: securityCheckEntry hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard2 := Guard2 new.
-        guard2 initialize: securityCheckOffices hero: hero communicatesService: communicatesService inputService: inputService.
+        guard2 initialize: securityCheckOffices hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard3 := Guard3 new.
-        guard3 initialize: fuhrersOffice hero: hero communicatesService: communicatesService inputService: inputService.
+        guard3 initialize: fuhrersOffice hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard4 := Guard4 new.
-        guard4 initialize: fuhrersOffice hero: hero communicatesService: communicatesService inputService: inputService.
+        guard4 initialize: fuhrersOffice hero: hero roomService: roomService guard3: guard3 communicatesService: communicatesService inputService: inputService.
         salesman := Salesman new.
         salesman initialize: armory items: (OrderedCollection withAll: { gun. bulletproofVest }) hero: hero 
             communicatesService: communicatesService inputService: inputService.
         soldier := Soldier new. 
         soldier initialize: barracks helmet: helmet hero: hero communicatesService: communicatesService inputService: inputService.
         waiter := Waiter new. 
-        waiter initialize: kitchen uniform: serviceUniform communicatesService: communicatesService inputService: inputService.
+        waiter initialize: kitchen uniform: serviceUniform hero: hero communicatesService: communicatesService inputService: inputService.
     ]
 
     initializeServiceClasses [
@@ -283,7 +284,6 @@ Object subclass: Game [
         actionListener := ActionListener new.
         actionListener initialize: hero movement: movement map: map communicatesService: communicatesService 
             inputService: inputService.
-        roomService := RoomService new.
     ]
 
     deployItems [

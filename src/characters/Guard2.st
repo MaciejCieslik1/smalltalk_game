@@ -3,6 +3,7 @@ Guard subclass: Guard2 [
 
     initialize: newLocation 
         hero: newHero 
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -10,6 +11,7 @@ Guard subclass: Guard2 [
             location: newLocation 
             isKillable: false
             hero: newHero 
+            roomService: newRoomService
             communicatesService: newCommunicatesService 
             inputService: newInputService.
         hasHigherPermission := false.

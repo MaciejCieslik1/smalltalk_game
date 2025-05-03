@@ -1,8 +1,9 @@
 Npc subclass: Waiter [
-    | uniform |
+    | uniform hero |
 
     initialize: newLocation 
         uniform: newUniform 
+        hero: newHero 
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [

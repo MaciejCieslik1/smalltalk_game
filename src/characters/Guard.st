@@ -1,10 +1,11 @@
 Npc subclass: Guard [
-    | hasPermission hero |
+    | hasPermission hero roomService |
 
     initializeWithName: newName 
         location: newLocation 
         isKillable: isKillable 
         hero: newHero 
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -15,6 +16,7 @@ Npc subclass: Guard [
             communicatesService: newCommunicatesService 
             inputService: newInputService.
         hasPermission := false.
+        roomService := newRoomService.
         hero := newHero.
     ]
 
