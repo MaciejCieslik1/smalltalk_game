@@ -97,6 +97,7 @@ Object subclass: Game [
 
     initializeAdjacentRooms [
         archives addAdjacentRooms: nullRoom west: nullRoom south: securityCheckOffices east: nullRoom.
+        armory addAdjacentRooms: nullRoom west: securityCheckEntry south: nullRoom east: nullRoom.
         barracks addAdjacentRooms: nullRoom west: nullRoom south: socialRoom east: nullRoom. 
         cafeteria addAdjacentRooms: socialRoom west: emptyRoomA south: medicBay east: kitchen.
         cloakroom addAdjacentRooms: emptyRoomA west: nullRoom south: securityCheckEntry east: nullRoom. 
@@ -279,6 +280,7 @@ Object subclass: Game [
     gameLoop [
         | hasHeroEscaped |
         hasHeroEscaped := false.
+        entrance wasVisited: true.
         communicatesService help.
         [ hasHeroEscaped ] whileFalse: [
             actionListener chooseAction

@@ -38,7 +38,13 @@ Object subclass: Map [
     isHeroInRoom: room [
         (hero location == room)
         ifTrue: [
-            ^ '[X]'.
+            (room adjacentEast ~= nullRoom)
+            ifTrue: [
+                ^ '[X]-'.
+            ]
+            ifFalse: [
+                ^ '[X]'.
+            ].
         ]
         ifFalse: [
             ^ self wasRoomVisited: room.
@@ -142,7 +148,7 @@ Object subclass: Map [
         roomLayout := ''.
         (room adjacentNorth wasVisited)
         ifTrue: [
-            symbol := self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom: room.
             roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
@@ -157,7 +163,7 @@ Object subclass: Map [
         roomLayout := ''.
         (room adjacentWest wasVisited)
         ifTrue: [
-            symbol := self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom: room.
             roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
@@ -172,7 +178,7 @@ Object subclass: Map [
         roomLayout := ''.
         (room adjacentSouth wasVisited)
         ifTrue: [
-            symbol := self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom: room.
             roomLayout := roomLayout, symbol.
         ]
         ifFalse: [
@@ -187,7 +193,7 @@ Object subclass: Map [
         roomLayout := ''.
         (room adjacentEast wasVisited)
         ifTrue: [
-            symbol := self drawAdjacentRoom.
+            symbol := self drawAdjacentRoom: room.
             roomLayout := roomLayout, '-', symbol.
         ]
         ifFalse: [
@@ -202,10 +208,11 @@ Object subclass: Map [
             symbol := self hasRoomVerticalCorridor: room.
             corridorsLayout := corridorsLayout, symbol. 
         ].
+        ^ corridorsLayout.
     ]
 
     hasRoomVerticalCorridor: room [
-        (room adjacentSouth ~= nullRoom)
+        (room adjacentSouth ~= nullRoom and:[room adjacentSouth wasVisited])
         ifTrue: [
             ^ ' | '
         ]

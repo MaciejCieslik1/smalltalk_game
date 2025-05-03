@@ -957,7 +957,7 @@ Object subclass: CommunicatesService [
         Transcript
             show: ''; cr;
             show: '# Main goal #'; cr;
-            show: 'Kill Adolf Hitler'; cr;
+            show: 'Kill Adolf Hitler'; cr; cr;
             show: '# Useful commands #'; cr;
             show: 'go n - moves hero to the northern room'; cr;
             show: 'go w - moves hero to the western room'; cr;
@@ -970,7 +970,7 @@ Object subclass: CommunicatesService [
             show: 'description <item> - display description of item'; cr;
             show: 'poison <item> - poison drink'; cr;
             show: 'chloroform <item> - add chloroform to item'; cr;
-            show: 'help - display instruction'; cr;
+            show: 'help - display instruction'; cr; cr;
             show: '# Room legend #'; cr;
             show: '[X] - room in which hero is present at the moment'; cr;
             show: '[I] - visited room with item to pick'; cr;
