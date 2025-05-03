@@ -48,11 +48,9 @@ Object subclass: Person [
     ]
 
     createInfo [
-        | info |
-        info := 'Name: ', self name asString, String cr,
-                'Alive status: ', self isAlive asString, String cr,
-                'Location: ', self location asString, String cr,
-                'Killable status: ', self isKillable asString, String cr.
-        ^ info
+        communicatesService printStringNewLine: 'Name: ', self name asString.
+        communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
+        communicatesService printStringNewLine: 'Location: ', self location printString.
+        communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
     ]
 ]

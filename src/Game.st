@@ -2,7 +2,7 @@ Object subclass: Game [
     | communicatesService archives armory barracks cafeteria cloakroom conferenceRoom emptyRoomA emptyRoomB entrance foodStorage |
     |  fuhrersOffice fuhrersQuarters goebbelsOffice kitchen kitchenExit lobby medicBay nullRoom secretExit securityCheckEntry passage |
     |  securityCheckOffices socialRoom appleJuice orangeJuice multivitaminaJuice bandage baton bulletproofVest chloroform gun helmet |
-    |  letter lever money moneyMedicBay moneyKitchen moneySocialRoom moneyLobby poison rag umbrella vitamins militaryUniform |
+    |  letter lever moneyMedicBay moneyKitchen moneySocialRoom moneyLobby poison rag umbrella vitamins militaryUniform |
     |  id midRankPass redKey amber |
     |  serviceUniform bandit chef fuhrer guard1 guard2 guard3 guard4 hero salesman soldier waiter actionListener inputService map |
     |  movement roomService levelMatrix |
@@ -215,8 +215,6 @@ Object subclass: Game [
         letter initialize: goebbelsOffice communicatesService: communicatesService inputService: inputService.
         lever := Lever new.
         lever initialize: archives communicatesService: communicatesService inputService: inputService.
-        money := Money new.
-        money initialize: nil amount: 0 communicatesService: communicatesService inputService: inputService.
         moneyMedicBay := Money new. 
         moneyMedicBay initialize: medicBay amount: 250 communicatesService: communicatesService inputService: inputService.
         moneyKitchen := Money new.
@@ -279,12 +277,12 @@ Object subclass: Game [
 
     initializeServiceClasses [
         map := Map new.
-        map initialize: hero nullRoom: nullRoom passage: passage levelMatrix: levelMatrix communicatesService: communicatesService. 
+        map initialize: hero nullRoom: nullRoom passage: passage levelMatrix: levelMatrix communicatesService: communicatesService.
+        movement := Movement new.
+        movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService. 
         actionListener := ActionListener new.
         actionListener initialize: hero movement: movement map: map communicatesService: communicatesService 
             inputService: inputService.
-        movement := Movement new.
-        movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService.
         roomService := RoomService new.
     ]
 

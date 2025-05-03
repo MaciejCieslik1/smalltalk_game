@@ -31,9 +31,9 @@ Object subclass: Item [
     pickUp: hero [
         hero addItem: self.
         location removeItem: self.
-        (self itemsLists isEmpty)
+        (location itemsList isEmpty)
         ifTrue: [
-            self hasItem: false 
+            location hasItem: false 
         ]
     ]
 

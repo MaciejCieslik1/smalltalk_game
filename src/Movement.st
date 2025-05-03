@@ -48,7 +48,7 @@ Object subclass: Movement [
     goEast [
         | adjacentRoom |
         adjacentRoom := hero location adjacentEast.
-        self checkAdjacentRoom: hero room: adjacentRoom direction: 'e'.
+        self checkAdjacentRoom: adjacentRoom direction: 'e'.
     ]
 
     checkAdjacentRoom: adjacentRoom direction: direction [

@@ -131,7 +131,7 @@ Object subclass: Room [
         | item |
         (self hasItemName: itemName)
         ifTrue: [
-            item := self findItemByName: itemName
+            item := self findItemByName: itemName.
             item pickUp: hero
         ]
         ifFalse: [

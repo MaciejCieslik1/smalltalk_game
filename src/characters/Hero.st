@@ -87,11 +87,13 @@ Person subclass: Hero [
 
     createInfo [
         | info |
-        info := super createInfo,
-                'Uniform: ', self uniform, String cr,
-                'Money: ', self money, String cr,
-                'Items: ', (self items joinSeparatedBy: ', '), String cr.
-        ^ info
+        communicatesService printStringNewLine: 'Name: ', self name asString.
+        communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
+        communicatesService printStringNewLine: 'Location: ', self location printString.
+        communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
+        communicatesService printStringNewLine: 'Uniform: ', self uniform name.
+        communicatesService printStringNewLine: 'Money: ', self money asString.
+        communicatesService printItems: self items.
     ]
 
     hasEnoughMoney: moneyAmount [

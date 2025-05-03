@@ -54,7 +54,7 @@ Object subclass: InputService [
 
         (validCommands includes: command)
         ifTrue: [
-            ^ '0 0'
+            ^ inputString
         ]
         ifFalse: [
             communicatesService invalidCommand.

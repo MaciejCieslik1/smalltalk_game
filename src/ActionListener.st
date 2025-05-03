@@ -92,7 +92,7 @@ Object subclass: ActionListener [
                             'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
         (validArguments includes: argument)
         ifTrue: [
-            self pickCheckIfItemAccessible
+            self pickCheckIfItemAccessible: argument
         ]
         ifFalse: [
             communicatesService invalidArgument
@@ -102,7 +102,7 @@ Object subclass: ActionListener [
     pickCheckIfItemAccessible: argument [
         (hero location hasItemName: argument)
         ifTrue: [
-            hero location pickUpItem: argument
+            hero location pickUpItem: argument character: hero
         ]
         ifFalse: [
             communicatesService invalidArgument
@@ -171,10 +171,14 @@ Object subclass: ActionListener [
         (validArguments includes: argument)
         ifTrue: [
             self displayInfoCheckIfRoomHasNpc: argument
+        ].
+        (argument = 'hero')
+        ifTrue: [
+            self displayInfoHero: argument
         ]
         ifFalse: [
             communicatesService cannotDisplayInfo
-        ]
+        ].
     ]
 
     displayInfoCheckIfRoomHasNpc: npcName [
@@ -205,6 +209,11 @@ Object subclass: ActionListener [
         npc := hero location findNpcByName: npcName. 
         npcInfo := npc createInfo. 
         communicatesService printStringNewLine: npcInfo
+    ]
+
+    displayInfoHero: argument [
+        | heroInfo |
+        hero createInfo.
     ]
 
     checkArgumentPoison: argument [
