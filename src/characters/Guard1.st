@@ -1,12 +1,14 @@
 Guard subclass: Guard1 [
 
     initialize: newLocation 
+        hero: newHero
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         super initializeWithName: 'guard1' 
             location: newLocation 
             isKillable: true
+            hero: newHero
             communicatesService: newCommunicatesService 
             inputService: newInputService.
     ]
@@ -27,9 +29,9 @@ Guard subclass: Guard1 [
     ]
 
     introductionDialogue [
-        communicatesService talkToGuard1_1
-        communicatesService talkToGuard1_2
-        communicatesService talkToGuard1_3
+        communicatesService talkToGuard1_1.
+        communicatesService talkToGuard1_2.
+        communicatesService talkToGuard1_3.
     ]
 
     showDialogueOptions [
@@ -62,10 +64,10 @@ Guard subclass: Guard1 [
     ]
 
     bOptionHandling [
-        communicatesService talkToGuard_HereItIs
-        communicatesService talkToGuard1_8
-        communicatesService talkToGuard_wayNorthAccessible
-        roomService openIdRooms
+        communicatesService talkToGuard_HereItIs.
+        communicatesService talkToGuard1_8.
+        communicatesService talkToGuard_wayNorthAccessible.
+        roomService openIdRooms.
     ]
 
     openedRoomsInteraction [
@@ -74,8 +76,8 @@ Guard subclass: Guard1 [
 
     attacked [
         self npcKilled.
-        communicatesService killedGuard1
-        communicatesService stealMidRankPass
+        communicatesService killedGuard1.
+        communicatesService stealMidRankPass.
         communicatesService accessToArmory
     ]
 ]

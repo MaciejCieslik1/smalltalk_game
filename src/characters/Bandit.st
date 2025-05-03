@@ -27,8 +27,8 @@ Npc subclass: Bandit [
     ]
 
     introductionDialogue [
-        communicatesService talkToBandit_1
-        communicatesService talkToBandit_2
+        communicatesService talkToBandit_1.
+        communicatesService talkToBandit_2.
         communicatesService talkToBandit_3.
         inputService inputCharacter: ('a').
         communicatesService talkToBandit_4
@@ -37,7 +37,7 @@ Npc subclass: Bandit [
     ]
 
     figthUsingHelmet [
-        communicatesService talkToBandit_7
+        communicatesService talkToBandit_7.
         communicatesService talkToBandit_8.
         (hero hasItemWithName: 'baton')
         ifTrue: [
@@ -49,7 +49,7 @@ Npc subclass: Bandit [
     ]
 
     figthWithoutHelmet [
-        communicatesService talkToBandit_19
+        communicatesService talkToBandit_19.
         communicatesService talkToBandit_17.
         (hero hasItemWithName: 'baton')
         ifTrue: [
@@ -65,8 +65,8 @@ Npc subclass: Bandit [
     figthUsingBaton [
         communicatesService talkToBandit_9.
         inputService inputCharacter: ('a').
-        communicatesService talkToBandit_10
-        communicatesService talkToBandit_11
+        communicatesService talkToBandit_10.
+        communicatesService talkToBandit_11.
         communicatesService talkToBandit_12.
         self npcKilled.
     ]
@@ -74,11 +74,11 @@ Npc subclass: Bandit [
     figthUsingFists [
         communicatesService talkToBandit_13.
         inputService inputCharacter: ('a').
-        communicatesService talkToBandit_14
-        communicatesService talkToBandit_15
-        communicatesService talkToBandit_16
-        communicatesService talkToBandit_17
-        communicatesService talkToBandit_18
-        hero getWounded
+        communicatesService talkToBandit_14.
+        communicatesService talkToBandit_15.
+        communicatesService talkToBandit_16.
+        communicatesService talkToBandit_17.
+        communicatesService talkToBandit_18.
+        hero getWounded.
     ]
 ]

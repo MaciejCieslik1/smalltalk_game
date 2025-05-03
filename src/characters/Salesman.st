@@ -74,8 +74,8 @@ Npc subclass: Salesman [
     ]
 
     introductionDialogue [
-        communicatesService talkToSalesman_1
-        communicatesService talkToSalesman_2
+        communicatesService talkToSalesman_1.
+        communicatesService talkToSalesman_2.
     ]
 
     hasGun [
@@ -175,9 +175,9 @@ Npc subclass: Salesman [
     ]
 
     preBuyGunDialogues [
-        communicatesService talkToSalesman_9
-        communicatesService talkToSalesman_12
-        communicatesService talkToSalesman_2
+        communicatesService talkToSalesman_9.
+        communicatesService talkToSalesman_12.
+        communicatesService talkToSalesman_2.
     ]
 
     gunPaymentConfirmation [
@@ -197,8 +197,8 @@ Npc subclass: Salesman [
         | inputOption |
         communicatesService talkToSalesman_18.
         inputOption := inputService inputCharacter: ('a').
-        communicatesService talkToSalesman_19
-        communicatesService talkToSalesman_25
+        communicatesService talkToSalesman_19.
+        communicatesService talkToSalesman_25.
     ]
 
     proceedPaymentGun [
@@ -225,9 +225,9 @@ Npc subclass: Salesman [
     ]
 
     preBuyVestDialogues [
-        communicatesService talkToSalesman_10
-        communicatesService talkToSalesman_20
-        communicatesService talkToSalesman_2
+        communicatesService talkToSalesman_10.
+        communicatesService talkToSalesman_20.
+        communicatesService talkToSalesman_2.
     ]
 
     vestPaymentConfirmation [
@@ -247,8 +247,8 @@ Npc subclass: Salesman [
         | inputOption |
         communicatesService talkToSalesman_22.
         inputOption := inputService inputCharacter: ('a').
-        communicatesService talkToSalesman_23
-        communicatesService talkToSalesman_26
+        communicatesService talkToSalesman_23.
+        communicatesService talkToSalesman_26.
     ]
 
     dontBuy [

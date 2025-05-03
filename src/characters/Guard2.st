@@ -2,12 +2,14 @@ Guard subclass: Guard2 [
     | hasHigherPermission | 
 
     initialize: newLocation 
+        hero: newHero 
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         super initializeWithName: 'guard2'
             location: newLocation 
             isKillable: false
+            hero: newHero 
             communicatesService: newCommunicatesService 
             inputService: newInputService.
         hasHigherPermission := false.
@@ -29,9 +31,9 @@ Guard subclass: Guard2 [
     ]
 
     introductionDialogue [
-        communicatesService talkToGuard2_1
-        communicatesService talkToGuard2_2
-        communicatesService talkToGuard2_3
+        communicatesService talkToGuard2_1.
+        communicatesService talkToGuard2_2.
+        communicatesService talkToGuard2_3.
     ]
 
     showDialogueOptions [
@@ -59,15 +61,15 @@ Guard subclass: Guard2 [
     ]
 
     aOptionWaiter [
-        communicatesService talkToGuard2_4
-        communicatesService talkToGuard2_5
+        communicatesService talkToGuard2_4.
+        communicatesService talkToGuard2_5.
     ]
 
     bOptionWaiter [
-        communicatesService talkToGuard2_13
-        communicatesService talkToGuard2_14
-        communicatesService talkToGuard2_wayWestAccessible
-        roomService openOffices
+        communicatesService talkToGuard2_13.
+        communicatesService talkToGuard2_14.
+        communicatesService talkToGuard2_wayWestAccessible.
+        roomService openOffices.
     ]
 
     usedMilitaryUniform [
@@ -154,26 +156,26 @@ Guard subclass: Guard2 [
     ]
 
     aOptionMilitaryUniform [
-        communicatesService talkToGuard2_4
-        communicatesService talkToGuard2_5
+        communicatesService talkToGuard2_4.
+        communicatesService talkToGuard2_5.
     ]
 
     bOptionMilitaryUniform [
-        communicatesService talkToGuard2_15
-        communicatesService talkToGuard2_7
+        communicatesService talkToGuard2_15.
+        communicatesService talkToGuard2_7.
     ]
 
     cOptionMilitaryUniform [
-        communicatesService talkToGuard2_15
-        communicatesService talkToGuard2_11
-        communicatesService talkToGuard_wayNorthAccessible
-        roomService openArchives
+        communicatesService talkToGuard2_15.
+        communicatesService talkToGuard2_11.
+        communicatesService talkToGuard_wayNorthAccessible.
+        roomService openArchives.
     ]
 
     dOptionMilitaryUniform [
-        communicatesService talkToGuard2_15
-        communicatesService talkToGuard2_11
-        communicatesService talkToGuard2_wayWestAccessible
-        roomService openOffices
+        communicatesService talkToGuard2_15.
+        communicatesService talkToGuard2_11.
+        communicatesService talkToGuard2_wayWestAccessible.
+        roomService openOffices.
     ]
 ]

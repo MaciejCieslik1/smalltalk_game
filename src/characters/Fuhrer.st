@@ -22,11 +22,11 @@ Npc subclass: Fuhrer [
     ]
 
     intruductionDialogue [
-        communicatesService talkToFuhrer_1
-        communicatesService talkToFuhrer_2
-        communicatesService talkToFuhrer_3
-        communicatesService talkToFuhrer_4
-        communicatesService talkToFuhrer_5
+        communicatesService talkToFuhrer_1.
+        communicatesService talkToFuhrer_2.
+        communicatesService talkToFuhrer_3.
+        communicatesService talkToFuhrer_4.
+        communicatesService talkToFuhrer_5.
     ]
 
     chooseDialogueOption [
@@ -47,9 +47,9 @@ Npc subclass: Fuhrer [
     ]
 
     endingDialogue [
-        communicatesService talkToFuhrer_9
-        communicatesService talkToFuhrer_10
-        communicatesService talkToFuhrer_11
+        communicatesService talkToFuhrer_9.
+        communicatesService talkToFuhrer_10.
+        communicatesService talkToFuhrer_11.
         communicatesService talkToFuhrer_12.
         inputService inputCharacter: ('a').
         communicatesService talkToFuhrer_13

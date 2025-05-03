@@ -965,6 +965,7 @@ Object subclass: CommunicatesService [
             show: 'go w - moves hero to the western room'; cr;
             show: 'go s - moves hero to the southern room'; cr;
             show: 'go e - moves hero to the eastern room'; cr;
+            show: 'talk <npc> - talk to npc'; cr;
             show: 'pick <item> - pick up item'; cr;
             show: 'interact <item> - interact with special item'; cr;
             show: 'attack <npc> - attack npc using weapon'; cr;

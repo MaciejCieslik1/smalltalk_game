@@ -1,12 +1,14 @@
 Guard subclass: Guard4 [
 
-    initialize: newLocation 
+    initialize: newLocation
+        hero: newHero  
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         super initializeWithName: 'guard4' 
             location: newLocation
             isKillable: true
+            hero: newHero 
             communicatesService: newCommunicatesService 
             inputService: newInputService
     ]
@@ -27,9 +29,9 @@ Guard subclass: Guard4 [
     ]
 
     introductionDialogue [
-        communicatesService talkToGuard4_1
-        communicatesService talkToGuard4_2
-        communicatesService talkToGuard4_3
+        communicatesService talkToGuard4_1.
+        communicatesService talkToGuard4_2.
+        communicatesService talkToGuard4_3.
     ]
 
     chooseDialogueOption: juices [
@@ -57,25 +59,25 @@ Guard subclass: Guard4 [
     ]
 
     aOptionWaiterCondition [
-        communicatesService talkToGuard4_4
-        communicatesService talkToGuard4_5
+        communicatesService talkToGuard4_4.
+        communicatesService talkToGuard4_5.
     ]
 
     bOptionWaiterCondition [
-        communicatesService talkToGuard4_7
-        communicatesService talkToGuard4_6
-        guard3 interactionBeverages
+        communicatesService talkToGuard4_7.
+        communicatesService talkToGuard4_6.
+        guard3 interactionBeverages.
     ]
 
     falseWaiterCondition [
-        inputService inputCharacter: ('a')
-        communicatesService talkToGuard4_4
-        communicatesService talkToGuard4_5
+        inputService inputCharacter: ('a').
+        communicatesService talkToGuard4_4.
+        communicatesService talkToGuard4_5.
     ]
 
     interactionShooting [
         communicatesService talkToGuard4_8.
-        (hero hasItemWithItem: 'bulletproofVest') 
+        (hero hasItemWithItem: 'bulletproofVest').
         ifTrue: [
             self usedVest.
         ]
@@ -85,26 +87,26 @@ Guard subclass: Guard4 [
     ]
 
     usedVest [
-        communicatesService talkToGuard4_9
-        communicatesService talkToGuard4_10
-        communicatesService talkToGuard4_11
-        inputService inputCharacter: ('a')
-        communicatesService talkToGuard4_12
-        communicatesService talkToGuard4_13
-        communicatesService talkToGuard4_14
-        communicatesService talkToGuard_wayNorthAccessible
+        communicatesService talkToGuard4_9.
+        communicatesService talkToGuard4_10.
+        communicatesService talkToGuard4_11.
+        inputService inputCharacter: ('a').
+        communicatesService talkToGuard4_12.
+        communicatesService talkToGuard4_13.
+        communicatesService talkToGuard4_14.
+        communicatesService talkToGuard_wayNorthAccessible.
     ]
 
     notUsedVest [
-        communicatesService talkToGuard4_15
-        communicatesService talkToGuard_wakeUpInMedbay
-        communicatesService talkToGuard_needVest
-        hero getWounded
+        communicatesService talkToGuard4_15.
+        communicatesService talkToGuard_wakeUpInMedbay.
+        communicatesService talkToGuard_needVest.
+        hero getWounded.
     ]
 
     attacked [
         self npcKilled.
-        communicatesService killedGuard4
-        guard3 interactionShooting
+        communicatesService killedGuard4.
+        guard3 interactionShooting.
     ]
 ]

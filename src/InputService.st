@@ -42,7 +42,7 @@ Object subclass: InputService [
 
     commandNotHelpOrMap: inputString [
         | parts command argument validCommands |
-        validCommands := #('go' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform' 'map' 'help').
+        validCommands := #('go' 'talk' 'pick' 'interact' 'attack' 'info' 'description' 'poison' 'chloroform' 'map' 'help').
         parts := inputString substrings: ' '.
         parts size = 2 ifFalse: [ 
             communicatesService invalidCommand.

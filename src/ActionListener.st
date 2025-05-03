@@ -26,6 +26,10 @@ Object subclass: ActionListener [
         ifTrue: [
             self checkArgumentGo: argument
         ].
+        (command = 'talk')
+        ifTrue: [
+            self checkArgumentTalk: argument
+        ].
         (command = 'pick')
         ifTrue: [
             self checkArgumentPick: argument
@@ -83,6 +87,18 @@ Object subclass: ActionListener [
         ifFalse: [
             communicatesService invalidArgument
         ]
+    ]
+
+    checkArgumentTalk: argument [
+        | npc |
+        (hero location hasNpcName: argument)
+        ifTrue: [
+            npc := hero location findNpcByName: argument.
+            npc interaction.
+        ]
+        ifFalse: [
+            communicatesService invalidArgument
+        ].
     ]
 
     checkArgumentPick: argument [

@@ -22,10 +22,10 @@ Npc subclass: Waiter [
     attacked [
         | inputOption |
         self npcKilled.
-        communicatesService waiterKilled
+        communicatesService waiterKilled.
         communicatesService waiterStealUniformOption.
         inputOption := inputService inputCharacter: ('a').
-        communicatesService waiterStealUniform
+        communicatesService waiterStealUniform.
         hero changeUniform: uniform
     ]
 ]

@@ -259,13 +259,13 @@ Object subclass: Game [
         fuhrer := Fuhrer new.
         fuhrer initialize: fuhrersQuarters communicatesService: communicatesService inputService: inputService.
         guard1 := Guard1 new.
-        guard1 initialize: securityCheckEntry communicatesService: communicatesService inputService: inputService.
+        guard1 initialize: securityCheckEntry hero: hero communicatesService: communicatesService inputService: inputService.
         guard2 := Guard2 new.
-        guard2 initialize: securityCheckOffices communicatesService: communicatesService inputService: inputService.
+        guard2 initialize: securityCheckOffices hero: hero communicatesService: communicatesService inputService: inputService.
         guard3 := Guard3 new.
-        guard3 initialize: fuhrersOffice communicatesService: communicatesService inputService: inputService.
+        guard3 initialize: fuhrersOffice hero: hero communicatesService: communicatesService inputService: inputService.
         guard4 := Guard4 new.
-        guard4 initialize: fuhrersOffice communicatesService: communicatesService inputService: inputService.
+        guard4 initialize: fuhrersOffice hero: hero communicatesService: communicatesService inputService: inputService.
         salesman := Salesman new.
         salesman initialize: armory items: (OrderedCollection withAll: { gun. bulletproofVest }) hero: hero 
             communicatesService: communicatesService inputService: inputService.

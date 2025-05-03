@@ -73,10 +73,10 @@ Npc subclass: Soldier [
     ]
 
     introductionDialogue [
-        communicatesService talkToSoldier_1
-        communicatesService talkToSoldier_2
-        communicatesService talkToSoldier_3
-        communicatesService talkToSoldier_4
+        communicatesService talkToSoldier_1.
+        communicatesService talkToSoldier_2.
+        communicatesService talkToSoldier_3.
+        communicatesService talkToSoldier_4.
     ]
 
     hasHeroWillToPlay [
@@ -93,8 +93,8 @@ Npc subclass: Soldier [
     ]
 
     heroDoesNotWantToPlay [
-        communicatesService talkToSoldier_5
-        communicatesService talkToSoldier_6
+        communicatesService talkToSoldier_5.
+        communicatesService talkToSoldier_6.
     ]
 
     heroWantsToPlay: hero [
@@ -109,9 +109,9 @@ Npc subclass: Soldier [
     ]
 
     heroHasUmbrella [
-        communicatesService talkToSoldier_8
-        communicatesService talkToSoldier_9
-        communicatesService talkToSoldier_10
+        communicatesService talkToSoldier_8.
+        communicatesService talkToSoldier_9.
+        communicatesService talkToSoldier_10.
         communicatesService talkToSoldier_11.
         self heroWon.
     ]

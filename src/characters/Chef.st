@@ -22,9 +22,9 @@ Npc subclass: Chef [
     ]   
 
     introductionDialogue [
-        communicatesService talkToChef_1
-        communicatesService talkToChef_2
-        communicatesService talkToChef_3
+        communicatesService talkToChef_1.
+        communicatesService talkToChef_2.
+        communicatesService talkToChef_3.
     ] 
 
     showDialogueOptions  [
@@ -79,20 +79,20 @@ Npc subclass: Chef [
     ]
 
     aOptionHandling [
-        communicatesService talkToChef_4
-        communicatesService talkToChef_5
+        communicatesService talkToChef_4.
+        communicatesService talkToChef_5.
     ]
 
     bOptionHandling [
-        communicatesService talkToChef_9
-        communicatesService talkToBandit_7
+        communicatesService talkToChef_9.
+        communicatesService talkToBandit_7.
     ]
 
     cOptionHandling [
-        communicatesService talkToChef_9
-        communicatesService talkToBandit_10
-        communicatesService talkToChef_wayEastAcessible
-        roomService openKitchen
+        communicatesService talkToChef_9.
+        communicatesService talkToBandit_10.
+        communicatesService talkToChef_wayEastAcessible.
+        roomService openKitchen.
     ]
 
     openedRoomsInteraction [
