@@ -3,6 +3,7 @@ Object subclass: Game [
     |  fuhrersOffice fuhrersQuarters goebbelsOffice kitchen kitchenExit lobby medicBay nullRoom secretExit securityCheckEntry passage |
     |  securityCheckOffices socialRoom appleJuice orangeJuice multivitaminaJuice bandage baton bulletproofVest chloroform gun helmet |
     |  letter lever money moneyMedicBay moneyKitchen moneySocialRoom moneyLobby poison rag umbrella vitamins militaryUniform |
+    |  id midRankPass redKey amber |
     |  serviceUniform bandit chef fuhrer guard1 guard2 guard3 guard4 hero salesman soldier waiter actionListener inputService map |
     |  movement roomService levelMatrix |
 
@@ -13,6 +14,8 @@ Object subclass: Game [
         self initializeUniforms.
         self initializeCharacters.
         self initializeServiceClasses.
+        self deployItems.
+        self deployNpcs.
     ]
 
     initializeCommunicationService [
@@ -230,6 +233,14 @@ Object subclass: Game [
         umbrella initialize: cloakroom communicatesService: communicatesService inputService: inputService.
         vitamins := Vitamins new.
         vitamins initialize: medicBay communicatesService: communicatesService inputService: inputService.
+        id := Id new.
+        id initialize: entrance communicatesService: communicatesService inputService: inputService.
+        midRankPass := MidRankPass new.
+        midRankPass initialize: communicatesService inputService: inputService.
+        redKey := RedKey new.
+        redKey initialize: goebbelsOffice communicatesService: communicatesService inputService: inputService.
+        amber := Amber new.
+        amber initialize: goebbelsOffice communicatesService: communicatesService inputService: inputService.
     ]
 
     initializeUniforms [
@@ -275,6 +286,31 @@ Object subclass: Game [
         movement := Movement new.
         movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService.
         roomService := RoomService new.
+    ]
+
+    deployItems [
+        entrance itemsList add: id. 
+        cloakroom itemsList add: umbrella.
+        medicBay addItems: (OrderedCollection with: vitamins with: bandage with: chloroform with: moneyMedicBay).
+        cafeteria addItems: (OrderedCollection with: appleJuice with: orangeJuice with: multivitaminaJuice).
+        barracks addItems: (OrderedCollection with: baton with: rag).
+        lobby itemsList add: moneyLobby.
+        socialRoom itemsList add: moneySocialRoom.
+        kitchen itemsList add: moneyKitchen.
+        archives itemsList add: lever.
+        goebbelsOffice itemsList: (OrderedCollection with: amber with: redKey with: letter).
+    ]
+
+    deployNpcs [
+        securityCheckEntry npcList add: guard1.
+        armory npcList add: salesman.
+        cafeteria npcList add: chef.
+        barracks npcList add: soldier.
+        securityCheckOffices npcList add: guard2.
+        emptyRoomB npcList add: bandit.
+        fuhrersOffice npcList add: guard3.
+        fuhrersOffice npcList add: guard4.
+        fuhrersQuarters npcList add: fuhrer.
     ]
 
     gameLoop [
