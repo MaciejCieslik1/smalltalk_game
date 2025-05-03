@@ -64,7 +64,7 @@ Object subclass: ActionListener [
         ].
         (command = 'room')
         ifTrue: [
-            self checkArgumentInfo
+            self checkArgumentRoom
         ].
         (command = 'quit')
         ifTrue: [
@@ -240,7 +240,8 @@ Object subclass: ActionListener [
         ]
     ]
 
-    checkArgumentInfo [
+    checkArgumentRoom [
+        communicatesService printStringNewLine: hero location name.
         communicatesService printItems: hero location itemsList.
         (hero location hasNpc)
         ifTrue: [
