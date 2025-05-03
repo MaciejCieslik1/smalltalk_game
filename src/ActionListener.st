@@ -62,6 +62,15 @@ Object subclass: ActionListener [
         ifTrue: [
             communicatesService help
         ].
+        (command = 'room')
+        ifTrue: [
+            self checkArgumentInfo
+        ].
+        (command = 'quit')
+        ifTrue: [
+            ^ true
+        ].
+        ^ false.
     ]
 
     checkArgumentGo: argument [
@@ -229,5 +238,16 @@ Object subclass: ActionListener [
             rag := hero findItemWithName: ragName
             hero addChloroform: rag 
         ]
+    ]
+
+    checkArgumentInfo [
+        communicatesService printItems: hero location itemsList.
+        (hero location hasNpc)
+        ifTrue: [
+            communicatesService printNpcs: hero location npcList.
+        ]
+        ifFalse: [
+            communicatesService printStringNewLine: 'Npcs: '.
+        ]   
     ]
 ]

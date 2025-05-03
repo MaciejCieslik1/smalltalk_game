@@ -48,7 +48,7 @@ Object subclass: Room [
         hasItem := newHasItem
     ]
 
-    itemsLists [
+    itemsList [
         ^ itemsList
     ]
 

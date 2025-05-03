@@ -278,14 +278,18 @@ Object subclass: Game [
     ]
 
     gameLoop [
-        | hasHeroEscaped |
+        | hasHeroEscaped quit |
         hasHeroEscaped := false.
+        quit := false.
         entrance wasVisited: true.
         communicatesService help.
-        [ hasHeroEscaped ] whileFalse: [
-            actionListener chooseAction
+        [ hasHeroEscaped or:[quit] ] whileFalse: [
+            quit := actionListener chooseAction
         ].
-        self ending
+        (hasHeroEscaped)
+        ifTrue: [
+            self ending
+        ].
     ]
 
     ending [

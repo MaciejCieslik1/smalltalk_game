@@ -26,13 +26,14 @@ Object subclass: InputService [
     ]
 
     inputCommand [
-        | parts command argument inputString |
+        | parts command argument inputString noArgumentsCommands |
+        noArgumentsCommands := #('help' 'map' 'room' 'quit').
         communicatesService chooseAction.
         inputString := FileStream stdin nextLine.
 
-        (inputString = 'help' or: [inputString = 'map'] )
+        (noArgumentsCommands includes: inputString)
         ifTrue: [
-            ^ inputString, ' empty'
+            ^ inputString, ' empty'.
         ]
         ifFalse: [
             ^ self commandNotHelpOrMap: inputString.
