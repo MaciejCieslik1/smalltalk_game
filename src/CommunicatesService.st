@@ -884,6 +884,7 @@ Object subclass: CommunicatesService [
         npcList do: [:npc |
             Transcript show: npc name , ' '.
         ].
+        Transcript cr.
     ]
 
     CommunicatesService >> printItems: itemsList [

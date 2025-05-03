@@ -62,9 +62,10 @@ Object subclass: Map [
     ]
 
     roomWasVisited: room [
-        | roomLayout |
+        | roomLayout symbol |
         roomLayout := ''.
-        roomLayout := roomLayout, self drawVisitedRoom: room.
+        symbol := self drawVisitedRoom: room.
+        roomLayout := roomLayout, symbol.
         (room adjacentEast ~= nullRoom)
         ifTrue: [
             roomLayout := roomLayout, '-'
@@ -197,8 +198,9 @@ Object subclass: Map [
             roomLayout := roomLayout, '-', symbol.
         ]
         ifFalse: [
-            roomLayout := roomLayout, ' '.
+            roomLayout := roomLayout, '    '.
         ].
+        ^ roomLayout.
     ]
 
     createVerticalCorridors: levelList [
@@ -214,10 +216,10 @@ Object subclass: Map [
     hasRoomVerticalCorridor: room [
         (room adjacentSouth ~= nullRoom and:[room adjacentSouth wasVisited])
         ifTrue: [
-            ^ ' | '
+            ^ ' |  '
         ]
         ifFalse: [
-            ^ '   '
+            ^ '    '
         ].
     ]
 ]

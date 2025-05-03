@@ -151,11 +151,6 @@ Object subclass: Room [
         ]
     ]
 
-    heroWalkedIn [
-        self wasVisisted: true
-        actionListener chooseAction 
-    ]
-
     addAdjacentRooms: adjacentNorth west: adjacentWest south: adjacentSouth east: adjacentEast [
         self adjacentNorth: adjacentNorth.
         self adjacentWest: adjacentWest.

@@ -50,7 +50,7 @@ Object subclass: Person [
     createInfo [
         communicatesService printStringNewLine: 'Name: ', self name asString.
         communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
-        communicatesService printStringNewLine: 'Location: ', self location printString.
+        communicatesService printStringNewLine: 'Location: ', self location name printString.
         communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
     ]
 ]

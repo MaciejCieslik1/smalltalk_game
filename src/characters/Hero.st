@@ -89,7 +89,7 @@ Person subclass: Hero [
         | info |
         communicatesService printStringNewLine: 'Name: ', self name asString.
         communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
-        communicatesService printStringNewLine: 'Location: ', self location printString.
+        communicatesService printStringNewLine: 'Location: ', self location name printString.
         communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
         communicatesService printStringNewLine: 'Uniform: ', self uniform name.
         communicatesService printStringNewLine: 'Money: ', self money asString.
@@ -115,8 +115,8 @@ Person subclass: Hero [
     ]
 
     moveTotheRoom: room [
-        self location: room
-        room heroWalkedIn
+        self location: room.
+        room wasVisited: true 
     ]
 
     getWounded [
