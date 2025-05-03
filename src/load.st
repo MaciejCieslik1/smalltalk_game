@@ -17,6 +17,10 @@ FileStream fileIn: 'items/Poison.st'.
 FileStream fileIn: 'items/Rag.st'.
 FileStream fileIn: 'items/Umbrella.st'.
 FileStream fileIn: 'items/Vitamins.st'.
+FileStream fileIn: 'items/Id.st'.
+FileStream fileIn: 'items/MidRankPass.st'.
+FileStream fileIn: 'items/RedKey.st'.
+FileStream fileIn: 'items/Amber.st'.
 
 FileStream fileIn: 'characters/Person.st'.
 FileStream fileIn: 'characters/Npc.st'.
