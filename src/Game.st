@@ -268,7 +268,7 @@ Object subclass: Game [
         fuhrer := Fuhrer new.
         fuhrer initialize: fuhrersQuarters communicatesService: communicatesService inputService: inputService.
         guard1 := Guard1 new.
-        guard1 initialize: securityCheckEntry hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
+        guard1 initialize: securityCheckEntry hero: hero roomService: roomService midRankPass: midRankPass communicatesService: communicatesService inputService: inputService.
         guard2 := Guard2 new.
         guard2 initialize: securityCheckOffices hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard3 := Guard3 new.

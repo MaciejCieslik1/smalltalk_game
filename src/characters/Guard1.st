@@ -13,9 +13,9 @@ Guard subclass: Guard1 [
             isKillable: true
             hero: newHero
             roomService: newRoomService
-            midRankPass: newMidRankPass
             communicatesService: newCommunicatesService 
             inputService: newInputService.
+        midRankPass := newMidRankPass.
     ]
 
     interaction [
