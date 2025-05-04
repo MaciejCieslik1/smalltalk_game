@@ -35,13 +35,23 @@ Room subclass: NpcRoom [
         ^ self npcList anySatisfy: [:npc | npc name = npcName].
     ]
 
+    hasNpcWithName: npcName [
+        npcList do: [:npc |
+            (npc name = npcName) 
+            ifTrue: [
+                ^ true
+            ].
+        ].
+        ^ false
+    ]
+
     findNpcByName: npcName [
         ^ self npcList detect: [:npc | npc name = npcName]
     ]
 
     removeNpc: npc [
         | newNpcList |
-        newNpcList := self npcList
+        newNpcList := self npcList.
         newNpcList remove: npc.
         self npcList: newNpcList.
         self checkIfNpcListEmpty.

@@ -196,7 +196,7 @@ Npc subclass: Salesman [
     heroHasNoAmber [
         | inputOption |
         communicatesService talkToSalesman_18.
-        inputOption := inputService inputCharacter: ('a').
+        inputOption := inputService inputCharacter: #($a).
         communicatesService talkToSalesman_19.
         communicatesService talkToSalesman_25.
     ]

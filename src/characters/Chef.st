@@ -87,7 +87,7 @@ Npc subclass: Chef [
 
     bOptionHandling [
         communicatesService talkToChef_9.
-        communicatesService talkToBandit_7.
+        communicatesService talkToChef_7.
     ]
 
     cOptionHandling [

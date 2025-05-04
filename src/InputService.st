@@ -20,8 +20,9 @@ Object subclass: InputService [
                 ^ character
             ]
             ifFalse: [
-                communicatesService incorrectInput
-            ] 
+                communicatesService incorrectInput.
+                ^ false.
+            ].
         ] whileTrue.
     ]
 

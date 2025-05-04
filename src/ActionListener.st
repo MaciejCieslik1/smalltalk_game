@@ -172,7 +172,7 @@ Object subclass: ActionListener [
     ]
 
     attackCheckIfNpcAccessible: npcName [
-        (hero location findNpcByName: npcName)
+        (hero location hasNpcWithName: npcName)
         ifTrue: [
             hero attack: npcName
         ]

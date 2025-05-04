@@ -1,8 +1,10 @@
 Guard subclass: Guard1 [
+    | midRankPass |
 
     initialize: newLocation 
         hero: newHero
         roomService: newRoomService
+        midRankPass: newMidRankPass
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -11,6 +13,7 @@ Guard subclass: Guard1 [
             isKillable: true
             hero: newHero
             roomService: newRoomService
+            midRankPass: newMidRankPass
             communicatesService: newCommunicatesService 
             inputService: newInputService.
     ]
@@ -80,6 +83,7 @@ Guard subclass: Guard1 [
         self npcKilled.
         communicatesService killedGuard1.
         communicatesService stealMidRankPass.
-        communicatesService accessToArmory
+        communicatesService accessToArmory.
+        hero addItem: midRankPass.
     ]
 ]

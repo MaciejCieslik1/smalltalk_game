@@ -39,7 +39,7 @@ Guard subclass: Guard2 [
     ]
 
     showDialogueOptions [
-        (hero hasUniformWithName = 'service_uniform' and: [hero hasPoisonedJuice])
+        (hero hasUniformWithName: 'service_uniform' and: [hero hasPoisonedJuice])
         ifTrue: [
             self usedServiceUniform.
         ]
