@@ -127,23 +127,23 @@ Person subclass: Hero [
         | attackedNpc sideNpc |
         (target = 'guard1')
         ifTrue: [
-            attackedNpc := hero location findNpcByName: target.
+            attackedNpc := self location findNpcByName: target.
             self attackGuard1: attackedNpc.
         ].
         (target = 'guard3')
         ifTrue: [
-            attackedNpc := hero location findNpcByName: target.
+            attackedNpc := self location findNpcByName: target.
             self attackGuard3: attackedNpc.
         ].
         (target = 'guard4')
         ifTrue: [
-            attackedNpc := hero location findNpcByName: target.
-            sideNpc := hero location findNpcByName: 'guard4'.
+            attackedNpc := self location findNpcByName: target.
+            sideNpc := self location findNpcByName: 'guard4'.
             self attackGuard4: attackedNpc sideNpc: sideNpc.
         ].
         (target = 'waiter')
         ifTrue: [
-            attackedNpc := hero location findNpcByName: target.
+            attackedNpc := self location findNpcByName: target.
             self attackWaiter.
         ].
     ]

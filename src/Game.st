@@ -10,6 +10,7 @@ Object subclass: Game [
     initializeFields [
         self initializeFirstsServices.
         self initializeLocations.
+        self initializeRoomService.
         self initializeItems.
         self initializeUniforms.
         self initializeCharacters.
@@ -21,7 +22,6 @@ Object subclass: Game [
     initializeFirstsServices [
         communicatesService := CommunicatesService new.
         inputService := InputService newInitialize: communicatesService.
-        roomService := RoomService new.
     ]
 
     initializeLocations [
@@ -191,6 +191,14 @@ Object subclass: Game [
         matrix add: firstLevelRoomsList.
 
         ^ matrix.
+    ]
+
+    initializeRoomService [
+        roomService := RoomService new.
+        roomService initialize: {armory. cloakroom. emptyRoomA. cafeteria. medicBay. armory. lobby. socialRoom. securityCheckOffices. barracks}
+            offices: {conferenceRoom. goebbelsOffice. fuhrersOffice. emptyRoomB} kitchenRooms: {kitchen. foodStorage} 
+            passageRooms: {emptyRoomB. passage} archives: archives fuhrersQuarters: fuhrersQuarters kitchenExit: kitchenExit
+            secretExit: secretExit
     ]
 
     initializeItems [
