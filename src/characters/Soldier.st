@@ -13,7 +13,8 @@ Npc subclass: Soldier [
             isKillable: false
             communicatesService: newCommunicatesService 
             inputService: newInputService.
-        items := Array with: newHelmet.
+        items := OrderedCollection new.
+        items add: newHelmet.
         hasPlayedCards := false.
         hero := newHero.
     ]
@@ -35,7 +36,7 @@ Npc subclass: Soldier [
     ]
 
     hasItem: item [
-        ^ self items include: item
+        ^ self items includes: item
     ]
 
     hasPlayedCards [
@@ -97,7 +98,7 @@ Npc subclass: Soldier [
         communicatesService talkToSoldier_6.
     ]
 
-    heroWantsToPlay: hero [
+    heroWantsToPlay [
         communicatesService talkToSoldier_7.
         (hero hasItemWithName: 'umbrella')
         ifTrue: [

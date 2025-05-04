@@ -154,7 +154,7 @@ Object subclass: ActionListener [
         validArguments := #('guard1' 'guard3' 'guard4' 'waiter').
         (validArguments includes: argument)
         ifTrue: [
-            self attackCheckIfRoomHasNpc
+            self attackCheckIfRoomHasNpc: argument
         ]
         ifFalse: [
             communicatesService cannotAttackPerson

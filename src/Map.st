@@ -195,7 +195,7 @@ Object subclass: Map [
         (room adjacentEast wasVisited)
         ifTrue: [
             symbol := self drawAdjacentRoom: room.
-            roomLayout := roomLayout, '-', symbol.
+            roomLayout := roomLayout, symbol, '-'.
         ]
         ifFalse: [
             roomLayout := roomLayout, '    '.
@@ -214,7 +214,7 @@ Object subclass: Map [
     ]
 
     hasRoomVerticalCorridor: room [
-        (room adjacentSouth ~= nullRoom and:[room adjacentSouth wasVisited])
+        (room adjacentSouth ~= nullRoom and:[room wasVisited or:[room adjacentSouth wasVisited ]])
         ifTrue: [
             ^ ' |  '
         ]

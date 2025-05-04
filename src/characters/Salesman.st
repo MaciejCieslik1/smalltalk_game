@@ -37,7 +37,7 @@ Npc subclass: Salesman [
     ]
 
     hasItem: item [
-        ^ self items include: item
+        ^ self items includes: item
     ]
 
     hasItemWithName: itemName [

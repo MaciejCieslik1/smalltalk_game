@@ -106,7 +106,7 @@ Object subclass: Game [
         cafeteria addAdjacentRooms: socialRoom west: emptyRoomA south: medicBay east: kitchen.
         cloakroom addAdjacentRooms: emptyRoomA west: nullRoom south: securityCheckEntry east: nullRoom. 
         conferenceRoom addAdjacentRooms: goebbelsOffice west: fuhrersOffice south: nullRoom east: securityCheckOffices. 
-        emptyRoomA addAdjacentRooms: nullRoom west: nullRoom south: securityCheckOffices east: nullRoom. 
+        emptyRoomA addAdjacentRooms: lobby west: nullRoom south: cloakroom east: cafeteria. 
         emptyRoomB addAdjacentRooms: fuhrersOffice west: nullRoom south: nullRoom east: passage. 
         entrance addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: securityCheckEntry. 
         foodStorage addAdjacentRooms: nullRoom west: nullRoom south: kitchen east: kitchenExit. 
@@ -115,7 +115,7 @@ Object subclass: Game [
         goebbelsOffice addAdjacentRooms: nullRoom west: nullRoom south: conferenceRoom east: nullRoom. 
         kitchen addAdjacentRooms: foodStorage west: cafeteria south: nullRoom east: nullRoom. 
         kitchenExit addAdjacentRooms: nullRoom west: foodStorage south: nullRoom east: nullRoom. 
-        lobby addAdjacentRooms: securityCheckOffices west: passage south: cloakroom east: cafeteria. 
+        lobby addAdjacentRooms: securityCheckOffices west: passage south: cloakroom east: socialRoom. 
         medicBay addAdjacentRooms: cafeteria west: nullRoom south: nullRoom east: nullRoom. 
         nullRoom addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: nullRoom.
         secretExit addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: fuhrersQuarters. 
