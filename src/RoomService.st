@@ -12,7 +12,7 @@ Object subclass: RoomService [
     [
         idRooms := newIdRooms.
         offices := newOffices.
-        kitchenRooms := newKitchenExit.
+        kitchenRooms := newKitchenRooms.
         passageRooms := newPassageRooms.
         archives := newArchives.
         fuhrersQuarters := newFuhrersQuarters.

@@ -39,7 +39,7 @@ Guard subclass: Guard2 [
     ]
 
     showDialogueOptions [
-        (hero hasUniformWithName: 'service_uniform' and: [hero hasPoisonedJuice])
+        ((hero hasUniformWithName: 'service_uniform') and: [hero hasPoisonedJuice])
         ifTrue: [
             self usedServiceUniform.
         ]
@@ -81,7 +81,7 @@ Guard subclass: Guard2 [
             self heroHasRedKey.
         ]
         ifFalse: [
-            (hero hasItemWithName: 'midRankPass')
+            (hero hasItemWithName: 'mid_rank_pass')
             ifTrue: [
                 self heroHasMidPass.
             ]
@@ -96,7 +96,7 @@ Guard subclass: Guard2 [
         ifTrue: [
             communicatesService talkToGuard2_6
         ].
-        (hero hasItemWithName: 'midRankPass')
+        (hero hasItemWithName: 'mid_rank_pass')
         ifTrue: [
             communicatesService talkToGuard2_8
         ].

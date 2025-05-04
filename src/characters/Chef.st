@@ -34,14 +34,14 @@ Npc subclass: Chef [
         ifTrue: [
             communicatesService talkToChef_6
         ].
-        (hero hasItemWithName: 'midRankPass')
+        (hero hasItemWithName: 'mid_rank_pass')
         ifTrue: [
             communicatesService talkToChef_8
         ].
     ] 
 
     dialogueOptionHandling [
-        (hero hasItemWithName: 'midRankPass')
+        (hero hasItemWithName: 'mid_rank_pass')
         ifTrue: [
             self midRankPassOptionHandling
         ]
@@ -92,7 +92,7 @@ Npc subclass: Chef [
 
     cOptionHandling [
         communicatesService talkToChef_9.
-        communicatesService talkToBandit_10.
+        communicatesService talkToChef_10.
         communicatesService talkToChef_wayEastAcessible.
         roomService openKitchen.
     ]
