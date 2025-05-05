@@ -97,7 +97,7 @@ Person subclass: Hero [
     ]
 
     hasEnoughMoney: moneyAmount [
-        self money amount >= moneyAmount
+        self money >= moneyAmount
         ifTrue: [
             ^ true
         ]
@@ -144,7 +144,7 @@ Person subclass: Hero [
         (target = 'waiter')
         ifTrue: [
             attackedNpc := self location findNpcByName: target.
-            self attackWaiter.
+            self attackWaiter: attackedNpc.
         ].
     ]
 

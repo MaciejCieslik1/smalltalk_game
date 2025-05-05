@@ -45,7 +45,7 @@ Guard subclass: Guard1 [
             self hasIdDialogueOptionHandling.
         ]
         ifFalse: [
-            inputService inputCharacter: ('a').
+            inputService inputCharacter: #($a).
             communicatesService talkToGuard1_5
         ].
     ]
@@ -84,6 +84,7 @@ Guard subclass: Guard1 [
         communicatesService killedGuard1.
         communicatesService stealMidRankPass.
         communicatesService accessToArmory.
+        roomService openArmory.
         hero addItem: midRankPass.
     ]
 ]

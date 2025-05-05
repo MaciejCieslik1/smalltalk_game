@@ -13,6 +13,7 @@ Npc subclass: Waiter [
             isKillable: false
             communicatesService: newCommunicatesService 
             inputService: newInputService.
+        hero := newHero.
         uniform := newUniform
     ]
 

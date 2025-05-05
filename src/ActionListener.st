@@ -90,6 +90,16 @@ Object subclass: ActionListener [
     ]
 
     checkArgumentTalk: argument [
+        (hero location hasNpc)
+        ifTrue: [
+            self checkTalkRoomHasNpc: argument
+        ]
+        ifFalse: [
+            communicatesService cannotTalkToPerson
+        ].
+    ]
+
+    checkTalkRoomHasNpc: argument [
         | npc |
         (hero location hasNpcName: argument)
         ifTrue: [
@@ -142,7 +152,7 @@ Object subclass: ActionListener [
     interactCheckIfItemAccessible: argument [
         (hero location hasItemName: argument)
         ifTrue: [
-            hero location interactWithItem: argument hero: hero
+            hero location interactWithItem: argument character: hero
         ]
         ifFalse: [
             communicatesService invalidArgument

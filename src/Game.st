@@ -195,10 +195,10 @@ Object subclass: Game [
 
     initializeRoomService [
         roomService := RoomService new.
-        roomService initialize: {armory. cloakroom. emptyRoomA. cafeteria. medicBay. armory. lobby. socialRoom. securityCheckOffices. barracks}
+        roomService initialize: {cloakroom. emptyRoomA. cafeteria. medicBay. lobby. socialRoom. securityCheckOffices. barracks}
             offices: {conferenceRoom. goebbelsOffice. fuhrersOffice. emptyRoomB} kitchenRooms: {kitchen. foodStorage} 
-            passageRooms: {emptyRoomB. passage} archives: archives fuhrersQuarters: fuhrersQuarters kitchenExit: kitchenExit
-            secretExit: secretExit
+            passageRooms: {emptyRoomB. passage} archives: archives armory: armory fuhrersQuarters: fuhrersQuarters
+            kitchenExit: kitchenExit secretExit: secretExit
     ]
 
     initializeItems [

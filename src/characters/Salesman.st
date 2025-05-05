@@ -90,7 +90,7 @@ Npc subclass: Salesman [
     ]
 
     hasVestAndGun [
-        (self hasItemWithName: 'bulletproof')
+        (self hasItemWithName: 'bulletproof_vest')
         ifTrue: [
             communicatesService talkToSalesman_4.
             communicatesService talkToSalesman_5.
@@ -105,7 +105,7 @@ Npc subclass: Salesman [
 
     hasVest [
         | inputOption |
-        (self hasItemWithName: 'bulletproof')
+        (self hasItemWithName: 'bulletproof_vest')
         ifTrue: [
             communicatesService talkToSalesman_6.
             communicatesService talkToSalesman_7.
@@ -255,11 +255,11 @@ Npc subclass: Salesman [
         communicatesService talkToSalesman_17
     ]
 
-    proceedPaymentVest: hero [
+    proceedPaymentVest [
         communicatesService talkToSalesman_15.
         communicatesService talkToSalesman_24.
         communicatesService talkToSalesman_21.
-        self transferVestToHero: hero.
+        self transferVestToHero.
     ]
 
     transferGunToHero [
@@ -286,9 +286,9 @@ Npc subclass: Salesman [
     transferVestToHero [
         | vestPrice bulletproofVest |
         vestPrice := 1000.
-        (self hasItemWithName: 'bulletproofVest')
+        (self hasItemWithName: 'bulletproof_vest')
         ifTrue: [
-            bulletproofVest := self findItemWithName: 'bulletproofVest'.
+            bulletproofVest := self findItemWithName: 'bulletproof_vest'.
             self removeItem: bulletproofVest.
             hero addItem: bulletproofVest.
             hero subtractMoney: vestPrice.

@@ -490,6 +490,8 @@ Object subclass: CommunicatesService [
         Transcript show: '<Guard4 shot me in the stomach. I am heavily wounded.>'; cr
     ]
 
+" --------------------------------------------------------------------------------------------------------- "
+
     CommunicatesService >> talkToSalesman_1 [
         Transcript show: 'Salesman: Greetings, soldier. What are you looking for?'; cr
     ]
@@ -900,7 +902,7 @@ Object subclass: CommunicatesService [
     ]
 
     CommunicatesService >> incorrectInput [
-        Transcript show: 'Incorect input'; cr
+        Transcript show: 'Incorrect input'; cr
     ]
 
     CommunicatesService >> invalidCommand [
@@ -909,6 +911,10 @@ Object subclass: CommunicatesService [
 
     CommunicatesService >> invalidArgument [
         Transcript show: 'Invalid argument'; cr
+    ]
+
+    CommunicatesService >> cannotTalkToPerson [
+        Transcript show: '<There is no npc in the room>'; cr
     ]
 
     CommunicatesService >> cannotAttackPerson [

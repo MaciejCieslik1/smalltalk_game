@@ -1,11 +1,12 @@
 Object subclass: RoomService [
-    | idRooms offices kitchenRooms passageRooms archives fuhrersQuarters kitchenExit secretExit |
+    | idRooms offices kitchenRooms passageRooms archives armory fuhrersQuarters kitchenExit secretExit |
 
     initialize: newIdRooms
         offices: newOffices
         kitchenRooms: newKitchenRooms
         passageRooms: newPassageRooms
         archives: newArchives
+        armory: newArmory
         fuhrersQuarters: newFuhrersQuarters
         kitchenExit: newKitchenExit
         secretExit: newSecretExit
@@ -15,6 +16,7 @@ Object subclass: RoomService [
         kitchenRooms := newKitchenRooms.
         passageRooms := newPassageRooms.
         archives := newArchives.
+        armory := newArmory.
         fuhrersQuarters := newFuhrersQuarters.
         kitchenExit := newKitchenExit.
         secretExit := newSecretExit.
@@ -46,6 +48,10 @@ Object subclass: RoomService [
 
     openArchives [
         archives isAccessible: true
+    ]
+
+    openArmory [
+        armory isAccessible: true
     ]
 
     openFuhrersQuarters [

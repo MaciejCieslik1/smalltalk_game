@@ -10,11 +10,12 @@ Object subclass: InputService [
     ]
 
     inputCharacter: charList [
-        | character |
+        | character newLineSymbol |
         character := ''.
         [
             communicatesService chooseAction.
-            character := FileStream stdin next.
+            character := FileStream stdin nextLine.
+            character := character first.
             (charList includes: character) 
             ifTrue: [
                 ^ character
