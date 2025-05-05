@@ -290,7 +290,7 @@ Object subclass: Game [
         movement := Movement new.
         movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService. 
         actionListener := ActionListener new.
-        actionListener initialize: hero movement: movement map: map communicatesService: communicatesService 
+        actionListener initialize: hero movement: movement map: map roomService: roomService communicatesService: communicatesService 
             inputService: inputService.
     ]
 

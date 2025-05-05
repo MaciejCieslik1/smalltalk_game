@@ -133,13 +133,13 @@ Person subclass: Hero [
         (target = 'guard3')
         ifTrue: [
             attackedNpc := self location findNpcByName: target.
-            self attackGuard3: attackedNpc.
+            sideNpc := self location findNpcByName: 'guard4'.
+            self attackGuard3: attackedNpc sideNpc: sideNpc.
         ].
         (target = 'guard4')
         ifTrue: [
             attackedNpc := self location findNpcByName: target.
-            sideNpc := self location findNpcByName: 'guard4'.
-            self attackGuard4: attackedNpc sideNpc: sideNpc.
+            self attackGuard4: attackedNpc.
         ].
         (target = 'waiter')
         ifTrue: [
@@ -158,7 +158,7 @@ Person subclass: Hero [
         ].
     ]
 
-    attackGuard3: guard3 guard4: guard4 [
+    attackGuard3: guard3 sideNpc: guard4 [
         (self hasItemWithName: 'gun')
         ifTrue: [
             guard3 attacked: guard4

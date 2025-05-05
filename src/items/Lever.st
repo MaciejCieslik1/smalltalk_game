@@ -24,7 +24,7 @@ Item subclass: Lever [
         communicatesService cannotPickUpItem.
     ]
 
-    interact [
+    interact: roomService [
         (self isPulled)
         ifTrue: [
             communicatesService leverAlreadyPulled.
@@ -32,6 +32,7 @@ Item subclass: Lever [
         ifFalse: [
             communicatesService leverPulled.
             communicatesService leverRumbling.
+            roomService openOffices.
             self isPulled: true.
         ]
     ]

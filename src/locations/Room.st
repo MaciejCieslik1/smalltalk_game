@@ -139,12 +139,12 @@ Object subclass: Room [
         ]
     ]
 
-    interactWithItem: itemName character: hero [
+    interactWithItem: itemName character: hero roomService: roomService [
         | item |
         (self hasItemName: itemName)
         ifTrue: [
             item := self findItemByName: itemName.
-            item interact: hero
+            item interact: roomService.
         ]
         ifFalse: [
             communicatesService wrongItemName

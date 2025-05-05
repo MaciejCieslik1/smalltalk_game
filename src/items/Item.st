@@ -47,7 +47,7 @@ Object subclass: Item [
         ]
     ]
 
-    interact: hero [
+    interact [
         communicatesService cannotInteractWithItem.
     ]
 

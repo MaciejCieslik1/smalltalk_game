@@ -1,15 +1,17 @@
 Object subclass: ActionListener [ 
-    | hero movement map communicatesService inputService |
+    | hero movement map communicatesService inputService roomService |
 
     initialize: newHero
         movement: newMovement
         map: newMap
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         hero := newHero.
         movement := newMovement.
         map := newMap.
+        roomService := newRoomService.
         communicatesService := newCommunicatesService.
         inputService := newInputService
     ]
@@ -152,7 +154,7 @@ Object subclass: ActionListener [
     interactCheckIfItemAccessible: argument [
         (hero location hasItemName: argument)
         ifTrue: [
-            hero location interactWithItem: argument character: hero
+            hero location interactWithItem: argument character: hero roomService: roomService
         ]
         ifFalse: [
             communicatesService invalidArgument
