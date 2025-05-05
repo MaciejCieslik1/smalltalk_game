@@ -272,7 +272,7 @@ Object subclass: Game [
         guard2 := Guard2 new.
         guard2 initialize: securityCheckOffices hero: hero roomService: roomService juices: (OrderedCollection with: appleJuice with: orangeJuice with: multivitaminaJuice) communicatesService: communicatesService inputService: inputService.
         guard3 := Guard3 new.
-        guard3 initialize: fuhrersOffice hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
+        guard3 initialize: fuhrersOffice hero: hero roomService: roomService appleJuice: appleJuice orangeJuice: orangeJuice multivitaminaJuice: multivitaminaJuice communicatesService: communicatesService inputService: inputService.
         guard4 := Guard4 new.
         guard4 initialize: fuhrersOffice hero: hero roomService: roomService guard3: guard3 juices: (OrderedCollection with: appleJuice with: orangeJuice with: multivitaminaJuice) communicatesService: communicatesService inputService: inputService.
         salesman := Salesman new.
@@ -328,7 +328,8 @@ Object subclass: Game [
         entrance wasVisited: true.
         communicatesService help.
         [ hasHeroEscaped or:[quit] ] whileFalse: [
-            quit := actionListener chooseAction
+            quit := actionListener chooseAction.
+            hasHeroEscaped := self checkIfHeroEscaped.
         ].
         (hasHeroEscaped)
         ifTrue: [
@@ -336,10 +337,17 @@ Object subclass: Game [
         ].
     ]
 
+    checkIfHeroEscaped [
+        ((hero location == kitchenExit) or:[hero location == secretExit])
+        ifTrue: [
+            ^ true.
+        ].
+        ^ false.
+    ]
+
     ending [
         communicatesService thanks. 
         communicatesService thanksForPlaying. 
         communicatesService youWon. 
-        communicatesService typeQToExit. 
     ]
 ]

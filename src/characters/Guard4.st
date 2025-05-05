@@ -25,7 +25,7 @@ Guard subclass: Guard4 [
             communicatesService authorized
         ]
         ifFalse: [
-            self conversation.
+            self conversation: juices.
         ].
     ]
 
@@ -41,7 +41,7 @@ Guard subclass: Guard4 [
     ]
 
     chooseDialogueOption: juices [
-        (hero hasUniformWithName = 'serviceUniform' and: [hero hasPoisonedJuice: juices]) 
+        ((hero hasUniformWithName: 'service_uniform') and: [hero hasPoisonedJuice: juices]) 
         ifTrue: [
             self trueWaiterCondition.
         ]

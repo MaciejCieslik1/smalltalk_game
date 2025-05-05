@@ -1,8 +1,11 @@
 Guard subclass: Guard3 [
-
+    | appleJuice orangeJuice multivitaminaJuice |
     initialize: newLocation 
         hero: newHero 
         roomService: newRoomService
+        appleJuice: newAppleJuice
+        orangeJuice: newOrangeJuice
+        multivitaminaJuice: newMultivitaminaJuice
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -12,7 +15,10 @@ Guard subclass: Guard3 [
             hero: newHero 
             roomService: newRoomService
             communicatesService: newCommunicatesService 
-            inputService: newInputService
+            inputService: newInputService.
+        appleJuice := newAppleJuice.
+        orangeJuice := newOrangeJuice.
+        multivitaminaJuice := newMultivitaminaJuice.
     ]
 
     interaction [
@@ -50,7 +56,7 @@ Guard subclass: Guard3 [
 
     interactionBeverages [
         self introductionDialogue.
-        self chooseJuice.
+        self chooseJuice: appleJuice juice2: orangeJuice juice3: multivitaminaJuice.
     ]
 
     chooseJuice: appleJuice juice2: orangeJuice juice3: multivitaminaJuice [
