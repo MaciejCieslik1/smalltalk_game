@@ -276,7 +276,7 @@ Object subclass: Game [
         guard4 := Guard4 new.
         guard4 initialize: fuhrersOffice hero: hero roomService: roomService guard3: guard3 communicatesService: communicatesService inputService: inputService.
         salesman := Salesman new.
-        salesman initialize: armory items: (OrderedCollection withAll: { gun. bulletproofVest }) hero: hero 
+        salesman initialize: armory items: (OrderedCollection with: gun with: bulletproofVest) hero: hero 
             communicatesService: communicatesService inputService: inputService.
         soldier := Soldier new. 
         soldier initialize: barracks helmet: helmet hero: hero communicatesService: communicatesService inputService: inputService.
@@ -304,6 +304,7 @@ Object subclass: Game [
         socialRoom itemsList add: moneySocialRoom.
         kitchen itemsList add: moneyKitchen.
         archives itemsList add: lever.
+        foodStorage itemsList add: poison.
         goebbelsOffice itemsList: (OrderedCollection with: amber with: redKey with: letter).
     ]
 
@@ -317,6 +318,7 @@ Object subclass: Game [
         fuhrersOffice npcList add: guard3.
         fuhrersOffice npcList add: guard4.
         fuhrersQuarters npcList add: fuhrer.
+        kitchen npcList add: waiter.
     ]
 
     gameLoop [

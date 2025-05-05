@@ -29,6 +29,16 @@ Object subclass: Item [
     ]
 
     pickUp: hero [
+        (self name ~= 'lever')
+        ifTrue: [
+            self pickItemNotLever: hero.
+        ]
+        ifFalse: [
+            communicatesService cannotPickUpItem.
+        ].
+    ]
+
+    pickItemNotLever: hero [
         hero addItem: self.
         location removeItem: self.
         (location itemsList isEmpty)
@@ -38,7 +48,7 @@ Object subclass: Item [
     ]
 
     interact: hero [
-        " This method is overwritten by subclass "
+        communicatesService cannotInteractWithItem.
     ]
 
     description [

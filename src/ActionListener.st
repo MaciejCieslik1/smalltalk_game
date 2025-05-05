@@ -132,7 +132,7 @@ Object subclass: ActionListener [
                             'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
         (validArguments includes: argument)
         ifTrue: [
-            self interactCheckIfItemAccessible
+            self interactCheckIfItemAccessible: argument
         ]
         ifFalse: [
             communicatesService invalidArgument
@@ -142,7 +142,7 @@ Object subclass: ActionListener [
     interactCheckIfItemAccessible: argument [
         (hero location hasItemName: argument)
         ifTrue: [
-            hero location interactWithItem: argument
+            hero location interactWithItem: argument hero: hero
         ]
         ifFalse: [
             communicatesService invalidArgument
