@@ -52,7 +52,7 @@ Guard subclass: Guard2 [
 
     usedServiceUniform [
         | inputOption |
-        communicatesService talkToGuard2_13.
+        communicatesService talkToGuard2_12.
         inputOption := inputService inputCharacter: #($a $b).
         (inputOption = $a) 
         ifTrue: [

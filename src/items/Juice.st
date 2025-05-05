@@ -18,7 +18,7 @@ Item subclass: Juice [
         ^ isPoisoned
     ]
 
-    isPoisoned1: newIsPoisoned [
+    isPoisoned: newIsPoisoned [
         isPoisoned := newIsPoisoned
     ]
 

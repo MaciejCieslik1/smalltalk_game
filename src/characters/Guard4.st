@@ -1,9 +1,10 @@
 Guard subclass: Guard4 [
-    | guard3 |
+    | guard3 juices |
     initialize: newLocation
         hero: newHero  
         roomService: newRoomService
         guard3: newGuard3
+        juices: newJuices
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -15,6 +16,7 @@ Guard subclass: Guard4 [
             communicatesService: newCommunicatesService 
             inputService: newInputService.
         guard3 := newGuard3.
+        juices := newJuices.
     ]
 
     interaction [

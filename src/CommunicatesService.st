@@ -201,11 +201,11 @@ Object subclass: CommunicatesService [
     ]
 
     CommunicatesService >> talkToGuard1_3 [
-        Transcript show: '   a. I don\''t have one.'; cr
+        Transcript show: '   a. I don''t have one.'; cr
     ]
 
     CommunicatesService >> talkToGuard1_4 [
-        Transcript show: 'Me: I don\''t have one.'; cr
+        Transcript show: 'Me: I don''t have one.'; cr
     ]
 
     CommunicatesService >> talkToGuard1_5 [
@@ -239,11 +239,11 @@ Object subclass: CommunicatesService [
     ]
 
     CommunicatesService >> talkToGuard2_3 [
-        Transcript show: '   a. I don\''t have a pass.'; cr
+        Transcript show: '   a. I don''t have a pass.'; cr
     ]
 
     CommunicatesService >> talkToGuard2_4 [
-        Transcript show: 'Me: I don\''t a pass.'; cr
+        Transcript show: 'Me: I don''t a pass.'; cr
     ]
 
     CommunicatesService >> talkToGuard2_5 [
@@ -279,11 +279,11 @@ Object subclass: CommunicatesService [
     ]
 
     CommunicatesService >> talkToGuard2_12 [
-        Transcript show: '   b. I\''m the waiter, I have beverages for the Fuhrer.'; cr
+        Transcript show: '   b. I''m the waiter, I have beverages for the Fuhrer.'; cr
     ]
 
     CommunicatesService >> talkToGuard2_13 [
-        Transcript show: 'Me: I\''m the waiter, I have beverages for the Fuhrer.'; cr
+        Transcript show: 'Me: I''m the waiter, I have beverages for the Fuhrer.'; cr
     ]
 
     CommunicatesService >> talkToGuard2_14 [

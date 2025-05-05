@@ -243,23 +243,24 @@ Object subclass: ActionListener [
     ]
 
     checkArgumentPoison: argument [
-        | validArguments |
+        | validArguments juice |
         validArguments := #('apple_juice' 'orange_juice' 'multivitamina_juice').
         (validArguments includes: argument)
         ifTrue: [
-            checkHeroHasPoison: argument
+            juice := hero findItemWithName: argument.
+            self checkHeroHasPoison: juice
         ]
         ifFalse: [
             communicatesService cannotPoisonItem
         ]
     ]
 
-    checkHeroHasPoison: argument [
+    checkHeroHasPoison: juice [
         | poison2 |
         (hero hasItemWithName: 'poison')
         ifTrue: [
             poison2 := hero findItemWithName: 'poison'.
-            hero addPoison: argument poison: poison2.
+            hero addPoison: juice poison: poison2.
         ]
         ifFalse: [
             communicatesService poisonNoPoison.
