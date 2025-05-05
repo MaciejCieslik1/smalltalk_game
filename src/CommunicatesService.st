@@ -929,6 +929,10 @@ Object subclass: CommunicatesService [
         Transcript show: '<Cannot attack guard, you haven''t got gun>'; cr
     ]
 
+    CommunicatesService >> poisonNoPoison [
+        Transcript show: '<Cannot poison this juice, you haven''t got poison>'; cr
+    ]
+
     CommunicatesService >> cannotDisplayInfo [
         Transcript show: '<I have no information about that person>'; cr
     ]

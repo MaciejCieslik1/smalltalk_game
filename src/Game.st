@@ -270,7 +270,7 @@ Object subclass: Game [
         guard1 := Guard1 new.
         guard1 initialize: securityCheckEntry hero: hero roomService: roomService midRankPass: midRankPass communicatesService: communicatesService inputService: inputService.
         guard2 := Guard2 new.
-        guard2 initialize: securityCheckOffices hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
+        guard2 initialize: securityCheckOffices hero: hero roomService: roomService juices: (OrderedCollection with: appleJuice with: orangeJuice with: multivitaminaJuice) communicatesService: communicatesService inputService: inputService.
         guard3 := Guard3 new.
         guard3 initialize: fuhrersOffice hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard4 := Guard4 new.

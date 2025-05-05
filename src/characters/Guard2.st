@@ -1,9 +1,10 @@
 Guard subclass: Guard2 [
-    | hasHigherPermission | 
+    | hasHigherPermission juices | 
 
     initialize: newLocation 
         hero: newHero 
         roomService: newRoomService
+        juices: newJuices
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -14,6 +15,7 @@ Guard subclass: Guard2 [
             roomService: newRoomService
             communicatesService: newCommunicatesService 
             inputService: newInputService.
+        juices := newJuices.
         hasHigherPermission := false.
     ]
 
@@ -39,7 +41,7 @@ Guard subclass: Guard2 [
     ]
 
     showDialogueOptions [
-        ((hero hasUniformWithName: 'service_uniform') and: [hero hasPoisonedJuice])
+        ((hero hasUniformWithName: 'service_uniform') and: [hero hasPoisonedJuice: juices])
         ifTrue: [
             self usedServiceUniform.
         ]

@@ -244,22 +244,34 @@ Object subclass: ActionListener [
 
     checkArgumentPoison: argument [
         | validArguments |
-        validArguments := #('appleJuice' 'orangeJuice' 'multivitaminaJuice').
+        validArguments := #('apple_juice' 'orange_juice' 'multivitamina_juice').
         (validArguments includes: argument)
         ifTrue: [
-            hero addPoison: argument
+            checkHeroHasPoison: argument
         ]
         ifFalse: [
             communicatesService cannotPoisonItem
         ]
     ]
 
+    checkHeroHasPoison: argument [
+        | poison2 |
+        (hero hasItemWithName: 'poison')
+        ifTrue: [
+            poison2 := hero findItemWithName: 'poison'.
+            hero addPoison: argument poison: poison2.
+        ]
+        ifFalse: [
+            communicatesService poisonNoPoison.
+        ].
+    ]
+
     checkArgumentChloroform: argument [
-        | validArguments rag |
+        | validArguments |
         validArguments := 'rag'.
         (validArguments = argument)
         ifTrue: [
-            self addChloroformToRag: validArguments
+            self addChloroformToRag: argument
         ]
         ifFalse: [
             communicatesService cannotChlorofomItem
