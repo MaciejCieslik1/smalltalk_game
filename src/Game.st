@@ -115,7 +115,7 @@ Object subclass: Game [
         goebbelsOffice addAdjacentRooms: nullRoom west: nullRoom south: conferenceRoom east: nullRoom. 
         kitchen addAdjacentRooms: foodStorage west: cafeteria south: nullRoom east: nullRoom. 
         kitchenExit addAdjacentRooms: nullRoom west: foodStorage south: nullRoom east: nullRoom. 
-        lobby addAdjacentRooms: securityCheckOffices west: passage south: cloakroom east: socialRoom. 
+        lobby addAdjacentRooms: securityCheckOffices west: passage south: emptyRoomA east: socialRoom. 
         medicBay addAdjacentRooms: cafeteria west: nullRoom south: nullRoom east: nullRoom. 
         nullRoom addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: nullRoom.
         secretExit addAdjacentRooms: nullRoom west: nullRoom south: nullRoom east: fuhrersQuarters. 
@@ -196,7 +196,7 @@ Object subclass: Game [
     initializeRoomService [
         roomService := RoomService new.
         roomService initialize: {cloakroom. emptyRoomA. cafeteria. medicBay. lobby. socialRoom. securityCheckOffices. barracks}
-            offices: {conferenceRoom. goebbelsOffice. fuhrersOffice. emptyRoomB} kitchenRooms: {kitchen. foodStorage} 
+            offices: {conferenceRoom. goebbelsOffice. fuhrersOffice. emptyRoomB. passage} kitchenRooms: {kitchen. foodStorage} 
             passageRooms: {emptyRoomB. passage} archives: archives armory: armory fuhrersQuarters: fuhrersQuarters
             kitchenExit: kitchenExit secretExit: secretExit
     ]

@@ -941,6 +941,10 @@ Object subclass: CommunicatesService [
         Transcript show: '<I have no information about that item>'; cr
     ]
 
+    CommunicatesService >> roomHasNoItem [
+        Transcript show: '<There is no item with this name in the room>'; cr
+    ]
+
     CommunicatesService >> cannotPoisonItem [
         Transcript show: '<I cannot poison this item>'; cr
     ]

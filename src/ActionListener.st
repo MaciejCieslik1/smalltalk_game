@@ -244,6 +244,32 @@ Object subclass: ActionListener [
         hero createInfo.
     ]
 
+    checkArgumentDescription: argument [
+        | validArguments |
+        validArguments := #('lever' 'apple_juice' 'orange_juice' 'multivitamina_juice' 'poison' 'vitamins' 'bandage' 'baton' 'chloroform'
+                            'umbrella' 'rag' 'chloroform_rag' 'letter' 'poisoned_apple_juice' 'poisoned_orange_juice' 
+                            'poisoned_multivitamina_juice' 'money' 'id' 'mid_rank_pass' 'red_key' 'amber').
+        (validArguments includes: argument)
+        ifTrue: [
+            self checkDescriptionRoomHasItem: argument.
+        ]
+        ifFalse: [
+            communicatesService invalidArgument.
+        ].
+    ]
+
+    checkDescriptionRoomHasItem: argument [
+        | item |
+        (hero location hasItemWithName: argument)
+        ifTrue: [
+            item := hero location findItemByName: argument.
+            item description.
+        ]
+        ifFalse: [
+            communicatesService roomHasNoItem.
+        ].
+    ]
+
     checkArgumentPoison: argument [
         | validArguments juice |
         validArguments := #('apple_juice' 'orange_juice' 'multivitamina_juice').

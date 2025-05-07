@@ -108,6 +108,16 @@ Object subclass: Room [
         ^ self itemsList anySatisfy: [:item | item name = itemName].
     ]
 
+    hasItemWithName: itemName [
+        itemsList do: [:item |
+            (item name = itemName) 
+            ifTrue: [
+                ^ true
+            ].
+        ].
+        ^ false
+    ]
+
     findItemByName: itemName [
         ^ self itemsList detect: [:item | item name = itemName]
     ]

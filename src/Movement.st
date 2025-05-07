@@ -76,7 +76,7 @@ Object subclass: Movement [
         ifTrue: [
             hero location: passage.
             passage wasVisited: true.
-            self go: hero direction: direction.
+            self go: direction.
         ]
         ifFalse: [
             hero moveTotheRoom: room.
