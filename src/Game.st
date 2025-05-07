@@ -266,7 +266,7 @@ Object subclass: Game [
         chef := Chef new.
         chef initialize: cafeteria hero: hero roomService: roomService communicatesService: communicatesService inputService: inputService.
         fuhrer := Fuhrer new.
-        fuhrer initialize: fuhrersQuarters communicatesService: communicatesService inputService: inputService.
+        fuhrer initialize: fuhrersQuarters roomService: roomService communicatesService: communicatesService inputService: inputService.
         guard1 := Guard1 new.
         guard1 initialize: securityCheckEntry hero: hero roomService: roomService midRankPass: midRankPass communicatesService: communicatesService inputService: inputService.
         guard2 := Guard2 new.
@@ -288,7 +288,7 @@ Object subclass: Game [
         map := Map new.
         map initialize: hero nullRoom: nullRoom passage: passage levelMatrix: levelMatrix communicatesService: communicatesService.
         movement := Movement new.
-        movement initialize: hero nullRoom: nullRoom passage: passage communicatesService: communicatesService. 
+        movement initialize: hero nullRoom: nullRoom passage: passage bandit: bandit securityCheckOffices: securityCheckOffices conferenceRoom: conferenceRoom communicatesService: communicatesService. 
         actionListener := ActionListener new.
         actionListener initialize: hero movement: movement map: map roomService: roomService communicatesService: communicatesService 
             inputService: inputService.

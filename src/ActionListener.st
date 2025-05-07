@@ -311,9 +311,24 @@ Object subclass: ActionListener [
         | rag |
         (hero hasItemWithName: ragName)
         ifTrue: [
-            rag := hero findItemWithName: ragName
-            hero addChloroform: rag 
+            rag := hero findItemWithName: ragName.
+            self checkChloroform: rag.
         ]
+        ifFalse: [
+            communicatesService heroHasNoRag.
+        ].
+    ]
+
+    checkChloroform: rag [
+        | chloroform |
+        (hero hasItemWithName: 'chloroform')
+        ifTrue: [
+            chloroform := hero findItemWithName: 'chloroform'.
+            hero addChloroform: rag chloroform: chloroform.
+        ]
+        ifFalse: [
+            communicatesService heroHasNoChloroform.
+        ].
     ]
 
     checkArgumentRoom [

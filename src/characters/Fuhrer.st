@@ -1,15 +1,18 @@
 Npc subclass: Fuhrer [
+    | roomService |
 
     initialize: newLocation 
+        roomService: newRoomService
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
         super initializeWithName: 'adolf' 
-        rank: 'fuhrer' 
-        location: newLocation 
-        isKillable: true
-        communicatesService: newCommunicatesService 
-        inputService: newInputService.
+            rank: 'fuhrer' 
+            location: newLocation 
+            isKillable: true
+            communicatesService: newCommunicatesService 
+            inputService: newInputService.
+        roomService := newRoomService.
     ]
 
     interaction [
@@ -17,8 +20,9 @@ Npc subclass: Fuhrer [
         self chooseDialogueOption.
         self endingDialogue.
         self npcKilled.
-        communicatesService hitlerShot
-        communicatesService secretExitAccessible
+        communicatesService hitlerShot.
+        communicatesService secretExitAccessible.
+        roomService openSecretExit.
     ]
 
     intruductionDialogue [

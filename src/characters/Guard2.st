@@ -74,11 +74,12 @@ Guard subclass: Guard2 [
         communicatesService talkToGuard2_14.
         communicatesService talkToGuard2_wayWestAccessible.
         roomService openOffices.
+        hero hasShowedRedKey: true.
     ]
 
     usedMilitaryUniform [
         self dipslayDialogues.
-        (hero hasItemWithName: 'redKey')
+        (hero hasItemWithName: 'red_key')
         ifTrue: [
             self heroHasRedKey.
         ]
@@ -102,7 +103,7 @@ Guard subclass: Guard2 [
         ifTrue: [
             communicatesService talkToGuard2_8
         ].
-        (hero hasItemWithName: 'redKey')
+        (hero hasItemWithName: 'red_key')
         ifTrue: [
             communicatesService talkToGuard2_10
         ].
@@ -181,5 +182,6 @@ Guard subclass: Guard2 [
         communicatesService talkToGuard2_11.
         communicatesService talkToGuard2_wayWestAccessible.
         roomService openOffices.
+        hero hasShowedRedKey: true.
     ]
 ]

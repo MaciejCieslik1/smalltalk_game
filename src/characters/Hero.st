@@ -1,5 +1,5 @@
 Person subclass: Hero [
-    | items uniform money recoveryPlace |
+    | items uniform money recoveryPlace hasShowedRedKey |
 
     initialize: newLocation 
         recoveryPlace: newRecoveryPlace 
@@ -15,7 +15,8 @@ Person subclass: Hero [
         items := OrderedCollection new.
         uniform := newUniform.
         money := 0.
-        recoveryPlace := newRecoveryPlace
+        recoveryPlace := newRecoveryPlace.
+        hasShowedRedKey := false.
     ]
 
     items [
@@ -83,6 +84,14 @@ Person subclass: Hero [
             Error new signal: 'Money cannot be less than 0'.
         ].
         money := newMoney.
+    ]
+
+    hasShowedRedKey [
+        ^ hasShowedRedKey
+    ]
+
+    hasShowedRedKey: newHasShowedRedKey [
+        hasShowedRedKey := newHasShowedRedKey
     ]
 
     createInfo [

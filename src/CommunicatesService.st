@@ -251,7 +251,7 @@ Object subclass: CommunicatesService [
     ]
 
     CommunicatesService >> talkToGuard2_6 [
-        Transcript show: '   b) Here it is. (id)'; cr
+        Transcript show: '   b. Here it is. (id)'; cr
     ]
 
     CommunicatesService >> talkToGuard2_7 [
@@ -967,6 +967,14 @@ Object subclass: CommunicatesService [
 
     CommunicatesService >> roomHasNoNpc [
         Transcript show: 'Room has no Npc''s'; cr
+    ]
+
+    CommunicatesService >> heroHasNoRag [
+        Transcript show: 'You haven''t got rag'; cr
+    ]
+
+    CommunicatesService >> heroHasNoChloroform [
+        Transcript show: 'You haven''t got chloroform'; cr
     ]
 
     CommunicatesService >> help [

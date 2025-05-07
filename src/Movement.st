@@ -1,10 +1,20 @@
 Object subclass: Movement [
-    | hero nullRoom passage communicatesService  |
+    | hero nullRoom passage communicatesService bandit securityCheckOffices conferenceRoom |
 
-    initialize: newHero nullRoom: newNullRoom passage: newPassage communicatesService: newCommunicatesService [
+    initialize: newHero 
+        nullRoom: newNullRoom 
+        passage: newPassage 
+        bandit: newBandit
+        securityCheckOffices: newSecurityCheckOffices
+        conferenceRoom: newConferenceRoom
+        communicatesService: newCommunicatesService 
+    [
         hero := newHero.
         nullRoom := newNullRoom.
         passage := newPassage.
+        bandit := newBandit.
+        securityCheckOffices := newSecurityCheckOffices.
+        conferenceRoom := newConferenceRoom.
         communicatesService := newCommunicatesService.
     ]
 
@@ -77,9 +87,37 @@ Object subclass: Movement [
             hero location: passage.
             passage wasVisited: true.
             self go: direction.
+            self checkIfBanditIsAlive.
+        ]
+        ifFalse: [
+            self hasHeroShowedRedKey: room.
+        ]
+    ]
+
+    hasHeroShowedRedKey: room [
+        (hero location == securityCheckOffices and:[room == conferenceRoom])
+        ifTrue: [
+            self checkIfHeroShowedKey: room.
         ]
         ifFalse: [
             hero moveTotheRoom: room.
         ]
+    ]
+
+    checkIfHeroShowedKey: room [
+        (hero hasShowedRedKey)
+        ifTrue: [
+            hero moveTotheRoom: room.
+        ]
+        ifFalse: [
+            communicatesService roomLocked.
+        ]
+    ]
+
+    checkIfBanditIsAlive [
+        (bandit isAlive)
+        ifTrue: [
+            bandit interaction.
+        ].
     ]
 ]

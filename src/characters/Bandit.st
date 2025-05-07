@@ -31,9 +31,9 @@ Npc subclass: Bandit [
         communicatesService talkToBandit_2.
         communicatesService talkToBandit_3.
         inputService inputCharacter: ('a').
-        communicatesService talkToBandit_4
-        communicatesService talkToBandit_5
-        communicatesService talkToBandit_6
+        communicatesService talkToBandit_4.
+        communicatesService talkToBandit_5.
+        communicatesService talkToBandit_6.
     ]
 
     figthUsingHelmet [

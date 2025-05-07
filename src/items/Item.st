@@ -47,7 +47,7 @@ Object subclass: Item [
         ]
     ]
 
-    interact [
+    interact: roomService [
         communicatesService cannotInteractWithItem.
     ]
 

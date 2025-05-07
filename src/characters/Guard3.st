@@ -27,7 +27,7 @@ Guard subclass: Guard3 [
 
     interactionShooting [
         communicatesService talkToGuard3_2.
-        (hero hasItemWithItem: 'bulletproofVest') 
+        (hero hasItemWithName: 'bulletproof_vest') 
         ifTrue: [
             self usedVest.
         ]
@@ -45,6 +45,7 @@ Guard subclass: Guard3 [
         communicatesService talkToGuard3_7.
         communicatesService talkToGuard3_8.
         communicatesService talkToGuard_wayNorthAccessible.
+        roomService openFuhrersQuarters.
     ]
 
     notUsedVest [
