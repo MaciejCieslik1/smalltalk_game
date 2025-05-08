@@ -26,9 +26,11 @@ Person subclass: Npc [
 
     createInfo [
         | info |
-        info := super createInfo, 
-                'Rank: ', self rank, String cr.
-        ^ info
+        communicatesService printStringNewLine: 'Name: ', self name asString.
+        communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
+        communicatesService printStringNewLine: 'Location: ', self location name printString.
+        communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
+        communicatesService printStringNewLine: 'Rank: ', self rank printString.
     ]
 
     npcKilled [

@@ -43,7 +43,7 @@ Object subclass: Map [
                 ^ '[X]-'.
             ]
             ifFalse: [
-                ^ '[X]'.
+                ^ '[X] '.
             ].
         ]
         ifFalse: [
@@ -111,13 +111,23 @@ Object subclass: Map [
     ]
 
     drawAdjacentRoom: room [
+        | roomLayout symbol |
         (room hasNpc)
         ifTrue: [
-            ^ self drawNpcAdjacentRoom: room.
+            roomLayout := self drawNpcAdjacentRoom: room.
         ]
         ifFalse: [
-            ^ self drawNoneNpcAdjacentRoom: room.
+            roomLayout := self drawNoneNpcAdjacentRoom: room.
         ].
+        (room adjacentEast ~= nullRoom and:[room adjacentEast wasVisited])
+        ifTrue: [
+            roomLayout := roomLayout, '-'
+        ]
+        ifFalse: [
+            roomLayout := roomLayout, ' '
+        ].
+        ^ roomLayout
+
     ]
 
     drawNpcAdjacentRoom: room [
@@ -194,8 +204,7 @@ Object subclass: Map [
         roomLayout := ''.
         (room adjacentEast wasVisited)
         ifTrue: [
-            symbol := self drawAdjacentRoom: room.
-            roomLayout := roomLayout, symbol, '-'.
+            roomLayout := self drawAdjacentRoom: room.
         ]
         ifFalse: [
             roomLayout := roomLayout, '    '.

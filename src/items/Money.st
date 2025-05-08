@@ -8,7 +8,7 @@ Item subclass: Money [
     [
         super initializeWithName: 'money' 
             location: newLocation
-            communicatesService: communicatesService 
+            communicatesService: newCommunicatesService 
             inputService: inputService.
         amount := newAmount.
     ]
@@ -23,10 +23,14 @@ Item subclass: Money [
 
     pickUp: hero [
         hero addMoney: self amount.
-        self location removeItem: self.
+        location removeItem: self.
+        (location itemsList isEmpty)
+        ifTrue: [
+            location hasItem: false 
+        ]
     ]
 
     description [
-        communicatesService moneyDescription: self amount.
+        communicatesService moneyDescription: amount.
     ]
 ]

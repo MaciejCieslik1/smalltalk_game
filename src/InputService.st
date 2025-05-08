@@ -10,21 +10,33 @@ Object subclass: InputService [
     ]
 
     inputCharacter: charList [
-        | character newLineSymbol |
+        | character |
         character := ''.
         [
             communicatesService chooseAction.
             character := FileStream stdin nextLine.
-            character := character first.
-            (charList includes: character) 
+            (character ~= '')
             ifTrue: [
-                ^ character
+                ^ self checkInputNotNull: character charList: charList.
             ]
             ifFalse: [
                 communicatesService incorrectInput.
                 ^ false.
-            ].
+            ]
         ] whileTrue.
+    ]
+
+    checkInputNotNull: input charList: charList [
+        | character |
+        character := input first.
+        (charList includes: character) 
+        ifTrue: [
+            ^ character.
+        ]
+        ifFalse: [
+            communicatesService incorrectInput.
+            ^ false.
+        ].
     ]
 
     inputCommand [

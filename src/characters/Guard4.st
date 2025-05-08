@@ -114,6 +114,13 @@ Guard subclass: Guard4 [
     attacked [
         self npcKilled.
         communicatesService killedGuard4.
-        guard3 interactionShooting.
+        (guard3 isAlive)
+        ifTrue: [
+            guard3 interactionShooting.
+        ]
+        ifFalse: [
+            communicatesService talkToGuard_wayNorthAccessible.
+            roomService openFuhrersQuarters.
+        ]
     ]
 ]

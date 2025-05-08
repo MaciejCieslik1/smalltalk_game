@@ -199,7 +199,13 @@ Object subclass: ActionListener [
         (validArguments includes: argument)
         ifTrue: [
             self displayInfoCheckIfRoomHasNpc: argument
+        ]
+        ifFalse: [
+            self checkInfoHero: argument.
         ].
+    ]
+
+    checkInfoHero: argument [
         (argument = 'hero')
         ifTrue: [
             self displayInfoHero: argument
@@ -221,22 +227,14 @@ Object subclass: ActionListener [
 
     displayInfoCheckIfNpcAccessible: npcName [
         | npc npcInfo |
-        (hero location findNpcByName: npcName)
+        (hero location hasNpcWithName: npcName)
         ifTrue: [
             npc := hero location findNpcByName: npcName.
-            npcInfo := npc createInfo.
-            communicatesService printStringNewLine: npcInfo
+            npc createInfo.
         ]
         ifFalse: [
             communicatesService invalidArgument
         ]
-    ]
-
-    dipslayNpcInfo: npcName [
-        | npc npcInfo |
-        npc := hero location findNpcByName: npcName. 
-        npcInfo := npc createInfo. 
-        communicatesService printStringNewLine: npcInfo
     ]
 
     displayInfoHero: argument [

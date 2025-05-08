@@ -19,10 +19,10 @@ Npc subclass: Bandit [
         self introductionDialogue.
         (hero hasItemWithName: 'helmet')
         ifTrue: [
-            self figthUsingHelmet.
+            self fightUsingHelmet.
         ]
         ifFalse: [
-            self figthWithoutHelmet.
+            self fightWithoutHelmet.
         ].
     ]
 
@@ -36,19 +36,19 @@ Npc subclass: Bandit [
         communicatesService talkToBandit_6.
     ]
 
-    figthUsingHelmet [
+    fightUsingHelmet [
         communicatesService talkToBandit_7.
         communicatesService talkToBandit_8.
         (hero hasItemWithName: 'baton')
         ifTrue: [
-            self figthUsingBaton.
+            self fightUsingBaton.
         ]
         ifFalse: [
-            self figthUsingFists.
+            self fightUsingFists.
         ].
     ]
 
-    figthWithoutHelmet [
+    fightWithoutHelmet [
         communicatesService talkToBandit_19.
         communicatesService talkToBandit_17.
         (hero hasItemWithName: 'baton')
@@ -58,11 +58,11 @@ Npc subclass: Bandit [
         ifFalse: [
             communicatesService talkToBandit_21
         ].
-        hero heroKilled
+        hero getWounded.
     ]
 
 
-    figthUsingBaton [
+    fightUsingBaton [
         communicatesService talkToBandit_9.
         inputService inputCharacter: ('a').
         communicatesService talkToBandit_10.
@@ -71,7 +71,7 @@ Npc subclass: Bandit [
         self npcKilled.
     ]
 
-    figthUsingFists [
+    fightUsingFists [
         communicatesService talkToBandit_13.
         inputService inputCharacter: ('a').
         communicatesService talkToBandit_14.

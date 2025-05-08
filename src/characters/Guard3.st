@@ -1,11 +1,13 @@
 Guard subclass: Guard3 [
-    | appleJuice orangeJuice multivitaminaJuice |
+    | appleJuice orangeJuice multivitaminaJuice fuhrer |
+
     initialize: newLocation 
         hero: newHero 
         roomService: newRoomService
         appleJuice: newAppleJuice
         orangeJuice: newOrangeJuice
         multivitaminaJuice: newMultivitaminaJuice
+        fuhrer: newFuhrer
         communicatesService: newCommunicatesService 
         inputService: newInputService
     [
@@ -19,6 +21,7 @@ Guard subclass: Guard3 [
         appleJuice := newAppleJuice.
         orangeJuice := newOrangeJuice.
         multivitaminaJuice := newMultivitaminaJuice.
+        fuhrer := newFuhrer.
     ]
 
     interaction [
@@ -98,12 +101,20 @@ Guard subclass: Guard3 [
         communicatesService talkToGuard3_19.
         communicatesService talkToGuard3_20.
         communicatesService talkToGuard3_21.
+        fuhrer npcKilled.
         roomService openKitchenExit.
     ]
 
     attacked: guard4 [
         self npcKilled.
         communicatesService killedGuard3.
-        guard4 interactionShooting.
+        (guard4 isAlive)
+        ifTrue: [
+            guard4 interactionShooting.
+        ]
+        ifFalse: [
+            communicatesService talkToGuard_wayNorthAccessible.
+            roomService openFuhrersQuarters.
+        ]
     ]
 ]

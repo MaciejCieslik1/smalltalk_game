@@ -130,7 +130,7 @@ Object subclass: CommunicatesService [
         Transcript show: '<A way east is now accessible.>'; cr
     ]
 
-    CommunicatesService >> talkToChef_10 [
+    CommunicatesService >> talkToChef_11 [
         Transcript show: 'Chef: I cannot talk now, I am busy.'; cr
     ]
 
