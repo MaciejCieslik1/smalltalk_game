@@ -38,7 +38,7 @@ Welcome to the **Text Adventure Game**, created in Smalltalk. The main goal is t
    ```
 3. Launch the game:
    ```bash
-   gst
+   gst main.st
    ```
 
 ---
@@ -73,7 +73,7 @@ quit - exit the game
 (B) - unvisited room with both item to pick and npc, adjacent to the visited one  
 ( ) - unvisited empty room, adjacent to the visited one  
 === - long horizonal corridor  
-- - normal horizonal corridor  
-| - normal vertical corridor  
+'-' - normal horizonal corridor  
+'|' - normal vertical corridor  
 
 ---
