@@ -60,12 +60,13 @@ Npc subclass: Salesman [
         ^ nil
     ]
 
-
     createInfo [
-        | info |
-        info := super createInfo,
-                'Items: ', (self items joinSeparatedBy: ', '), String cr.
-        ^ info
+        communicatesService printStringNewLine: 'Name: ', self name asString.
+        communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
+        communicatesService printStringNewLine: 'Location: ', self location name printString.
+        communicatesService printStringNewLine: 'Killable status: ', self isKillable printString.
+        communicatesService printStringNewLine: 'Rank: ', self rank printString.
+        communicatesService printItems: self items.
     ]
 
     interaction [

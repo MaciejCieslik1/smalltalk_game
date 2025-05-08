@@ -25,7 +25,6 @@ Person subclass: Npc [
     ]
 
     createInfo [
-        | info |
         communicatesService printStringNewLine: 'Name: ', self name asString.
         communicatesService printStringNewLine: 'Alive status: ', self isAlive printString.
         communicatesService printStringNewLine: 'Location: ', self location name printString.
