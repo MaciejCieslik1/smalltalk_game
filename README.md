@@ -24,7 +24,7 @@ Welcome to the **Text Adventure Game**, created in Smalltalk. The main goal is t
 
 1. **Clone the repository**:
    ```bash
-   https://gitlab-stud.elka.pw.edu.pl/tnejman/parp_projekt_verliesmeister.git
+   https://github.com/MaciejCieslik1/smalltalk_game.git
    ```
 
 ---
